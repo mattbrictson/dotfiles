@@ -25,16 +25,10 @@ export HISTIGNORE="&:ls:l:la:ll:exit"
 bind '"\e[A"':history-search-backward # up arrow
 bind '"\e[B"':history-search-forward  # down arrow
 
+# Note that bash_completion is necessary for __git_ps1 magic
 if [ -f /opt/local/etc/bash_completion ]; then
   . /opt/local/etc/bash_completion
 fi
-
-###################
-# Git PS1 Support #
-
-export GIT_PS1_SHOWDIRTYSTATE=true     # '*' for unstaged changes, '+' for staged
-export GIT_PS1_SHOWSTASHSTATE=true     # '$' if smth is stashed
-export GIT_PS1_SHOWUNTRACKEDFILES=true # '%' if un-tracked files
 
 #######
 # PS1 #
@@ -48,7 +42,17 @@ hostname=""
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   hostname=" `hostname -s` "
 fi
-export PS1='\[\e[0;30;43m\]$hostname\[\e[0m\]\[\e[1m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\[\e[1m\]$ \[\e[0m\]'
+
+# Include git goodies if possible
+if [ "`type -t __git_ps1`" == 'function' ]; then
+  export GIT_PS1_SHOWDIRTYSTATE=true     # '*' for unstaged changes, '+' for staged
+  export GIT_PS1_SHOWSTASHSTATE=true     # '$' if smth is stashed
+  export GIT_PS1_SHOWUNTRACKEDFILES=true # '%' if un-tracked files
+
+  export PS1='\[\e[0;30;43m\]$hostname\[\e[0m\]\[\e[1m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\[\e[1m\]$ \[\e[0m\]'
+else
+  export PS1='\[\e[0;30;43m\]$hostname\[\e[0m\]\[\e[1m\]\w$ \[\e[0m\]'
+fi  
 
 #############
 # Mac Ports #
