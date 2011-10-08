@@ -45,7 +45,7 @@ export PROMPT_DIRTRIM=2
 
 # Omit the hostname from PS1 if we are on the local console
 hostname=""
-if [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
+if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   hostname=" `hostname -s` "
 fi
 export PS1='\[\e[0;30;43m\]$hostname\[\e[0m\]\[\e[1m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\[\e[1m\]$ \[\e[0m\]'
