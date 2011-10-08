@@ -1,0 +1,39 @@
+[user]
+  name = <%= print("Your Name: "); STDOUT.flush; STDIN.gets.chomp %>
+  email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+
+[core]
+  editor = "$HOME/.bin/edit"
+  excludesfile = $HOME/.gitignore_global
+  safecrlf = warn
+  autocrlf = input
+
+[alias]
+  st = status -s -b
+  di = diff
+  co = checkout
+  ci = commit
+  br = branch
+  l = log --oneline --decorate --graph
+  ll = log --pretty=medium --decorate --graph --stat
+  hist = log --pretty=format:\"%C(yellow bold)%h%Creset %C(red)%ad%Creset | %s%C(green bold)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
+  fixup = commit --amend -c HEAD
+  timeline = log --graph --branches --pretty=oneline --decorate
+  untracked-files = ls-files -o --exclude-standard
+  ignored-files = ls-files --others -i --exclude-standard
+  modified-files = ls-files -m
+  unstage = reset HEAD
+  bl = blame -C
+
+[color]
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  ui = true
+
+[push]
+  default = tracking
+
+[merge]
+  tool = opendiff
