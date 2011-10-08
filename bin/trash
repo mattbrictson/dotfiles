@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# Originally from https://github.com/morgant/tools-osx/
+
 # 
 # trash - Move files to the appropriate .Trash file on Mac OS X. (Intended
 #         as an alternative to 'rm' which immediately deletes the file.)
