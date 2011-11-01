@@ -1,0 +1,106 @@
+#!/bin/bash
+
+# Copyright (c) 2010 Jean-Michel Lacroix
+# 
+# Permission is hereby granted, free of charge, to any person
+# obtaining a copy of this software and associated documentation
+# files (the "Software"), to deal in the Software without
+# restriction, including without limitation the rights to use,
+# copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the
+# Software is furnished to do so, subject to the following
+# conditions:
+# 
+# The above copyright notice and this permission notice shall be
+# included in all copies or substantial portions of the Software.
+# 
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
+# EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
+# OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
+# NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
+# HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
+# WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+# FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
+# OTHER DEALINGS IN THE SOFTWARE.
+
+function svn
+{
+	# rebuild args to get quotes right
+	CMD=
+	for i in "$@"
+	do
+		if [[ "$i" =~ \  ]]
+		then
+			CMD="$CMD \"$i\""
+		else
+			CMD="$CMD $i"
+		fi
+	done
+
+	# pad with spaces to strip --nocol
+	CMD=" $CMD "
+	CMDLEN=${#CMD}
+
+	# parse disabling arg
+	CMD="${CMD/ --nocol / }"
+
+	# check if disabled
+	test "$CMDLEN" = "${#CMD}"
+	if [ $? = 1 ] || [ ! -t 1 ]
+	then
+		eval $(which svn) $CMD
+		return
+	fi
+
+	# supported svn actions for "status-like" output
+	ACTIONS="add|checkout|co|cp|del|export|remove|rm|st"
+	ACTIONS="$ACTIONS|merge|mkdir|move|mv|ren|sw|up"
+
+	# actions that outputs "status-like" data
+	if [[ "$1" =~ ^($ACTIONS) ]]
+	then
+		eval $(which svn) $CMD | while IFS= read -r RL
+		do
+			if   [[ $RL =~ ^\ ?M ]]; then C="\033[33m";
+			elif [[ $RL =~ ^\ ?C ]]; then C="\033[41m\033[37m\033[1m";
+			elif [[ $RL =~ ^A ]]; then C="\033[32m\033[1m";
+			elif [[ $RL =~ ^D ]]; then C="\033[31m\033[1m";
+			elif [[ $RL =~ ^X ]]; then C="\033[37m";
+			elif [[ $RL =~ ^! ]]; then C="\033[43m\033[37m\033[1m";
+			elif [[ $RL =~ ^I ]]; then C="\033[34m";
+			elif [[ $RL =~ ^R ]]; then C="\033[35m";
+			else C=
+			fi
+
+			echo -e "$C${RL/\\/\\\\}\033[0m\033[0;0m"
+		done
+
+	# actions that outputs "diff-like" data
+	elif [[ "$1" =~ ^diff ]]
+	then
+		eval $(which svn) $CMD | while IFS= read -r RL
+		do
+			if   [[ $RL =~ ^Index:\  ]]; then C="\033[34m\033[1m";
+			elif [[ $RL =~ ^@@ ]]; then C="\033[37m";
+
+			# removed
+			elif [[ $RL =~ ^-\<\<\< ]]; then C="\033[31m\033[1m";
+			elif [[ $RL =~ ^-\>\>\> ]]; then C="\033[31m\033[1m";
+			elif [[ $RL =~ ^-=== ]]; then C="\033[31m\033[1m";
+			elif [[ $RL =~ ^- ]]; then C="\033[31m";
+
+			# added
+			elif [[ $RL =~ ^\+\<\<\< ]]; then C="\033[32m\033[1m";
+			elif [[ $RL =~ ^\+\>\>\> ]]; then C="\033[32m\033[1m";
+			elif [[ $RL =~ ^\+=== ]]; then C="\033[32m\033[1m";
+			elif [[ $RL =~ ^\+ ]]; then C="\033[32m";
+
+			else C=
+			fi
+
+			echo -e "$C${RL/\\/\\\\}\033[0m\033[0;0m"
+		done
+	else
+		eval $(which svn) $CMD
+	fi
+}
