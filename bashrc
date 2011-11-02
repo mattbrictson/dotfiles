@@ -43,15 +43,23 @@ if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
   hostname=" `hostname -s` "
 fi
 
-# Include git goodies if possible
+export PS1='\[\e[0;30;43m\]$hostname\[\e[0m\]\[\e[1m\]\w$ \[\e[0m\]'
+
+#######
+# Git #
+
+# Wrap git command with GitHub helpers (http://defunkt.io/hub/)
+if [ -x ~/.bin/hub ]; then
+  alias git=hub
+fi
+
+# Include git goodies in PS1 if possible
 if [ "`type -t __git_ps1`" == 'function' ]; then
   export GIT_PS1_SHOWDIRTYSTATE=true     # '*' for unstaged changes, '+' for staged
   export GIT_PS1_SHOWSTASHSTATE=true     # '$' if smth is stashed
   export GIT_PS1_SHOWUNTRACKEDFILES=true # '%' if un-tracked files
 
   export PS1='\[\e[0;30;43m\]$hostname\[\e[0m\]\[\e[1m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\[\e[1m\]$ \[\e[0m\]'
-else
-  export PS1='\[\e[0;30;43m\]$hostname\[\e[0m\]\[\e[1m\]\w$ \[\e[0m\]'
 fi  
 
 #############
