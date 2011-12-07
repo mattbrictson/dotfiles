@@ -22,6 +22,10 @@ Icon?
 ##############
 *.swp
 
+# Backups #
+###########
+*.orig
+
 # Repositories #
 ################
 .hg
