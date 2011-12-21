@@ -48,11 +48,6 @@ export PS1='\[\e[0;30;43m\]$hostname\[\e[0m\]\[\e[1m\]\w$ \[\e[0m\]'
 #######
 # Git #
 
-# Wrap git command with GitHub helpers (http://defunkt.io/hub/)
-if [ -x ~/.bin/hub ]; then
-  alias git=hub
-fi
-
 # Include git goodies in PS1 if possible
 if [ "`type -t __git_ps1`" == 'function' ]; then
   export GIT_PS1_SHOWDIRTYSTATE=true     # '*' for unstaged changes, '+' for staged
