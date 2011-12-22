@@ -80,12 +80,22 @@ if [ -d ~/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
-# Shortcut for `bundle exec rails` and `bundle exec rake`
+# Shortcut for `bundle exec rails` and `bundle exec rake`.
+# If script/rails and script/rake are available, use them instead as they are much
+# faster to execute than `bundle exec`.
 function r() {
   if [[ "g|generate|c|console|s|server|db|dbconsole|new" =~ $1 ]]; then
-    bundle exec rails $@
+    if [ -x script/rails ]; then
+      script/rails $@
+    else
+      bundle exec rails $@
+    fi
   else
-    bundle exec rake $@
+    if [ -x script/rake ]; then
+      script/rake $@
+    else
+      bundle exec rake $@
+    fi
   fi
 }
 
