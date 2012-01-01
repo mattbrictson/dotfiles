@@ -5,6 +5,12 @@
 fontName         = "Menlo"
 fontSize         = 14
 
+# Include abbreviated path in window title
+#   1. Strip out leading /Users/<username>/Work/
+#   2. Show remaining two directories of context
+#
+windowTitle = "$TM_DISPLAYNAME – ${TM_DIRECTORY/^(?:\/Users\/[^\/]+\/Work\/).*?((?:[^\/]+\/)?[^\/]+)$/$1/i}"
+
 # Extra files to include
 #
 myExtraIncludes = ".tm_properties,.htaccess,.gitignore"
