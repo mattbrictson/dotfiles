@@ -107,7 +107,6 @@ if [ -d ~/.virtualenvs ]; then
   export WORKON_HOME=$HOME/.virtualenvs
   export PIP_VIRTUALENV_BASE=$WORKON_HOME
   export VIRTUALENV_USE_DISTRIBUTE=true
-  export VIRTUALENVWRAPPER_VIRTUALENV_ARGS='--no-site-packages'
   export PIP_REQUIRE_VIRTUALENV=true
   export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
   [[ -f /opt/local/bin/virtualenvwrapper.sh ]] && . /opt/local/bin/virtualenvwrapper.sh
