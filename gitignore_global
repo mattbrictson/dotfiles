@@ -38,3 +38,4 @@ Icon?
 *.mode1v3
 __MACOSX
 .tm_properties
+.bundle/
