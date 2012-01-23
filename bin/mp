@@ -1,4 +1,9 @@
 #!/usr/bin/env ruby
+# encoding: utf-8
+
+SETTINGS = %Q[projectDirectory = "$CWD"
+windowTitle = "$TM_DISPLAYNAME – ${CWD/^.*\\///}"
+]
 
 if ARGV.length > 1 || (%w(-h --help) & ARGV.map { |a| a.downcase }).any?
   puts <<-USAGE
@@ -8,16 +13,18 @@ Opens the specified directory as a project in TextMate (or the current
 directory if none is supplied).
 
 Unlike the standard `mate` command, `mp` will first check if the directory
-contains an TextMate project file (.tmproj), and open that if it exists.
-Otherwise it opens the directory as a new project.
+contains an TextMate 2 settings file (.tm_properties). If the file does not
+yet exist, a new one will be created with the following settings:
+
+#{SETTINGS}
 USAGE
   exit 2
 end
 
 directory = ARGV[0] || '.'
-tmproj = Dir["#{directory}/*"].detect { |f| f =~ /\.tmproj$/ }
+props_file = File.join(directory, ".tm_properties")
+unless File.exist? props_file
+  open(props_file, "w") { |f| f.write(SETTINGS) }
+end
 
-# Two-phase open. First open TextMate, then tell TextMate to open the desired item.
-# We do this because hacks like the Missing Drawer plugin sometimes misbehave if we
-# try to open the desired item if TextMate is not finished loading.
-`open -a TextMate && open -a TextMate "#{tmproj || directory}"`
+`mate #{directory}`
