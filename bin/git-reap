@@ -3,7 +3,8 @@
 # This script will delete all local git branches that have been merged into master,
 # and then prompt before doing the same for all remote branches that have been merged into master.
 #
-# Code taken from http://devblog.springest.com/a-script-to-remove-old-git-branches
+# Code taken from http://devblog.springest.com/a-script-to-remove-old-git-branches,
+# with modifications.
 
 # This has to be run from master
 git checkout master
@@ -12,18 +13,21 @@ git checkout master
 git fetch
 git remote prune origin
 
-# Remove local fully merged branches
-git branch --merged master | grep -v 'master$' | xargs git branch -d
+echo "Remove fully merged local branches..."
+
+# Remove local fully merged branches (ignoring those named "release-#")
+git branch --merged master | grep -E -v 'master$|release-.+$' | xargs git branch -d
+git branch --merged master | grep -E 'release-.+$' | xargs echo "! Ignoring release branch:"
 
 # Show remote fully merged branches
 echo "The following remote branches are fully merged and will be removed:"
-git branch -r --merged master | sed 's/ *origin\///' | grep -v 'master$'
+git branch -r --merged master | sed 's/ *origin\///' | grep -E -v 'master$|release-.+$'
 
 read -p "Continue (y/n)? "
 if [ "$REPLY" == "y" ]
 then
    # Remove remote fully merged branches
    git branch -r --merged master | sed 's/ *origin\///' \
-             | grep -v 'master$' | xargs -I% git push origin :%
+             | grep -E -v 'master$|release-.+$' | xargs -I% git push origin :%
    echo "Done!"
 fi
