@@ -27,4 +27,4 @@ unless File.exist? props_file
   open(props_file, "w") { |f| f.write(SETTINGS) }
 end
 
-`mate #{directory}`
+`mate "#{directory}"`
