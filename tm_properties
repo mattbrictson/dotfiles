@@ -20,13 +20,13 @@ include = "{$include,$myExtraIncludes}"
 # Hide certain directories from search popups.
 #
 myExtraExcludes = "log,vendor,tmp,target"
-excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}" 
-excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}" 
+excludeInFileChooser  = "{$excludeInFileChooser,$myExtraExcludes}"
+excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}"
 
 # If you also want to hide them from your project manager pane, add
 # the following line to your project's local .tm_properties.
 #
-# excludeInBrowser      = "{$excludeInBrowser,log,vendor,tmp,target}" 
+# excludeInBrowser      = "{$excludeInBrowser,log,vendor,tmp,target}"
 
 
 # Configure git and hg
@@ -40,6 +40,7 @@ TM_JAVA_SOURCE_FOLDER_REGEX = java
 
 # Default editing configuration
 #
+showInvisibles   = true
 softWrap         = false
 softTabs         = true
 tabSize          = 2
@@ -47,7 +48,7 @@ tabSize          = 2
 # File type specific configuration
 #
 [ text ]
-showInvisibles   = true
+softWrap         = true
 
 [ .git/COMMIT_EDITMSG ]
 spellChecking    = true
@@ -59,12 +60,26 @@ binary           = true
 [ source ]
 softTabs         = true
 tabSize          = 2
+wrapColumn       = 100
 
-[ source.java ]
+[ source.{css,scss} ]
+TM_CSS_SPACE     = " "
+
+[ source.{java,python,js} ]
 tabSize          = 4
 
-[ source.python ]
-tabSize          = 4
+[ source.js ]
+TM_JAVASCRIPT_BRACE_PREFIX = '
+'
 
-[ "{README,INSTALL,LICENSE,TODO,NOTICE,HISTORY}" ]
+[ "{README,INSTALL,LICENSE,TODO,NOTICE,HISTORY,CHANGES,CHANGELOG}" ]
 fileType         = "text.plain"
+
+[ text.html ]
+TM_XHTML         = "/"
+
+[ text.{haml,html} ]
+wrapColumn       = 100
+
+[ text.plain ]
+wrapColumn       = 80
