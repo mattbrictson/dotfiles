@@ -1,8 +1,7 @@
 #!/bin/bash
 
 # Launch TextMate or vi depending on whether we're on a local Mac or in an SSH session
-which mate &>/dev/null
-if [ $? -eq 0 ]; then
+if type mate &> /dev/null; then
   if [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
     exec mate -wl1 $@
   fi
