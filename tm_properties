@@ -62,15 +62,22 @@ softTabs         = true
 tabSize          = 2
 wrapColumn       = 100
 
-[ source.{css,scss} ]
+[ source.css ]
 TM_CSS_SPACE     = " "
 
-[ source.{java,python,js} ]
+[ source.scss ]
+TM_CSS_SPACE     = " "
+
+[ source.java ]
 tabSize          = 4
 
 [ source.js ]
+tabSize          = 4
 TM_JAVASCRIPT_BRACE_PREFIX = '
 '
+
+[ source.python ]
+tabSize          = 4
 
 [ "{README,INSTALL,LICENSE,TODO,NOTICE,HISTORY,CHANGES,CHANGELOG}" ]
 fileType         = "text.plain"
@@ -78,7 +85,10 @@ fileType         = "text.plain"
 [ text.html ]
 TM_XHTML         = "/"
 
-[ text.{haml,html} ]
+[ text.haml ]
+wrapColumn       = 100
+
+[ text.html ]
 wrapColumn       = 100
 
 [ text.plain ]
