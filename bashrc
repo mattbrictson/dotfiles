@@ -81,6 +81,10 @@ if [ -d ~/.rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
+# OS X has its own way of setting LANG, but only at the console.
+# By declaring here in .bashrc, daemons like Pow will also pick it up.
+export LANG=en_US.UTF-8
+
 # Shortcut for `bundle exec rails` and `bundle exec rake`.
 # If script/rails and script/rake are available, use them instead as they are much
 # faster to execute than `bundle exec`.
