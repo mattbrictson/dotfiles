@@ -38,13 +38,13 @@ export LSCOLORS=Dxxxxxxxxxxxxxxxxxxxxx
 # Only show last 2 directories that make up the current path
 export PROMPT_DIRTRIM=2
 
-# Omit the hostname from PS1 if we are on the local console
-hostname=""
+# Omit the user@hostname from PS1 if we are on the local console
+userhost=""
 if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  hostname=" `hostname -s` "
+  userhost=" $USER@`hostname -s` "
 fi
 
-export PS1='\[\e[0;30;43m\]$hostname\[\e[0m\]\[\e[1m\]\w$ \[\e[0m\]'
+export PS1='\[\e[0;30;43m\]$userhost\[\e[0m\]\[\e[1m\]\w$ \[\e[0m\]'
 
 #######
 # Git #
@@ -55,7 +55,7 @@ if [ "`type -t __git_ps1`" == 'function' ]; then
   export GIT_PS1_SHOWSTASHSTATE=true     # '$' if smth is stashed
   export GIT_PS1_SHOWUNTRACKEDFILES=true # '%' if un-tracked files
 
-  export PS1='\[\e[0;30;43m\]$hostname\[\e[0m\]\[\e[1m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\[\e[1m\]$ \[\e[0m\]'
+  export PS1='\[\e[0;30;43m\]$userhost\[\e[0m\]\[\e[1m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\[\e[1m\]$ \[\e[0m\]'
 fi  
 
 #############
