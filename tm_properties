@@ -31,8 +31,8 @@ excludeInFolderSearch = "{$excludeInFolderSearch,$myExtraExcludes}"
 
 # Configure git and hg
 #
-TM_HG  = "/opt/local/bin/hg"
-TM_GIT = "/opt/local/bin/git"
+TM_HG  = "/usr/local/bin/hg"
+TM_GIT = "/usr/local/bin/git"
 
 # Ensure "Create Package Declaration" command works with Maven-style projects
 #

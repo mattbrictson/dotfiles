@@ -27,8 +27,8 @@ bind '"\e[A"':history-search-backward # up arrow
 bind '"\e[B"':history-search-forward  # down arrow
 
 # Note that bash_completion is necessary for __git_ps1 magic
-if [ -f /opt/local/etc/bash_completion ]; then
-  . /opt/local/etc/bash_completion
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+  . `brew --prefix`/etc/bash_completion
 fi
 
 #######
@@ -46,6 +46,11 @@ fi
 
 export PS1='\[\e[0;30;43m\]$userhost\[\e[0m\]\[\e[1m\]\w$ \[\e[0m\]'
 
+############
+# Homebrew #
+
+export PATH=/usr/local/bin:$PATH
+
 #######
 # Git #
 
@@ -57,21 +62,6 @@ if [ "`type -t __git_ps1`" == 'function' ]; then
 
   export PS1='\[\e[0;30;43m\]$userhost\[\e[0m\]\[\e[1m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\[\e[1m\]$ \[\e[0m\]'
 fi  
-
-#############
-# Mac Ports #
-
-if [ -x /opt/local/bin/port ]; then
-  export MANPATH=/opt/local/share/man:$MANPATH
-  export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-fi
-
-##############
-# Postgresql #
-
-if [ -d /opt/local/lib/postgresql83/bin ]; then
-  export PATH=/opt/local/lib/postgresql83/bin:$PATH
-fi
 
 ########
 # Ruby #
@@ -107,12 +97,14 @@ function r() {
 #####################
 # Python virtualenv #
 
+export PATH=/usr/local/share/python:$PATH
+
 if [ -d ~/.virtualenvs ]; then
   export WORKON_HOME=$HOME/.virtualenvs
   export PIP_VIRTUALENV_BASE=$WORKON_HOME
   export VIRTUALENV_USE_DISTRIBUTE=true
   export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
-  [[ -f /opt/local/bin/virtualenvwrapper.sh ]] && . /opt/local/bin/virtualenvwrapper.sh
+  [[ -f /usr/local/share/python/virtualenvwrapper.sh ]] && . /usr/local/share/python/virtualenvwrapper.sh
 fi
 
 ##############
