@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Launch TextMate or vi depending on whether we're on a local Mac or in an SSH session
+# Launch Sublime or vi depending on whether we're on a local Mac or in an SSH session
 if type mate &> /dev/null; then
   if [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
-    exec mate -wl1 $@
+    exec subl -w $@
   fi
 fi
 
