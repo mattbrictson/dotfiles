@@ -21,13 +21,13 @@ git branch --merged master | grep -E 'release-.+$' | xargs echo "! Ignoring rele
 
 # Show remote fully merged branches
 echo "The following remote branches are fully merged and will be removed:"
-git branch -r --merged master | sed 's/ *origin\///' | grep -E -v 'master$|release-.+$'
+git branch -r --merged master | sed 's/ *origin\///' | grep -E -v 'master$|release-.+|maintenance-.+$'
 
 read -p "Continue (y/n)? "
 if [ "$REPLY" == "y" ]
 then
    # Remove remote fully merged branches
    git branch -r --merged master | sed 's/ *origin\///' \
-             | grep -E -v 'master$|release-.+$' | xargs -I% git push origin :%
+             | grep -E -v 'master$|release-.+|maintenance-.+$' | xargs -I% git push origin :%
    echo "Done!"
 fi
