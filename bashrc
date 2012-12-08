@@ -49,7 +49,7 @@ export PS1='\[\e[0;30;43m\]$userhost\[\e[0m\]\[\e[1m\]\w$ \[\e[0m\]'
 ############
 # Homebrew #
 
-export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
 
 #######
 # Git #
