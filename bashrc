@@ -61,7 +61,7 @@ if [ "`type -t __git_ps1`" == 'function' ]; then
   export GIT_PS1_SHOWUNTRACKEDFILES=true # '%' if un-tracked files
 
   export PS1='\[\e[0;30;43m\]$userhost\[\e[0m\]\[\e[1m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\[\e[1m\]$ \[\e[0m\]'
-fi  
+fi
 
 ########
 # Ruby #
@@ -138,7 +138,7 @@ if [ -d /opt/custom/oracle ]; then
   export NLS_LANG=AMERICAN_AMERICA.UTF8
   export TWO_TASK=DEVDB
   export SQLPATH=${ORACLE_CLIENT_HOME}
-  
+
   # User scripts can be placed in ~/Library/Oracle/
   if [ -d ${HOME}/Library/Oracle/ ]; then
     export SQLPATH=${SQLPATH}:${HOME}/Library/Oracle/Scripts
@@ -151,7 +151,7 @@ fi
 
 if [ -d ~/.bin ]; then
   export PATH=~/.bin:$PATH
-fi  
+fi
 
 # use .localrc for settings specific to one system
 if [ -f ~/.localrc ]; then
