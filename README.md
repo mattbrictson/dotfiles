@@ -1,7 +1,5 @@
 # mbrictson's dotfiles
 
-**Please note that the TextMate features of these dotfiles require TextMate 2, currently in alpha.**
-
 ## Installation
 
 Choose a place to store the dotfiles, like `~/Library/dotfiles`.
@@ -34,11 +32,9 @@ When logged into a remote machine, you'll be reminded with the hostname:
 
 Fancy git status is automatically included in the prompt:
 
-    ~/.../mbrictson/dotfiles (master *%)$ 
+    ~/.../mbrictson/dotfiles (master *%)$
 
-An `edit` shim will launch `mate` (TextMate) if you are on your local Mac, and fall back to `vi` if you are logged in via ssh. This shim is used as the git editor and svn editor.
-
-The `mp` script (short for "(Text)Mate project") opens a directory in TextMate. But unlike the basic `mate` command, if the directory does not already have a `.tm_properties`, a basic one will be created.
+An `edit` shim will launch `subl` (Sublime Text 2) if you are on your local Mac, and fall back to `vi` if you are logged in via ssh. This shim is used as the git editor and svn editor.
 
 ## Credits
 
