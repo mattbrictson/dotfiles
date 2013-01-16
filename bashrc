@@ -82,15 +82,15 @@ export LANG=en_US.UTF-8
 function r() {
   if [[ "g|generate|c|console|s|server|db|dbconsole|new" =~ $1 ]]; then
     if [ -x script/rails ]; then
-      script/rails $@
+      script/rails "$@"
     else
-      bundle exec rails $@
+      bundle exec rails "$@"
     fi
   else
     if [ -x script/rake ]; then
-      script/rake $@
+      script/rake "$@"
     else
-      bundle exec rake $@
+      bundle exec rake "$@"
     fi
   fi
 }
