@@ -146,6 +146,10 @@ if [ -d /opt/custom/oracle ]; then
   fi
 fi
 
+########
+# Misc #
+export PAGER=/usr/bin/less
+
 ##################
 # Custom Scripts #
 
