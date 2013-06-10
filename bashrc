@@ -84,13 +84,13 @@ function r() {
     if [ -x script/rails ]; then
       script/rails "$@"
     else
-      bundle exec rails "$@"
+      rails "$@"
     fi
   else
     if [ -x script/rake ]; then
       script/rake "$@"
     else
-      bundle exec rake "$@"
+      rake "$@"
     fi
   fi
 }
