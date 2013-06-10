@@ -77,7 +77,7 @@ fi
 export LANG=en_US.UTF-8
 
 # Shortcut for `bundle exec rails` and `bundle exec rake`.
-# If script/rails and script/rake are available, use them instead as they are much
+# If bin/rails and bin/rake are available, use them instead as they are much
 # faster to execute than `bundle exec`.
 function r() {
   if [[ "g|generate|c|console|s|server|db|dbconsole|new" =~ $1 ]]; then
