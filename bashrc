@@ -81,13 +81,17 @@ export LANG=en_US.UTF-8
 # faster to execute than `bundle exec`.
 function r() {
   if [[ "g|generate|c|console|s|server|db|dbconsole|new" =~ $1 ]]; then
-    if [ -x script/rails ]; then
+    if [ -x bin/rails ]; then
+      bin/rails "$@"
+    elif [ -x script/rails ]; then
       script/rails "$@"
     else
       rails "$@"
     fi
   else
-    if [ -x script/rake ]; then
+    if [ -x bin/rake ]; then
+      bin/rake "$@"
+    elif [ -x script/rake ]; then
       script/rake "$@"
     else
       rake "$@"
