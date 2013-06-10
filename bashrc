@@ -98,6 +98,12 @@ function r() {
 #####################
 # Python virtualenv #
 
+# You will need to:
+#   brew install python
+#   pip install --upgrade virtualenv
+#   pip install --upgrade virtualenvwrapper
+#   mkdir ~/.virtualenvs
+
 export PATH=/usr/local/share/python:$PATH
 
 if [ -d ~/.virtualenvs ]; then
