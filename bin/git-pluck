@@ -1,0 +1,64 @@
+#!/usr/bin/env ruby
+require "shellwords"
+
+# Colorization from http://stackoverflow.com/a/11482430
+class String
+  def colorize(color_code)
+    "\e[#{color_code}m#{self}\e[0m"
+  end
+
+  def red
+    colorize(31)
+  end
+
+  def cyan
+    colorize(36)
+  end
+end
+
+def pluck(git_dir, sha)
+  commands = [
+    "git fetch --quiet --no-tags #{git_dir.shellescape}",
+    "git cherry-pick #{sha.shellescape}"
+  ]
+
+  commands.each do |cmd|
+    puts cmd.cyan
+    system(cmd) || fail
+  end
+end
+
+def usage_and_exit
+  puts <<-USAGE
+git pluck <path_to_other_project> <SHA>
+
+Cherry-picks a commit identified by SHA from a another Git repository
+into the current repository.
+
+Example:
+
+git pluck ../rails-starter ab1df43
+  USAGE
+
+  exit(2)
+end
+
+def fail(reason=nil)
+  puts(reason.red) unless reason.nil?
+  exit(1)
+end
+
+def find_repository(path)
+  git_repo = [File.join(path, ".git"), path].find { |d| Dir.exist?(d) }
+
+  git_repo || fail("#{path} does not exist")
+end
+
+if $0 == __FILE__
+  usage_and_exit if ARGV.length != 2 || (%w(-h --help) & ARGV).any?
+
+  repo = find_repository(ARGV[0])
+  sha = ARGV[1]
+
+  pluck(repo, sha)
+end
