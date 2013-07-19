@@ -32,7 +32,7 @@ def usage_and_exit
   puts <<-USAGE
 git pluck <path_to_other_project> <SHA>
 
-Cherry-picks a commit identified by SHA from a another Git repository
+Cherry-picks a commit identified by SHA from another Git repository
 into the current repository.
 
 Example:
