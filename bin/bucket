@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+require "cgi"
+require "open3"
+
+def usage_and_exit
+  puts <<-USAGE
+bucket operates on the Bitbucket-hosted git repository that is in your
+working directory. It assumes that you have a remote named "origin" that
+points to Bitbucket.
+
+Usage:
+
+bucket show    # Opens the Bitbucket website for this repository
+bucket         # Shortcut for `bucket show`
+bucket compare # Opens the "compare" view for the current branch
+bucket pull    # Creates a new pull request for the current branch
+USAGE
+
+  exit(2)
+end
+
+def git(*args)
+  out, err, status = Open3.capture3("git", *args)
+  fail(err) unless status.success?
+
+  out
+end
+
+def pull_url
+  source = [repository, current_sha, current_branch].join(":")
+  dest = [repository, "development"].join("::")
+
+  "#{show_url}/pull-request/new?" +
+    "source=#{CGI::escape(source)}&" +
+    "dest=#{CGI::escape(dest)}"
+end
+
+def compare_url
+  "#{show_url}/compare/#{CGI::escape(current_branch)}..development#diff"
+end
+
+def show_url
+  "https://bitbucket.org/#{repository}"
+end
+
+def repository
+  @repo ||= git("remote", "-v")[%r{bitbucket.org(/|:)(.*)\.git \(push\)}, 2]
+end
+
+def current_branch
+  @current_branch ||= git("status", "--porcelain", "-b")[/##\s*(.*)/, 1]
+end
+
+def current_sha
+  @current_sha ||= git("rev-parse", current_branch)[/^\S{12}/]
+end
+
+if $0 == __FILE__
+  usage_and_exit if (ARGV & %w(-h --help help)).any?
+
+  command = ARGV.first || "show"
+  url = send("#{command}_url")
+
+  system("open", url)
+end
