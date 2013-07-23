@@ -2,6 +2,17 @@
 require "cgi"
 require "open3"
 
+# Colorization from http://stackoverflow.com/a/11482430
+class String
+  def colorize(color_code)
+    "\e[#{color_code}m#{self}\e[0m"
+  end
+
+  def red
+    colorize(31)
+  end
+end
+
 def usage_and_exit
   puts <<-USAGE
 bucket operates on the Bitbucket-hosted git repository that is in your
@@ -45,6 +56,7 @@ end
 
 def repository
   @repo ||= git("remote", "-v")[%r{bitbucket.org(/|:)(.*)\.git \(push\)}, 2]
+  @repo || fail("This doesn’t seem to be a Bitbucket repository.")
 end
 
 def current_branch
@@ -53,6 +65,11 @@ end
 
 def current_sha
   @current_sha ||= git("rev-parse", current_branch)[/^\S{12}/]
+end
+
+def fail(reason=nil)
+  puts reason.to_s.red unless reason.nil?
+  exit(1)
 end
 
 if $0 == __FILE__
