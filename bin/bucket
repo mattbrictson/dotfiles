@@ -21,10 +21,11 @@ points to Bitbucket.
 
 Usage:
 
-bucket show    # Opens the Bitbucket website for this repository
-bucket         # Shortcut for `bucket show`
-bucket compare # Opens the "compare" view for the current branch
-bucket pull    # Creates a new pull request for the current branch
+bucket show     # Opens the Bitbucket website for this repository
+bucket          # Shortcut for `bucket show`
+bucket compare  # Opens the "compare" view for the current branch
+bucket pull     # Creates a new pull request for the current branch
+bucket branches # Shows all un-merged feature branches
 USAGE
 
   exit(2)
@@ -48,6 +49,10 @@ end
 
 def compare_url
   "#{show_url}/compare/#{CGI::escape(current_branch)}..development#diff"
+end
+
+def branches_url
+  "#{show_url}/commits/featurebranches"
 end
 
 def show_url
