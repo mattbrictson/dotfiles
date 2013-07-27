@@ -114,9 +114,16 @@ export PATH=/usr/local/share/python:$PATH
 if [ -d ~/.virtualenvs ]; then
   export WORKON_HOME=$HOME/.virtualenvs
   export PIP_VIRTUALENV_BASE=$WORKON_HOME
-  export VIRTUALENV_USE_DISTRIBUTE=true
+  export VIRTUALENV_DISTRIBUTE=true
   export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
-  [[ -f /usr/local/share/python/virtualenvwrapper.sh ]] && . /usr/local/share/python/virtualenvwrapper.sh
+  export PIP_REQUIRE_VIRTUALENV=true
+
+  wrapper_sh=/usr/local/bin/virtualenvwrapper.sh
+  [[ -f $wrapper_sh ]] && . $wrapper_sh
+
+  syspip(){
+    PIP_REQUIRE_VIRTUALENV="" pip "$@"
+  }
 fi
 
 ##############
