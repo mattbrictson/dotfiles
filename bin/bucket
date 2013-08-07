@@ -65,7 +65,7 @@ def repository
 end
 
 def current_branch
-  @current_branch ||= git("status", "--porcelain", "-b")[/##\s*(.*)/, 1]
+  @current_branch ||= git("branch")[/\s*\*\s*(.*)/, 1]
 end
 
 def current_sha
