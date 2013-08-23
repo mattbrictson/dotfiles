@@ -11,7 +11,7 @@ brew install apple-gcc42 autoconf pkg-config git postgresql qt
 brew install bash bash-completion colordiff grep
 
 # More nice-to-haves and various development libraries
-brew install ack graphviz hub imagemagick jpegoptim maven mercurial node \
+brew install ack graphviz hub imagemagick jpegoptim maven mercurial mmv node \
              optipng python s3cmd sqlite ssh-copy-id wget wkhtmltopdf
 
 brew cleanup
