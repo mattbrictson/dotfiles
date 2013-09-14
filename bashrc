@@ -129,10 +129,6 @@ fi
 ##############
 # Subversion #
 
-if [ -x ~/.bin/edit ]; then
-  export SVN_EDITOR=~/.bin/edit
-  export HGEDITOR=~/.bin/edit
-fi
 if [ -f ~/.svn_color ]; then
   source ~/.svn_color
 fi
@@ -167,6 +163,12 @@ fi
 ########
 # Misc #
 export PAGER=/usr/bin/less
+
+if [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
+  export EDITOR="subl -w"
+else
+  export EDITOR=vi
+fi
 
 ##################
 # Custom Scripts #

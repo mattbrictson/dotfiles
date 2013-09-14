@@ -34,8 +34,6 @@ Fancy git status is automatically included in the prompt:
 
     ~/.../mbrictson/dotfiles (master *%)$
 
-An `edit` shim will launch `subl` (Sublime Text 2) if you are on your local Mac, and fall back to `vi` if you are logged in via ssh. This shim is used as the git editor and svn editor.
-
 ## Credits
 
 Inspired by dotfiles from [Ryan Bates](https://github.com/ryanb/dotfiles) and [thoughtbot](http://github.com/thoughtbot/dotfiles).
