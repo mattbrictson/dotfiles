@@ -50,7 +50,7 @@ export PS1='\[\e[0;30;43m\]$userhost\[\e[0m\]\[\e[1m\]\w$ \[\e[0m\]'
 ############
 # Homebrew #
 
-export PATH=/usr/local/bin:/usr/local/share/npm/bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
 
 #######
 # Git #
@@ -108,8 +108,6 @@ function r() {
 #   pip install --upgrade virtualenv
 #   pip install --upgrade virtualenvwrapper
 #   mkdir ~/.virtualenvs
-
-export PATH=/usr/local/share/python:$PATH
 
 if [ -d ~/.virtualenvs ]; then
   export WORKON_HOME=$HOME/.virtualenvs
