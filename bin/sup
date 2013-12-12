@@ -1,0 +1,27 @@
+#!/usr/bin/env ruby
+#encoding: utf-8
+
+require 'highline'
+HighLine.colorize_strings
+
+def run(host, cmd)
+  ssh_cmd = "ssh root@#{host} #{cmd}"
+  puts ssh_cmd.yellow
+  system(ssh_cmd) || exit
+end
+
+completed = []
+
+ARGV.each_with_index do |host, i|
+  if i > 0
+    puts "Next up: #{host}".red
+    exit unless HighLine.new.agree("Proceed (y/n)? ".blue)
+  end
+
+  run host, "DEBIAN_FRONTEND=noninteractive aptitude -q -q -y update"
+  run host, "DEBIAN_FRONTEND=noninteractive aptitude -q -q safe-upgrade"
+  run host, "checkrestart -v"
+
+  completed << host
+  completed.each { |h| puts "✔ #{h}".green }
+end
