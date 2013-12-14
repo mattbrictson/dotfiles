@@ -8,7 +8,7 @@ brew upgrade
 
 brew tap | grep -q homebrew/dupes || brew tap homebrew/dupes
 brew tap | grep -q nviennot/tmate || brew tap nviennot/tmate
-brew tap | grep -q phinze/homebrew-cask || brew tap phinze/homebrew-cask
+brew tap | grep -q phinze/cask || brew tap phinze/cask
 
 # Needed for Rails development
 brew install apple-gcc42 autoconf pkg-config git postgresql qt
@@ -23,8 +23,8 @@ brew install ack graphviz hub imagemagick jpegoptim maven mercurial mtr mmv \
 
 # Quick Look plugins
 brew install brew-cask
-brew cask install qlcolorcode qlstephen qlmarkdown quicklook-json \
-                  qlprettypatch quicklook-csv webp-quicklook
+brew cask install --force qlcolorcode qlstephen qlmarkdown quicklook-json \
+                          qlprettypatch quicklook-csv webp-quicklook
 qlmanage -r
 
 brew unlink python
