@@ -70,7 +70,7 @@ fi
 if [ -d ~/.rbenv ]; then
   export PATH=~/.rbenv/bin:$PATH
   eval "$(rbenv init -)"
-  alias br='bundle install && rbenv rehash'
+  alias br='bundle install -j4 && rbenv rehash'
 fi
 
 # OS X has its own way of setting LANG, but only at the console.
