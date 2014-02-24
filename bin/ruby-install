@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+rbenv update
+CFLAGS=-O3 rbenv install $1
+rbenv global $1
+gem regenerate_binstubs
+ruby -v
