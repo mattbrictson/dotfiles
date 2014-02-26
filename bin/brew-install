@@ -2,7 +2,12 @@
 
 set -e
 
-brew cleanup
+# Manually remove the brew cache, since that is the only way to force
+# `brew cask install` to grab the latest versions of its recipes.
+# https://github.com/phinze/homebrew-cask/issues/309#issuecomment-32470815
+rm -rf "$(brew --cache)" || true
+
+brew cleanup --force || true
 brew update
 brew upgrade
 
