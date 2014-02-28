@@ -24,7 +24,7 @@ brew install bash bash-completion colordiff grep
 # More nice-to-haves and various development libraries
 brew install ack graphviz hub imagemagick jpegoptim maven mercurial mtr mmv \
              node optipng phantomjs python redis s3cmd sqlite ssh-copy-id \
-             tmate tree wget wkhtmltopdf
+             svn tmate tree wget wkhtmltopdf
 
 # Quick Look plugins
 brew install brew-cask
