@@ -48,7 +48,7 @@ def pull_url
 end
 
 def compare_url
-  "#{show_url}/compare/#{CGI::escape(current_branch)}..development#diff"
+  "#{show_url}/branch/#{CGI::escape(current_branch)}#diff"
 end
 
 def branches_url
