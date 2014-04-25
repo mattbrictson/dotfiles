@@ -11,23 +11,20 @@ brew cleanup --force
 brew update
 brew upgrade
 
-brew tap | grep -q homebrew/dupes || brew tap homebrew/dupes
-brew tap | grep -q nviennot/tmate || brew tap nviennot/tmate
-brew tap | grep -q phinze/cask || brew tap phinze/cask
-
 # Needed for Rails development
-brew install apple-gcc42 autoconf pkg-config git postgresql qt
+brew install homebrew/dupes/apple-gcc42 autoconf pkg-config git postgresql qt
 
 # Better versions of Mac built-ins
-brew install bash bash-completion colordiff grep
+brew install bash bash-completion colordiff homebrew/dupes/grep
 
 # More nice-to-haves and various development libraries
 brew install ack elasticsearch gradle graphviz hub imagemagick jpegoptim \
              maven mercurial mtr mmv node optipng phantomjs python redis \
-             s3cmd sqlite ssh-copy-id svn tmate tree wget wkhtmltopdf
+             s3cmd sqlite ssh-copy-id svn nviennot/tmate/tmate tmate tree \
+             wget wkhtmltopdf
 
 # Quick Look plugins
-brew install brew-cask
+brew install phinze/cask/brew-cask
 brew cask install --force qlcolorcode qlstephen qlmarkdown quicklook-json \
                           qlprettypatch quicklook-csv webp-quicklook
 qlmanage -r
