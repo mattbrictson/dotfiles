@@ -31,3 +31,4 @@ qlmanage -r
 
 brew unlink python
 brew link python
+brew linkapps
