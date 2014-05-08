@@ -22,7 +22,7 @@ brew install homebrew/dupes/grep --default-names
 brew install ack elasticsearch gradle graphviz hub imagemagick jpegoptim \
              maven mercurial mtr mmv node optipng phantomjs python redis \
              s3cmd sqlite ssh-copy-id svn nviennot/tmate/tmate tmate tree \
-             wget wkhtmltopdf
+             wget homebrew/boneyard/wkhtmltopdf
 
 # Quick Look plugins
 brew install phinze/cask/brew-cask
