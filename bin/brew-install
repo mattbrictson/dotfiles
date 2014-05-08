@@ -25,7 +25,7 @@ brew install ack elasticsearch gradle graphviz hub imagemagick jpegoptim \
              wget homebrew/boneyard/wkhtmltopdf
 
 # Quick Look plugins
-brew install phinze/cask/brew-cask
+brew install caskroom/cask/brew-cask
 brew cask install --force qlcolorcode qlstephen qlmarkdown quicklook-json \
                           qlprettypatch quicklook-csv webp-quicklook
 qlmanage -r
