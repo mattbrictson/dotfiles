@@ -105,8 +105,8 @@ function r() {
 
 # You will need to:
 #   brew install python
-#   pip install --upgrade virtualenv
-#   pip install --upgrade virtualenvwrapper
+#   syspip install --upgrade virtualenv
+#   syspip install --upgrade virtualenvwrapper
 #   mkdir ~/.virtualenvs
 
 if [ -d ~/.virtualenvs ]; then
