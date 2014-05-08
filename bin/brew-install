@@ -15,7 +15,8 @@ brew upgrade
 brew install homebrew/dupes/apple-gcc42 autoconf pkg-config git postgresql qt
 
 # Better versions of Mac built-ins
-brew install bash bash-completion colordiff homebrew/dupes/grep
+brew install bash bash-completion colordiff
+brew install homebrew/dupes/grep --default-names
 
 # More nice-to-haves and various development libraries
 brew install ack elasticsearch gradle graphviz hub imagemagick jpegoptim \
