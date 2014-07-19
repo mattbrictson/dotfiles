@@ -1,4 +1,5 @@
 #!/bin/bash
 
 defaults write com.apple.screencapture location ~/Downloads/
+defaults write com.apple.screencapture disable-shadow -bool true
 killall SystemUIServer
