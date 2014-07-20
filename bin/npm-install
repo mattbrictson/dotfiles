@@ -2,4 +2,4 @@
 
 set -e
 
-npm install bower coffeelint gulp karma karma-cli
+npm install -g bower coffeelint gulp karma karma-cli
