@@ -8,24 +8,37 @@ IGNORE = %w(Rakefile README.md LICENSE)
 
 task :default => "install"
 
-desc "Install the dot files into user's home directory"
-task :install do
-  always_replace = false
+desc "Install packages and dotfiles"
+task :install => ["install:packages", "install:dotfiles"]
 
-  Dotfile.each do |dotfile|
-    case dotfile.status
-    when :identical
-      log(:green, "identical #{dotfile}")
-    when :missing
-      dotfile.link!
-    when :different
-      if always_replace
-        dotfile.replace!
-      elsif (answer = ask(:red, "overwrite? #{dotfile}"))
-        always_replace = true if answer == :always
-        dotfile.replace!
-      else
-        log(:gray, "skipping #{dotfile}")
+namespace :install do
+  desc "Install homebrew, npm, etc. packages"
+  task :packages do
+    %w(brew defaults npm).each do |type|
+      log(:blue, "executing bin/#{type}-install …")
+      system("bin/#{type}-install")
+    end
+  end
+
+  desc "Install dotfiles into user’s home directory"
+  task :dotfiles do
+    always_replace = false
+
+    Dotfile.each do |dotfile|
+      case dotfile.status
+      when :identical
+        log(:green, "identical #{dotfile}")
+      when :missing
+        dotfile.link!
+      when :different
+        if always_replace
+          dotfile.replace!
+        elsif (answer = ask(:red, "overwrite? #{dotfile}"))
+          always_replace = true if answer == :always
+          dotfile.replace!
+        else
+          log(:gray, "skipping #{dotfile}")
+        end
       end
     end
   end
