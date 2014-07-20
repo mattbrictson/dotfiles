@@ -1,4 +1,4 @@
-# mbrictson’s dotfiles
+# mattbrictson’s dotfiles
 
 This project contains the dotfiles and custom shell scripts that I use on my MacBook Pro.
 
@@ -72,7 +72,7 @@ In addition, during installation (see below), you will be prompted for your full
 Choose a place to store the dotfiles, like `~/Library/dotfiles`.
 
 ```
-git clone git://github.com/mbrictson/dotfiles ~/Library/dotfiles
+git clone git://github.com/mattbrictson/dotfiles ~/Library/dotfiles
 cd ~/Library/dotfiles
 ```
 
