@@ -4,6 +4,10 @@ set -e
 
 rbenv update
 CFLAGS=-O3 rbenv install $1
+
+# ~/.ruby-version conflicts with rbenv global, so remove it
+rm -f ~/.ruby-version
+
 rbenv global $1
 gem regenerate_binstubs
 ruby -v
