@@ -5,9 +5,14 @@ require 'highline'
 HighLine.colorize_strings
 
 def run(host, cmd)
-  ssh_cmd = "ssh root@#{host} #{cmd}"
+  ssh_cmd = "ssh #{with_user(host)} #{cmd}"
   puts ssh_cmd.yellow
   system(ssh_cmd) || exit
+end
+
+def with_user(host)
+  return host if host.include?("@")
+  "root@#{host}"
 end
 
 completed = []
@@ -18,9 +23,9 @@ ARGV.each_with_index do |host, i|
     exit unless HighLine.new.agree("Proceed (y/n)? ".blue)
   end
 
-  run host, "DEBIAN_FRONTEND=noninteractive aptitude -q -q -y update"
-  run host, "DEBIAN_FRONTEND=noninteractive aptitude -q -q safe-upgrade"
-  run host, "checkrestart -v"
+  run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q -y update"
+  run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q safe-upgrade"
+  run host, "sudo checkrestart -v"
 
   completed << host
   completed.each { |h| puts "✔ #{h}".green }
