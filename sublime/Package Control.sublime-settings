@@ -1,0 +1,28 @@
+{
+	"installed_packages":
+	[
+		"AdvancedNewFile",
+		"All Autocomplete",
+		"ApplySyntax",
+		"Clipboard Manager",
+		"DashDoc",
+		"DocBlockr",
+		"Emmet",
+		"Git",
+		"GitGutter",
+		"Gradle_Language",
+		"Indent XML",
+		"Markdown Preview",
+		"Pretty JSON",
+		"Sass",
+		"SSH Config",
+		"SublimeLinter",
+		"SublimeLinter-annotations",
+		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-json",
+		"SublimeLinter-rubocop",
+		"SublimeLinter-ruby",
+		"Theme - Soda",
+		"Tomorrow Color Schemes"
+	]
+}

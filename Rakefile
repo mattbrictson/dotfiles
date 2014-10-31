@@ -21,7 +21,7 @@ namespace :install do
   end
 
   desc "Install dotfiles into user’s home directory"
-  task :dotfiles do
+  task :dotfiles => :link_sublime do
     always_replace = false
 
     Dotfile.each do |dotfile|
@@ -40,6 +40,22 @@ namespace :install do
           log(:gray, "skipping #{dotfile}")
         end
       end
+    end
+  end
+
+  desc "Symlink the Sublime Packages/User directory"
+  task :link_sublime do
+    dot_sublime = File.expand_path("~/.sublime")
+    user_packages = File.expand_path("~/Library/Application Support/Sublime Text 3/Packages/User")
+    if File.directory?(user_packages) && ! File.symlink?(user_packages)
+      log(:magenta, "mkdir ~/.sublime")
+      FileUtils.mkdir_p(dot_sublime)
+      log(:blue, "copy  existing sublime files from Packages/User")
+      FileUtils.cp_r(Dir.glob(user_packages.shellescape + "/*"), dot_sublime)
+      log(:magenta, "rm    Packages/User")
+      FileUtils.rm_rf(user_packages)
+      log(:blue, "linking sublime Packages/User to ~/.sublime")
+      FileUtils.ln_s(dot_sublime, user_packages)
     end
   end
 end

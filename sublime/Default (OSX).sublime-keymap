@@ -1,0 +1,14 @@
+[
+  { "keys": ["super+\\"], "command": "toggle_side_bar" },
+  { "keys": ["super+shift+\\"], "command": "reveal_in_side_bar"},
+  { "keys": ["super+shift+w"], "command": "close_others" },
+  { "keys": ["super+backspace"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
+
+  // Clipboard manager
+  { "keys": ["super+x"], "command": "clipboard_manager_cut" },
+  { "keys": ["super+c"], "command": "clipboard_manager_copy" },
+  { "keys": ["super+v"], "command": "clipboard_manager_paste", "args": { "indent": true } },
+  { "keys": ["super+ctrl+v"], "command": "clipboard_manager_paste", "args": { "indent": false } },
+  { "keys": ["super+shift+v"], "command": "clipboard_manager_previous_and_paste" },
+  { "keys": ["super+alt+ctrl+v"], "command": "clipboard_manager_choose_and_paste" },
+]

@@ -1,6 +1,6 @@
 # mattbrictson’s dotfiles
 
-This project contains the dotfiles and custom shell scripts that I use on my MacBook Pro.
+This project contains the dotfiles and custom shell scripts that I use on my Mac.
 
 Why keep them at GitHub? It’s a way to share advanced shell tips with other developers, and more practically, a way to back up my configuration. When I get a new Mac or (knock on wood) need to recover from lost data or a corrupt OS, I can simply clone this repository and immediately be back in business.
 
@@ -17,6 +17,38 @@ Before using these dotfiles there are a few things you'll need to install manual
 My blog post here has a walkthrough: http://blog.55minutes.com/2013/09/rails-os-x-install-guide/
 
 ## What’s included?
+
+### Sublime Text 3 settings and packages
+
+For consistency with dotfiles for other apps, I put my Sublime Text 3 configuration in `~/.sublime`. To ensure that Sublime Text can find this directory, I symlink `~/Library/Application Support/Sublime Text 3/Packages/User` to it. The installation rake task (see below) takes care of setting this up for you. Here's what my dotfiles specify for Sublime:
+
+* Settings optimized for Rails development
+* Better auto-complete behavior
+* Key bindings for clipboard history
+* Improved key bindings for sidebar actions
+
+#### Packages
+
+* AdvancedNewFile
+* All Autocomplete
+* ApplySyntax
+* Clipboard Manager
+* DashDoc
+* DocBlockr
+* Emmet
+* Git
+* GitGutter
+* Indent XML
+* Markdown Preview
+* Pretty JSON
+* Sass
+* SSH Config
+* SublimeLinter
+* SublimeLinter-annotations
+* SublimeLinter-contrib-scss-lint
+* SublimeLinter-json
+* SublimeLinter-rubocop
+* SublimeLinter-ruby
 
 ### Handy scripts
 

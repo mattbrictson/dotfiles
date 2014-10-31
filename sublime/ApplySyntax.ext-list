@@ -1,0 +1,45 @@
+{
+	"PHP":
+	[
+		"inc",
+		"php3",
+		"php4",
+		"php5",
+		"phtml"
+	],
+	"Python":
+	[
+		"py3",
+		"pyw"
+	],
+	"Ruby":
+	[
+		"jbuilder",
+		"podspec",
+		"rabl",
+		"rake",
+		"rb",
+		"simplecov",
+		"thor"
+	],
+	"Ruby Haml":
+	[
+		"haml"
+	],
+	"Shell-Unix-Generic":
+	[
+		"bash",
+		"sh",
+		"zsh"
+	],
+	"XML":
+	[
+		"xml.dist"
+	],
+	"YAML":
+	[
+		".gemrc",
+		"yml",
+		"yml.dist"
+	]
+}
