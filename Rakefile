@@ -4,7 +4,10 @@ require "erb"
 require "fileutils"
 require "rake"
 
-IGNORE = %w(Rakefile README.md LICENSE)
+IGNORE = %w(
+  Rakefile README.md LICENSE
+  dotfiles.sublime-project dotfiles.sublime-workspace
+)
 
 task :default => "install"
 
