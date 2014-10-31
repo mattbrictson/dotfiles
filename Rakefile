@@ -47,14 +47,18 @@ namespace :install do
   task :link_sublime do
     dot_sublime = File.expand_path("~/.sublime")
     user_packages = File.expand_path("~/Library/Application Support/Sublime Text 3/Packages/User")
+    if !File.exist?(user_packages)
+      log(:magenta, "mkdir Library/Application Support/Sublime Text 3/Packages/User")
+      FileUtils.mkdir_p(user_packages)
+    end
     if File.directory?(user_packages) && ! File.symlink?(user_packages)
-      log(:magenta, "mkdir ~/.sublime")
+      log(:magenta, "mkdir .sublime")
       FileUtils.mkdir_p(dot_sublime)
-      log(:blue, "copy  existing sublime files from Packages/User")
+      log(:blue, "copy  Library/Application Support/Sublime Text 3/Packages/User/*")
       FileUtils.cp_r(Dir.glob(user_packages.shellescape + "/*"), dot_sublime)
-      log(:magenta, "rm    Packages/User")
+      log(:magenta, "rm    Library/Application Support/Sublime Text 3/Packages/User")
       FileUtils.rm_rf(user_packages)
-      log(:blue, "linking sublime Packages/User to ~/.sublime")
+      log(:blue, "linking Library/Application Support/Sublime Text 3/Packages/User")
       FileUtils.ln_s(dot_sublime, user_packages)
     end
   end
