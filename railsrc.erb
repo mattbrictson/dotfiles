@@ -1,0 +1,2 @@
+-d postgresql
+<%= print("Path or URL of Rails app template [none]: "); STDOUT.flush; (tmpl = STDIN.gets.chomp).empty? ? "" : "-m #{tmpl.shellescape}" %>
