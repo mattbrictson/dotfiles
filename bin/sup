@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
-#encoding: utf-8
+# encoding: utf-8
 
-require 'highline'
+require "highline"
 HighLine.colorize_strings
 
 def run(host, cmd)

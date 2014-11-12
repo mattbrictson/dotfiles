@@ -42,13 +42,13 @@ def pull_url
   source = [repository, current_sha, current_branch].join(":")
   dest = [repository, "development"].join("::")
 
-  "#{show_url}/pull-request/new?" +
-    "source=#{CGI::escape(source)}&" +
-    "dest=#{CGI::escape(dest)}"
+  "#{show_url}/pull-request/new?" \
+  "source=#{CGI.escape(source)}&" \
+  "dest=#{CGI.escape(dest)}"
 end
 
 def compare_url
-  "#{show_url}/branch/#{CGI::escape(current_branch)}#diff"
+  "#{show_url}/branch/#{CGI.escape(current_branch)}#diff"
 end
 
 def branches_url
@@ -77,7 +77,7 @@ def fail(reason=nil)
   exit(1)
 end
 
-if $0 == __FILE__
+if $PROGRAM_NAME == __FILE__
   usage_and_exit if (ARGV & %w(-h --help help)).any?
 
   command = ARGV.first || "show"

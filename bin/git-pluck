@@ -54,7 +54,7 @@ def find_repository(path)
   git_repo || fail("#{path} does not exist")
 end
 
-if $0 == __FILE__
+if $PROGRAM_NAME == __FILE__
   usage_and_exit if ARGV.length != 2 || (%w(-h --help) & ARGV).any?
 
   repo = find_repository(ARGV[0])
