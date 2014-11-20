@@ -87,7 +87,7 @@ def log(color, message, options={})
 end
 
 def ask(color, question)
-  log(color, "#{question} [ynaq]? ")
+  log(color, "#{question} [yNaq]? ")
 
   case $stdin.gets.chomp
   when "a"
