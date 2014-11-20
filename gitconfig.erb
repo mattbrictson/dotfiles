@@ -6,13 +6,14 @@
   excludesfile = ~/.gitignore_global
   safecrlf = warn
   autocrlf = input
-  pager = less -S
+  pager = less -S -x4
 
 [alias]
   st = status -s -b
   di = diff
   co = checkout
   ci = commit
+  cp = cherry-pick
   br = branch
   l = log --oneline --decorate --graph
   ll = log --pretty=medium --decorate --graph --stat
@@ -28,9 +29,23 @@
 [color]
   status = auto
   diff = auto
-  branch = auto
-  interactive = auto
-  ui = true
+
+[color "branch"]
+  current = red reverse
+  local = blue
+  remote = green
+
+[color "diff"]
+  meta = yellow
+  frag = magenta
+  old = red bold
+  new = green
+  plain = white
+
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
 
 [push]
   default = tracking
