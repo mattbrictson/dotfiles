@@ -28,42 +28,25 @@ export HISTIGNORE="&:ls:l:la:ll:exit"
 bind '"\e[A"':history-search-backward # up arrow
 bind '"\e[B"':history-search-forward  # down arrow
 
-# Note that bash_completion is necessary for __git_ps1 magic
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
 fi
 
-#######
-# PS1 #
+##########
+# Prompt #
 
-export LSCOLORS=Dxxxxxxxxxxxxxxxxxxxxx
 # Only show last 2 directories that make up the current path
 export PROMPT_DIRTRIM=2
 
-# Omit the user@hostname from PS1 if we are on the local console
-userhost=""
-if [ "$TERM_PROGRAM" != "Apple_Terminal" ]; then
-  userhost=" $USER@`hostname -s` "
+# Use https://github.com/nojhan/liquidprompt
+if [ -f /usr/local/share/liquidprompt ]; then
+  . /usr/local/share/liquidprompt
 fi
-
-export PS1='\[\e[0;30;43m\]$userhost\[\e[0m\]\[\e[1m\]\w$ \[\e[0m\]'
 
 ############
 # Homebrew #
 
 export PATH=/usr/local/bin:/usr/local/sbin:/usr/local/share/npm/bin:$PATH
-
-#######
-# Git #
-
-# Include git goodies in PS1 if possible
-if [ "`type -t __git_ps1`" == 'function' ]; then
-  export GIT_PS1_SHOWDIRTYSTATE=true     # '*' for unstaged changes, '+' for staged
-  export GIT_PS1_SHOWSTASHSTATE=true     # '$' if smth is stashed
-  export GIT_PS1_SHOWUNTRACKEDFILES=true # '%' if un-tracked files
-
-  export PS1='\[\e[0;30;43m\]$userhost\[\e[0m\]\[\e[1m\]\w\[\e[0m\]$(__git_ps1 " (%s)")\[\e[1m\]$ \[\e[0m\]'
-fi
 
 ########
 # Ruby #
@@ -161,6 +144,7 @@ fi
 
 ########
 # Misc #
+export LSCOLORS=Dxxxxxxxxxxxxxxxxxxxxx
 export PAGER=/usr/bin/less
 
 if [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
