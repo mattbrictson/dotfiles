@@ -7,6 +7,9 @@
 
   { "keys": ["super+shift+o"], "command": "rails_open_view" },
 
+  { "keys": ["super+shift+r"], "command": "goto_symbol_in_project" },
+  { "keys": ["super+alt+r"], "command": "goto_definition" },
+
   // Clipboard manager
   { "keys": ["super+x"], "command": "clipboard_manager_cut" },
   { "keys": ["super+c"], "command": "clipboard_manager_copy" },
