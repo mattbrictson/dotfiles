@@ -19,10 +19,10 @@ brew install bash bash-completion colordiff
 brew install homebrew/dupes/grep --default-names
 
 # More nice-to-haves and various development libraries
-brew install ack elasticsearch gradle graphviz groovy hub icdiff imagemagick \
-             jpegoptim liquidprompt maven mercurial mtr mmv node optipng \
-             phantomjs python redis s3cmd sqlite ssh-copy-id sslmate svn \
-             terminal-notifier nviennot/tmate/tmate trash tree wget \
+brew install ack elasticsearch git-extras gradle graphviz groovy hub icdiff \
+             imagemagick jpegoptim liquidprompt maven mercurial mtr mmv node \
+             optipng phantomjs python redis s3cmd sqlite ssh-copy-id sslmate \
+             svn terminal-notifier nviennot/tmate/tmate trash tree wget \
              homebrew/boneyard/wkhtmltopdf
 
 # Quick Look plugins
