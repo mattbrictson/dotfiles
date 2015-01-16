@@ -1,0 +1,7 @@
+exclude: 'vendor/assets/stylesheets/**'
+linters:
+  PropertySortOrder:
+    order: smacss
+  StringQuotes:
+    enabled: true
+    style: double_quotes
