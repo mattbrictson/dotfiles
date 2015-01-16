@@ -8,4 +8,5 @@ psych
 pre-commit
 rubocop
 rubygems-bundler
+scss-lint
 ultrahook
