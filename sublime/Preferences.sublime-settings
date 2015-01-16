@@ -96,9 +96,10 @@
 		"tmp",
 		".bundle",
 		"log",
-		".sass-cache"
+		".sass-cache",
+		"coverage"
 	],
-	"font_face": "Menlo Regular",
+	"font_face": "Menlo",
 	"font_options":
 	[
 		"subpixel_antialias"
