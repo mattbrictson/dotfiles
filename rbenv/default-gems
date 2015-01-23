@@ -4,7 +4,6 @@ bundler-audit
 cheat
 highline
 lunchy
-psych
 pre-commit
 rubocop
 rubygems-bundler
