@@ -14,7 +14,7 @@ Before using these dotfiles there are a few things you'll need to install manual
 2. Homebrew.
 3. Rbenv.
 
-My blog post here has a walkthrough: http://blog.55minutes.com/2013/09/rails-os-x-install-guide/
+My blog post here has a walkthrough: https://mattbrictson.com/rails-osx-setup-guide
 
 ## What’s included?
 
