@@ -2,11 +2,6 @@
 	"in_process_packages":
 	[
 	],
-	"installed_dependencies":
-	[
-		"0_package_control_loader",
-		"bz2"
-	],
 	"installed_packages":
 	[
 		"AdvancedNewFile",
@@ -15,6 +10,7 @@
 		"AutoFileName",
 		"Better CoffeeScript",
 		"Clipboard Manager",
+		"Color Highlighter",
 		"CSScomb",
 		"DashDoc",
 		"DocBlockr",
@@ -29,6 +25,7 @@
 		"Pretty JSON",
 		"Rails OpenView",
 		"Sass",
+		"Shell Command",
 		"SSH Config",
 		"SublimeLinter",
 		"SublimeLinter-annotations",
@@ -36,6 +33,7 @@
 		"SublimeLinter-json",
 		"SublimeLinter-rubocop",
 		"SublimeLinter-ruby",
+		"Terminal",
 		"Theme - Soda",
 		"Tomorrow Color Schemes"
 	]

@@ -1,0 +1,9 @@
+{
+    "enabled": true,
+    "style": "outlined",
+    "icons": false,
+    "ha_style": "solid",
+    "icons_all": false,
+    "default_keybindings": false,
+    "convert_util_path" : "/usr/local/bin/convert"
+}

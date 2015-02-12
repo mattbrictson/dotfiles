@@ -33,6 +33,7 @@ For consistency with dotfiles for other apps, I put my Sublime Text 3 configurat
 * All Autocomplete
 * ApplySyntax
 * Clipboard Manager
+* Color Highlighter
 * DashDoc
 * DocBlockr
 * Emmet
@@ -42,6 +43,7 @@ For consistency with dotfiles for other apps, I put my Sublime Text 3 configurat
 * Markdown Preview
 * Pretty JSON
 * Sass
+* Shell Command
 * SSH Config
 * SublimeLinter
 * SublimeLinter-annotations
@@ -49,6 +51,7 @@ For consistency with dotfiles for other apps, I put my Sublime Text 3 configurat
 * SublimeLinter-json
 * SublimeLinter-rubocop
 * SublimeLinter-ruby
+* Terminal
 
 ### Handy scripts
 

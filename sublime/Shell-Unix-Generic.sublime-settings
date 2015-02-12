@@ -1,8 +1,8 @@
 {
 	"extensions":
 	[
-		"bash",
+		"sh",
 		"zsh",
-		"sh"
+		"bash"
 	]
 }
