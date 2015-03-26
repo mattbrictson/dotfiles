@@ -1,0 +1,9 @@
+<snippet>
+  <content><![CDATA[
+class << ${1:self}
+  $0
+end
+]]></content>
+  <tabTrigger>meta</tabTrigger>
+  <scope>source.ruby</scope>
+</snippet>
