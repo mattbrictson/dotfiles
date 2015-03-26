@@ -8,6 +8,11 @@ fi
 # By declaring here in .bashrc, daemons like Pow will also pick it up.
 export LANG=en_US.UTF-8
 
+# Enable auto-discovery of appropriate gem versions by inspecting the
+# Gemfile.lock in the working directory tree. Requires RubyGems >= 2.2.0.
+# http://guides.rubygems.org/command-reference/#gem-dependency-files
+export RUBYGEMS_GEMDEPS=-
+
 # Shortcut for `bundle exec rails` and `bundle exec rake`.
 # If bin/rails and bin/rake are available, use them instead as they are much
 # faster to execute than `bundle exec`.
