@@ -6,5 +6,6 @@ highline
 lunchy
 pre-commit
 rubocop
+rubygems-bundler
 scss-lint
 ultrahook
