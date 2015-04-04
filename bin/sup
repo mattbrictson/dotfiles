@@ -5,7 +5,7 @@ require "highline"
 HighLine.colorize_strings
 
 def run(host, cmd)
-  ssh_cmd = "ssh #{with_user(host)} #{cmd}"
+  ssh_cmd = ["ssh", config, with_user(host), cmd].compact.join(" ")
   puts ssh_cmd.yellow
   system(ssh_cmd) || exit
 end
@@ -13,6 +13,10 @@ end
 def with_user(host)
   return host if host.include?("@")
   "root@#{host}"
+end
+
+def config
+  "-F .ssh/config" if File.file?(".ssh/config")
 end
 
 completed = []
