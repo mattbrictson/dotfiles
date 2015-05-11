@@ -1,3 +1,4 @@
+export CLICOLOR=1
 export LSCOLORS=Dxxxxxxxxxxxxxxxxxxxxx
 export PAGER=/usr/bin/less
 
