@@ -10,9 +10,6 @@ Style/DoubleNegation:
 Style/HashSyntax:
   EnforcedStyle: hash_rockets
 
-Style/RegexpLiteral:
-  MaxSlashes: 0
-
 Style/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
