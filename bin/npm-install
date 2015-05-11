@@ -2,4 +2,5 @@
 
 set -e
 
+npm install -g npm
 npm install -g bower coffeelint gulp karma karma-cli
