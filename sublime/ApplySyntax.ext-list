@@ -1,4 +1,14 @@
 {
+	"HTML (Rails)":
+	[
+		"html.erb"
+	],
+	"JSON":
+	[
+		".csslintrc",
+		".jscsrc",
+		".jshintrc"
+	],
 	"PHP":
 	[
 		"inc",
