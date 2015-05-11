@@ -8,5 +8,6 @@
 		"rb",
 		"thor",
 		"simplecov"
-	]
+	],
+	"word_separators": "./\\()\"'-:,.;<>~@#$%^&*|+=[]{}`~"
 }
