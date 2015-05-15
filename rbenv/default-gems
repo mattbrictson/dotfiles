@@ -7,5 +7,5 @@ lunchy
 pre-commit
 rubocop
 rubygems-bundler
-scss-lint
+scss_lint
 ultrahook
