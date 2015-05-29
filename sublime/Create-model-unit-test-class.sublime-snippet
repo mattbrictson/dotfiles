@@ -1,0 +1,11 @@
+<snippet>
+    <content><![CDATA[require "test_helper"
+
+class ${1:${TM_FILENAME/(?:\A|_)([A-Za-z0-9]+)(?:\.rb)?/(?2::\u$1)/g}} < ActiveSupport::TestCase
+  test$0
+end
+]]></content>
+    <tabTrigger>unit</tabTrigger>
+    <scope>source.ruby</scope>
+    <description>Create model/unit test class</description>
+</snippet>
