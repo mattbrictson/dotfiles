@@ -1,7 +1,8 @@
 {
 	"added_words":
 	[
-		"gauge"
+		"gauge",
+		"inline"
 	],
 	"always_prompt_for_file_reload": false,
 	"always_show_minimap_viewport": false,
