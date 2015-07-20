@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+# Passes arguments to `rails generate` and opens the resulting files
+# in Sublime. Take from here:
+# http://www.davidverhasselt.com/auto-open-rails-generator-files/
+
+require "pty"
+
+def extract_created_files(lines)
+  lines.map do |line|
+    command, file = colorless(line).split
+    file if command == "create"
+  end.compact.reverse
+end
+
+def colorless(str)
+  str.gsub(/\033\[\d+m/, "")
+end
+
+command = %w(bin/rails generate) + ARGV
+lines = []
+
+# Use PTY to force Thor to output colored text
+PTY.spawn(*command) do |r, _, _|
+  while (line = r.gets)
+    puts line
+    lines << line
+  end
+end
+
+files = extract_created_files(lines)
+
+if files.any?
+  puts "\nOpening #{files.length} file#{files.length > 0 ? 's' : ''}…"
+  exec("subl", *files)
+end

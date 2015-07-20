@@ -36,3 +36,5 @@ function r() {
     fi
   fi
 }
+
+alias rg="~/.bin/rails_generate_and_open"
