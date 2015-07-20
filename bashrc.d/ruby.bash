@@ -8,6 +8,12 @@ fi
 # By declaring here in .bashrc, daemons like Pow will also pick it up.
 export LANG=en_US.UTF-8
 
+# Install tab-completion for the lunchy gem
+LUNCHY_DIR=$(dirname `gem which lunchy`)/../extras
+if [ -f $LUNCHY_DIR/lunchy-completion.bash ]; then
+  . $LUNCHY_DIR/lunchy-completion.bash
+fi
+
 # Shortcut for `bundle exec rails` and `bundle exec rake`.
 # If bin/rails and bin/rake are available, use them instead as they are much
 # faster to execute than `bundle exec`.
