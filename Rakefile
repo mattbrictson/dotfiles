@@ -15,9 +15,9 @@ desc "Install packages and dotfiles"
 task :install => ["install:packages", "install:dotfiles"]
 
 namespace :install do
-  desc "Install homebrew, npm, etc. packages"
+  desc "Install homebrew, etc. packages"
   task :packages do
-    %w(brew defaults npm).each do |type|
+    %w(brew defaults).each do |type|
       log(:blue, "executing bin/#{type}-install …")
       system("bin/#{type}-install")
     end

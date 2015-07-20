@@ -62,7 +62,6 @@ These scripts will be installed to `~/.bin` and added to your `$PATH`:
 * `defaults-install` uses `defaults write` on OS X to change system default behavior to my liking: e.g. don't include drop-shadows on screenshots.
 * `git-pluck` adds the `pluck` command to git, which is a trick for cherry-picking a commit from another repository into the current one: `git pluck ../other-repo SHA`.
 * `git-reap` adds the `reap` command to git, which deletes local and remote branches that have already been merged with the master branch and thus are no longer needed.
-* `npm-install` installs and updates my standard suite of npm packages.
 * `ruby-install` is a convenient wrapper around `rbenv install` that does some easy-to-forget housekeeping before and after installation. Usage: `ruby-install 2.1.2`.
 * `sup` uses SSH to update packages on one or more Ubuntu servers (assuming you have root access to them). In other words, `sup SERVER1 SERVER2` will SSH as root into both servers and run the appropriate `aptitude` commands to safely update all packages. It will also report whether any daemons need to be restarted for the updates to take effect.
 
@@ -115,7 +114,7 @@ Run one of the three installation options:
 
 ```
 rake install:dotfiles # Install the dotfiles and scripts
-rake install:packages # Install homebrew and npm packages, and Mac defaults
+rake install:packages # Install homebrew packages and Mac defaults
 rake install          # Install all of the above (recommended)
 ```
 

@@ -21,7 +21,7 @@ brew install homebrew/dupes/grep --default-names
 # More nice-to-haves and various development libraries
 brew install ack elasticsearch git-extras gradle graphviz groovy hub icdiff \
              imagemagick jpegoptim jsonpp liquidprompt maven mercurial mtr mmv \
-             node optipng python redis s3cmd sqlite ssh-copy-id sslmate \
+             nvm optipng python redis s3cmd sqlite ssh-copy-id sslmate \
              svn terminal-notifier nviennot/tmate/tmate trash tree wget \
              homebrew/boneyard/wkhtmltopdf
 
