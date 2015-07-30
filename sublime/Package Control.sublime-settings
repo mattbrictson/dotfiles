@@ -30,6 +30,7 @@
 		"SublimeLinter",
 		"SublimeLinter-annotations",
 		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-jscs",
 		"SublimeLinter-json",
 		"SublimeLinter-rubocop",
 		"SublimeLinter-ruby",
