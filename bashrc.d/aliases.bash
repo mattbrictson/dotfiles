@@ -9,3 +9,7 @@ alias l='ls'
 alias la='ls -la'
 alias ll='ls -l'
 alias top='top -s 5 -o cpu -stats pid,user,command,cpu,rsize,vsize,threads,state'
+
+function mcdir() {
+  mkdir -p $1 && cd $1
+}
