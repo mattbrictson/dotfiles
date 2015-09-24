@@ -1,4 +1,5 @@
 {
+	"bootstrapped": true,
 	"in_process_packages":
 	[
 	],
@@ -19,8 +20,10 @@
 		"Git",
 		"GitGutter",
 		"Gradle_Language",
+		"Handlebars",
 		"Indent XML",
 		"Markdown Preview",
+		"Marked App Menu",
 		"nginx",
 		"Package Control",
 		"Pretty JSON",
