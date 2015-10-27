@@ -1,0 +1,7 @@
+<snippet>
+  <content><![CDATA[
+return to_enum(__callee__) unless block_given?
+]]></content>
+  <tabTrigger>rte</tabTrigger>
+  <scope>source.ruby</scope>
+</snippet>
