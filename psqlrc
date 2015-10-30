@@ -1,6 +1,8 @@
 \set PROMPT1 '%n@%/\n%R%x%# '
 \set PROMPT2 '%R%x%# '
+\set COMP_KEYWORD_CASE upper
 \pset border 1
 \pset format wrapped
 \pset linestyle unicode
 \pset null NULL
+\x auto
