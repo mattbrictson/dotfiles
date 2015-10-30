@@ -5,7 +5,9 @@
 	],
 	"JSON":
 	[
+		".bowerrc",
 		".csslintrc",
+		".eslintrc",
 		".jscsrc",
 		".jshintrc"
 	],
