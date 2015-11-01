@@ -5,6 +5,7 @@ cheat
 highline
 lunchy
 pre-commit
+rerun
 rubocop
 rubygems-bundler
 scss_lint
