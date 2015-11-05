@@ -37,10 +37,13 @@ For consistency with dotfiles for other apps, I put my Sublime Text 3 configurat
 * DashDoc
 * DocBlockr
 * Emmet
+* Gem Browser
 * Git
 * GitGutter
 * Indent XML
 * Markdown Preview
+* Marked App Menu
+* nginx
 * Pretty JSON
 * Sass
 * Shell Command
