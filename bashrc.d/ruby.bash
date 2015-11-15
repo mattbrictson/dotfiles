@@ -4,6 +4,8 @@ if [ -d ~/.rbenv ]; then
   alias br='bundle install -j4 && rbenv rehash'
 fi
 
+export PATH=".git/safe/../../bin:$PATH"
+
 # OS X has its own way of setting LANG, but only at the console.
 # By declaring here in .bashrc, daemons like Pow will also pick it up.
 export LANG=en_US.UTF-8

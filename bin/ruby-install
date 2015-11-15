@@ -9,5 +9,4 @@ CFLAGS=-O3 rbenv install $1
 rm -f ~/.ruby-version
 
 rbenv global $1
-gem regenerate_binstubs
 ruby -v
