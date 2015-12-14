@@ -28,6 +28,7 @@
   bl = blame -C
   amend = commit --amend --reuse-message=HEAD
   oops = reset --hard 'HEAD@{1}'
+  trust = "!sh -c 'mkdir -p .git/safe && hash -r'"
 
 [color]
   status = auto
