@@ -5,6 +5,7 @@ export PAGER=/usr/bin/less
 if [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
   export EDITOR="subl -w"
   export BUNDLER_EDITOR=subl
+  export GEM_EDITOR=subl
 else
   export EDITOR=vi
 fi
