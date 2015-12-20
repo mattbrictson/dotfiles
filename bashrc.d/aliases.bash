@@ -4,6 +4,7 @@ alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
 alias diff=colordiff
 alias get='git'
 alias gh='hub browse'
+alias httpserve='ruby -run -e httpd -- --port=8888 $1'
 alias ls='ls -hFG'
 alias l='ls'
 alias la='ls -la'
