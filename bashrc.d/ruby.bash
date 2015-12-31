@@ -1,7 +1,5 @@
-if [ -d ~/.rbenv ]; then
-  export PATH=~/.rbenv/bin:$PATH
+if [ -x /usr/local/bin/rbenv ]; then
   eval "$(rbenv init -)"
-  alias br='bundle install -j4 && rbenv rehash'
 fi
 
 export PATH=".git/safe/../../bin:$PATH"

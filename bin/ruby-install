@@ -2,7 +2,6 @@
 
 set -e
 
-rbenv update
 CFLAGS=-O3 rbenv install $1
 
 # ~/.ruby-version conflicts with rbenv global, so remove it

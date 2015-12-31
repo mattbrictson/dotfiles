@@ -12,7 +12,8 @@ brew update
 brew upgrade
 
 # Needed for Rails development
-brew install homebrew/dupes/apple-gcc42 autoconf phantomjs pkg-config git postgresql qt
+brew install homebrew/dupes/apple-gcc42 autoconf phantomjs pkg-config git \
+             rbenv rbenv-default-gems ruby-build postgresql qt
 
 # Better versions of Mac built-ins
 brew install bash bash-completion colordiff

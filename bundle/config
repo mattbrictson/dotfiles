@@ -6,3 +6,4 @@ BUNDLE_GEM__MIT: 'true'
 BUNDLE_GEM__TEST: minitest
 BUNDLE_MIRROR__HTTPS://RUBYGEMS__ORG/: http://localhost:9292
 BUNDLE_MIRROR__HTTPS://RAILS-ASSETS__ORG/: http://localhost:9292/upstream/https%3A%2F%2Frails-assets.org
+BUNDLE_RETRY: '3'
