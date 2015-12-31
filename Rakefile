@@ -68,7 +68,10 @@ namespace :install do
 end
 
 def log(color, message, options={})
-  require "highline" rescue nil
+  begin
+    require "highline"
+  rescue LoadError
+  end
 
   first, rest = message.split(" ", 2)
   first = first.ljust(10)
