@@ -3,6 +3,7 @@ bundler
 bundler-audit
 bundleup
 cheat
+gemstash
 highline
 lunchy
 pre-commit
