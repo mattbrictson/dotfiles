@@ -14,6 +14,11 @@ if [ -f $LUNCHY_DIR/lunchy-completion.bash ]; then
   . $LUNCHY_DIR/lunchy-completion.bash
 fi
 
+# Use Homebrew's terminal-notifier, which is much faster than Ruby's.
+if [ -x /usr/local/bin/terminal-notifier ]; then
+  export TERMINAL_NOTIFIER_BIN=/usr/local/bin/terminal-notifier
+fi
+
 # Shortcut for `bundle exec rails` and `bundle exec rake`.
 # If bin/rails and bin/rake are available, use them instead as they are much
 # faster to execute than `bundle exec`.
