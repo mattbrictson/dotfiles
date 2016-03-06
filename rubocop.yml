@@ -1,6 +1,10 @@
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
+  TargetRubyVersion: 2.3
+
+Style/BarePercentLiterals:
+  EnforcedStyle: percent_q
 
 Style/ClassAndModuleChildren:
   Enabled: false
@@ -9,6 +13,9 @@ Style/Documentation:
   Enabled: false
 
 Style/DoubleNegation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
   Enabled: false
 
 Style/HashSyntax:
