@@ -28,6 +28,8 @@ function r() {
       bin/rails "$@"
     elif [ -x script/rails ]; then
       script/rails "$@"
+    elif [ -f Gemfile.lock ]; then
+      bundle exec rails "$@"
     else
       rails "$@"
     fi
@@ -36,6 +38,8 @@ function r() {
       bin/rake "$@"
     elif [ -x script/rake ]; then
       script/rake "$@"
+    elif [ -f Gemfile.lock ]; then
+      bundle exec rake "$@"
     else
       rake "$@"
     fi
