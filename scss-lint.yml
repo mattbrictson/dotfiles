@@ -1,7 +1,14 @@
 exclude: 'vendor/assets/stylesheets/**'
 linters:
+  NestingDepth:
+    enabled: true
+    max_depth: 2
   PropertySortOrder:
-    order: smacss
+    enabled: true
+    order: null
+  SelectorDepth:
+    enabled: true
+    max_depth: 2
   StringQuotes:
     enabled: true
     style: double_quotes
