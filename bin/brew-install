@@ -2,18 +2,14 @@
 
 set -e
 
-# Manually remove the brew cache, since that is the only way to force
-# `brew cask install` to grab the latest versions of its recipes.
-# https://github.com/phinze/homebrew-cask/issues/309#issuecomment-32470815
-rm -rf "$(brew --cache)" && mkdir -p "$(brew --cache)"
-
-brew cleanup --force
+brew cleanup --prune=30
 brew update
 brew upgrade
 
 # Needed for Rails development
 brew install homebrew/dupes/apple-gcc42 autoconf phantomjs pkg-config git \
-             rbenv rbenv-default-gems ruby-build postgresql qt
+             rbenv rbenv-default-gems ruby-build postgresql \
+             homebrew/versions/qt55
 
 # Better versions of Mac built-ins
 brew install bash bash-completion colordiff
@@ -23,7 +19,7 @@ brew install homebrew/dupes/grep --default-names
 brew install ack elasticsearch git-extras gradle graphviz groovy hub icdiff \
              imagemagick jpegoptim jsonpp liquidprompt maven mercurial mtr mmv \
              nvm optipng postgis python redis s3cmd sqlite ssh-copy-id sslmate \
-             svn terminal-notifier nviennot/tmate/tmate trash tree wget \
+             svn terminal-notifier timedog trash tree wget \
              homebrew/boneyard/wkhtmltopdf
 
 # Quick Look plugins
