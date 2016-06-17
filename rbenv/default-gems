@@ -3,10 +3,13 @@ bundler
 bundler-audit
 bundleup
 cheat
+gem-compare
 gemstash
 highline
 lunchy
+orly
 pre-commit
+rake
 rerun
 rubocop
 scss_lint
