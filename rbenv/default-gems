@@ -7,8 +7,7 @@ gem-compare
 gemstash
 highline
 lunchy
-orly
-pre-commit
+overcommit
 rake
 rerun
 rubocop
