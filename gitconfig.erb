@@ -1,6 +1,7 @@
 [user]
   name = <%= print("Your Full Name: "); STDOUT.flush; STDIN.gets.chomp %>
   email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
+  signingkey = <%= print("GPG Key: "); STDOUT.flush; STDIN.gets.chomp %>
 
 [core]
   excludesfile = ~/.gitignore_global
@@ -68,3 +69,6 @@
 
 [diff]
   compactionHeuristic = true
+
+[commit]
+  gpgsign = true
