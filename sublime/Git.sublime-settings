@@ -1,4 +1,5 @@
 {
+  "commit_rulers": [50, 72],
   "statusbar_branch": true,
   "statusbar_status": false
 }
