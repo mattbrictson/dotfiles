@@ -14,6 +14,12 @@ if [ -f $LUNCHY_DIR/lunchy-completion.bash ]; then
   . $LUNCHY_DIR/lunchy-completion.bash
 fi
 
+# Install tab-completion for minitest
+MINITEST_COMPLETE=$(gem which minitest/complete)
+if [ -f $MINITEST_COMPLETE ]; then
+  complete -o bashdefault -f -C 'ruby --disable-gems $MINITEST_COMPLETE' minitest
+fi
+
 # Use Homebrew's terminal-notifier, which is much faster than Ruby's.
 if [ -x /usr/local/bin/terminal-notifier ]; then
   export TERMINAL_NOTIFIER_BIN=/usr/local/bin/terminal-notifier

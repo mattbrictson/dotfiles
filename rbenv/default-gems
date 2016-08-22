@@ -7,6 +7,7 @@ gem-compare
 gemstash
 highline
 lunchy
+minitest-sprint
 overcommit
 rake
 rerun
