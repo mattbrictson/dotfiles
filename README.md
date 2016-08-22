@@ -33,6 +33,7 @@ For consistency with dotfiles for other apps, I put my Sublime Text 3 configurat
 * All Autocomplete
 * ApplySyntax
 * Clipboard Manager
+* CloseOtherWindows
 * Color Highlighter
 * DashDoc
 * DocBlockr

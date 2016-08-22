@@ -1,7 +1,7 @@
 [
   { "keys": ["super+\\"], "command": "toggle_side_bar" },
   { "keys": ["super+shift+\\"], "command": "reveal_in_side_bar"},
-  { "keys": ["super+shift+w"], "command": "close_others" },
+  { "keys": ["super+shift+w"], "command": "close_other_tabs" },
 
   { "keys": ["super+backspace"], "command": "run_macro_file", "args": {"file": "res://Packages/Default/Delete Line.sublime-macro"} },
 
