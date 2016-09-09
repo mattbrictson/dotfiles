@@ -10,26 +10,26 @@
   pager = less -R -S -x4
 
 [alias]
-  st = status -s -b
-  di = diff
-  co = checkout
-  ci = commit
-  cp = cherry-pick
+  amend = commit --amend --reuse-message=HEAD
+  bl = blame -C
   br = branch
+  ci = commit
+  co = checkout
+  cp = cherry-pick
+  di = diff
+  fixup = commit --amend -c HEAD
+  hist = log --pretty=format:\"%C(yellow bold)%h%Creset %C(red)%ad%Creset | %s%C(green bold)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
+  ignored-files = ls-files --others -i --exclude-standard
   l = log --oneline --decorate --graph
   ll = log --pretty=medium --decorate --graph --stat
   ls = log --name-only --oneline
-  hist = log --pretty=format:\"%C(yellow bold)%h%Creset %C(red)%ad%Creset | %s%C(green bold)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
-  fixup = commit --amend -c HEAD
-  timeline = log --graph --branches --pretty=oneline --decorate
-  untracked-files = ls-files -o --exclude-standard
-  ignored-files = ls-files --others -i --exclude-standard
   modified-files = ls-files -m
-  unstage = reset HEAD
-  bl = blame -C
-  amend = commit --amend --reuse-message=HEAD
   oops = reset --hard 'HEAD@{1}'
+  st = status -s -b
+  timeline = log --graph --branches --pretty=oneline --decorate
   trust = "!sh -c 'mkdir -p .git/safe && hash -r'"
+  unstage = reset HEAD
+  untracked-files = ls-files -o --exclude-standard
 
 [color]
   status = auto
