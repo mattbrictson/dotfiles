@@ -29,3 +29,6 @@ Style/StringLiterals:
 
 Style/TrivialAccessors:
   AllowPredicates: true
+
+Style/VariableNumber:
+  Enabled: false
