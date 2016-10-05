@@ -29,6 +29,7 @@
   st = status -s -b
   timeline = log --graph --branches --pretty=oneline --decorate
   trust = "!sh -c 'mkdir -p .git/safe && hash -r'"
+  unmerged = branch --sort=committerdate --no-merged
   unstage = reset HEAD
   untracked-files = ls-files -o --exclude-standard
 
