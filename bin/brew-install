@@ -16,11 +16,11 @@ brew install bash bash-completion colordiff
 brew install homebrew/dupes/grep --default-names
 
 # More nice-to-haves and various development libraries
-brew install ack elasticsearch git-extras gradle graphviz groovy httpie hub \
-             icdiff imagemagick jpegoptim jsonpp liquidprompt maven mercurial \
-             mtr mmv nvm optipng pgcli postgis python redis s3cmd sqlite \
-             ssh-copy-id sslmate svn terminal-notifier timedog trash tree wget \
-             homebrew/boneyard/wkhtmltopdf Caskroom/cask/java
+brew install ack diff-so-fancy elasticsearch git-extras gradle graphviz groovy \
+             httpie hub icdiff imagemagick jpegoptim jsonpp liquidprompt maven \
+             mercurial mtr mmv nvm optipng pgcli postgis python redis s3cmd \
+             sqlite ssh-copy-id sslmate svn terminal-notifier timedog trash \
+             tree wget homebrew/boneyard/wkhtmltopdf Caskroom/cask/java
 
 # Quick Look plugins
 brew cask install --force qlcolorcode qlstephen qlmarkdown quicklook-json \

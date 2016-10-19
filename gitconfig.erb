@@ -7,7 +7,7 @@
   excludesfile = ~/.gitignore_global
   safecrlf = warn
   autocrlf = input
-  pager = less -R -S -x4
+  pager = diff-so-fancy | less --tabs=4 -RFX
 
 [alias]
   amend = commit --amend --reuse-message=HEAD
