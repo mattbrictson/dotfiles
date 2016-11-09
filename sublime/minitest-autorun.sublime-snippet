@@ -1,0 +1,13 @@
+<snippet>
+  <content><![CDATA[
+require "minitest/autorun"
+
+class $1Test < Minitest::Test
+  def test_$2
+    $0
+  end
+end
+]]></content>
+  <tabTrigger>mauto</tabTrigger>
+  <scope>source.ruby</scope>
+</snippet>
