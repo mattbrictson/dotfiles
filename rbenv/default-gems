@@ -3,6 +3,7 @@ bundler
 bundler-audit
 bundler-patch
 bundleup
+chandler
 cheat
 gem-compare
 gemstash
