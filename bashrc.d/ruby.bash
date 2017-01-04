@@ -17,7 +17,7 @@ then
   fi
 
   # Install tab-completion for minitest
-  MINITEST_COMPLETE=$(gem which minitest/complete)
+  MINITEST_COMPLETE=$(gem which minitest/complete 2> /dev/null)
   if [ -f $MINITEST_COMPLETE ]; then
     complete -o bashdefault -f -C 'ruby --disable-gems $MINITEST_COMPLETE' minitest
   fi
