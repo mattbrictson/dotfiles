@@ -8,7 +8,7 @@
   { "keys": ["super+shift+o"], "command": "rails_open_view" },
 
   { "keys": ["super+shift+r"], "command": "goto_symbol_in_project" },
-  { "keys": ["super+alt+r"], "command": "goto_definition" },
+  { "keys": ["super+b"], "command": "goto_definition" },
 
   { "keys": ["super+shift+t"], "command": "reopen_last_file" },
 
