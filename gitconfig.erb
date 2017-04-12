@@ -26,6 +26,7 @@
   modified-files = ls-files -m
   oops = reset --hard 'HEAD@{1}'
   pr = !"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr"
+  pushf = push --force-with-lease
   st = status -s -b
   timeline = log --graph --branches --pretty=oneline --decorate
   trust = "!sh -c 'mkdir -p .git/safe && hash -r'"
