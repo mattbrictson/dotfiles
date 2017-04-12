@@ -12,14 +12,6 @@
 
   { "keys": ["super+shift+t"], "command": "reopen_last_file" },
 
-  // Clipboard Manager package
-  { "keys": ["super+x"], "command": "clipboard_manager_cut" },
-  { "keys": ["super+c"], "command": "clipboard_manager_copy" },
-  { "keys": ["super+v"], "command": "clipboard_manager_paste", "args": { "indent": true } },
-  { "keys": ["super+ctrl+v"], "command": "clipboard_manager_paste", "args": { "indent": false } },
-  { "keys": ["super+shift+v"], "command": "clipboard_manager_previous_and_paste" },
-  { "keys": ["super+alt+ctrl+v"], "command": "clipboard_manager_choose_and_paste" },
-
   // Terminal package
   { "keys": ["super+ctrl+shift+m"], "command": "open_terminal" },
   { "keys": ["super+shift+m"], "command": "open_terminal_project_folder" },
