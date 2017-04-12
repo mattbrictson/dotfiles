@@ -38,6 +38,8 @@ Icon?
 __MACOSX
 .tm_properties
 .bundle/
+.pairs
 .powder
 *.sublime-project
 *.sublime-workspace
+.idea/
