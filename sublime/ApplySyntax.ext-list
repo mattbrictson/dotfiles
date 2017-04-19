@@ -52,6 +52,7 @@
 	"YAML":
 	[
 		".gemrc",
+		"YAML-tmLanguage",
 		"yml",
 		"yml.dist"
 	]
