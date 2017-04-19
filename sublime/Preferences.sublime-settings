@@ -48,7 +48,7 @@
 	"caret_extra_width": 0,
 	"caret_style": "smooth",
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/ayu/ayu-light.tmTheme",
+	"color_scheme": "Packages/ayu/ayu-dark.tmTheme",
 	"copy_with_empty_selection": true,
 	"create_window_at_startup": true,
 	"default_encoding": "UTF-8",
@@ -108,7 +108,6 @@
 	"font_face": "Menlo",
 	"font_options":
 	[
-		"subpixel_antialias"
 	],
 	"font_size": 14,
 	"gpu_window_buffer": "auto",
@@ -165,7 +164,7 @@
 	"spell_check": true,
 	"tab_completion": true,
 	"tab_size": 2,
-	"theme": "ayu-light.sublime-theme",
+	"theme": "Adaptive.sublime-theme",
 	"theme_primer_sidebar_font_large": true,
 	"theme_primer_sidebar_tree_small": true,
 	"theme_primer_tabs_font_large": true,
