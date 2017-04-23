@@ -12,6 +12,10 @@
 
   { "keys": ["super+shift+t"], "command": "reopen_last_file" },
 
+  // Make paste_and_indent the default behavior
+  { "keys": ["super+shift+v"], "command": "paste" },
+  { "keys": ["super+v"], "command": "paste_and_indent" },
+
   // Terminal package
   { "keys": ["super+ctrl+shift+m"], "command": "open_terminal" },
   { "keys": ["super+shift+m"], "command": "open_terminal_project_folder" },
