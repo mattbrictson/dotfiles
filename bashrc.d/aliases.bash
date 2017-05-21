@@ -12,6 +12,7 @@ alias ls='ls -hFG'
 alias l='ls'
 alias la='ls -la'
 alias ll='ls -l'
+alias ras='bin/rails server -b 0.0.0.0 -p 3000'
 alias top='top -s 5 -o cpu -stats pid,user,command,cpu,rsize,vsize,threads,state'
 
 function mcdir() {
