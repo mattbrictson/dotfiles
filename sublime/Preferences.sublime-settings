@@ -6,7 +6,8 @@
 		"versioned",
 		"offline",
 		"Unsubscribe",
-		"unsubscribe"
+		"unsubscribe",
+		"proactively"
 	],
 	"always_prompt_for_file_reload": false,
 	"always_show_minimap_viewport": false,
