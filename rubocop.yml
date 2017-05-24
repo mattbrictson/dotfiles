@@ -3,6 +3,12 @@ AllCops:
   DisplayStyleGuide: true
   TargetRubyVersion: 2.3
 
+Layout/SpaceAroundEqualsInParameterDefault:
+  EnforcedStyle: no_space
+
+Performance/Casecmp:
+  Enabled: false
+
 Style/BarePercentLiterals:
   EnforcedStyle: percent_q
 
@@ -24,8 +30,8 @@ Style/FrozenStringLiteralComment:
 Style/HashSyntax:
   EnforcedStyle: hash_rockets
 
-Style/SpaceAroundEqualsInParameterDefault:
-  EnforcedStyle: no_space
+Style/NumericPredicate:
+  Enabled: false
 
 Style/StringLiterals:
   EnforcedStyle: double_quotes
