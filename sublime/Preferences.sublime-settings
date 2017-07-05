@@ -107,7 +107,8 @@
 		".bundle",
 		"log",
 		".sass-cache",
-		"coverage"
+		"coverage",
+		"node_modules"
 	],
 	"font_face": "Menlo",
 	"font_options":
