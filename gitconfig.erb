@@ -34,10 +34,6 @@
   unstage = reset HEAD
   untracked-files = ls-files -o --exclude-standard
 
-[color]
-  status = auto
-  diff = auto
-
 [color "branch"]
   current = red reverse
   local = blue
@@ -54,6 +50,10 @@
   added = yellow
   changed = green
   untracked = cyan
+
+[color]
+  status = auto
+  diff = auto
 
 [pull]
   ff = only
