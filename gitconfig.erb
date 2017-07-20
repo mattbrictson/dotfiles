@@ -25,6 +25,7 @@
   ls = log --name-only --oneline
   modified-files = ls-files -m
   oops = reset --hard 'HEAD@{1}'
+  patch = !git --no-pager diff --no-color
   pr = !"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr"
   pushf = push --force-with-lease
   st = status -s -b
