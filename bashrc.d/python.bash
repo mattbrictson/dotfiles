@@ -12,7 +12,7 @@ then
     export VIRTUALENV_DISTRIBUTE=true
     export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
     export PIP_REQUIRE_VIRTUALENV=true
-    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python2
 
     wrapper_sh=/usr/local/bin/virtualenvwrapper.sh
     [[ -f $wrapper_sh ]] && . $wrapper_sh
