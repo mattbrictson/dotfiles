@@ -104,11 +104,11 @@ In addition, during installation (see below), you will be prompted for your full
 
 ## Installation
 
-Choose a place to store the dotfiles, like `~/Library/dotfiles`.
+Choose a place to store the dotfiles, like `~/Code/dotfiles`.
 
 ```
-git clone git://github.com/mattbrictson/dotfiles ~/Library/dotfiles
-cd ~/Library/dotfiles
+git clone git://github.com/mattbrictson/dotfiles ~/Code/dotfiles
+cd ~/Code/dotfiles
 ```
 
 Run one of the three installation options:

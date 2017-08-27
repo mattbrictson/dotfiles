@@ -3,4 +3,4 @@ if [ -d /System/Library/Frameworks/JavaVM.framework/Versions/1.6 ]; then
   export MAVEN_OPTS="-Xmx512m -XX:+HeapDumpOnOutOfMemoryError"
 fi
 
-alias gw='./gradlew --daemon'
+alias gw="./gradlew --daemon"
