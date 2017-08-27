@@ -4,14 +4,8 @@ bundler-audit
 bundler-patch
 bundleup
 chandler
-cheat
-gem-compare
-gemstash
 highline
-lunchy
 overcommit
 rake
 rerun
 rubocop
-scss_lint
-ultrahook

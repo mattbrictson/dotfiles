@@ -24,8 +24,7 @@ For consistency with dotfiles for other apps, I put my Sublime Text 3 configurat
 
 * Settings optimized for Rails development
 * Better auto-complete behavior
-* Key bindings for clipboard history
-* Improved key bindings for sidebar actions
+* Custom key bindings
 
 #### Packages
 
@@ -51,7 +50,6 @@ For consistency with dotfiles for other apps, I put my Sublime Text 3 configurat
 * SSH Config
 * SublimeLinter
 * SublimeLinter-annotations
-* SublimeLinter-contrib-scss-lint
 * SublimeLinter-json
 * SublimeLinter-rubocop
 * SublimeLinter-ruby
@@ -78,7 +76,6 @@ These scripts will be installed to `~/.bin` and added to your `$PATH`:
 * Allows bash command history to be navigated with up and down arrow keys.
 * Makes bash auto-completion case-insensitive.
 * Sets up necessary homebrew, rbenv, and python virtualenv shell variables.
-* Colorizes subversion output (for those legacy projects we all love!).
 * Specifies `less` as the default pager and Sublime Text (`subl`) as the default editor.
 * Sets better defaults for the `psql` command.
 
@@ -99,7 +96,7 @@ In addition, during installation (see below), you will be prompted for your full
 
 * Adds an `r` command that serves as a shortcut for running `bin/rake` or `bin/rails`. It's pretty smart, so `r s` will expand to `bin/rails server`, and `r db` will expand to `bin/rake db:console`. No more fat-finger mistakes of `rails` vs `rake`!
 * Disables gem documentation generation so that `gem install` runs much faster.
-* Sets PostgreSQL as the default database and disables Test::Unit by default (in favor of RSpec) when running `rails new`.
+* Uses my [rails-template](https://github.com/mattbrictson/rails-template) when running `rails new`.
 * Configures the `xray` gem to use Sublime Text.
 * Enables command history (use up and down arrows) in `irb`.
 * Defines a list of useful gems that are installed by default whenever a new version of ruby is installed via `rbenv install`.
