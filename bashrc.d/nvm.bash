@@ -1,6 +1,8 @@
-export NVM_DIR=~/.nvm
-source $(brew --prefix nvm)/nvm.sh
+if [ -f /usr/local/opt/nvm/nvm.sh ]; then
+  export NVM_DIR=~/.nvm
+  . /usr/local/opt/nvm/nvm.sh
 
-n() {
-  `npm bin`/$@
-}
+  n() {
+    `npm bin`/$@
+  }
+fi
