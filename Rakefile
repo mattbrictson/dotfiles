@@ -3,6 +3,7 @@
 require "erb"
 require "fileutils"
 require "rake"
+require "shellwords"
 
 IGNORE = %w(
   Rakefile README.md LICENSE
