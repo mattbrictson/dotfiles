@@ -5,6 +5,7 @@ bundler-patch
 bundleup
 chandler
 highline
+mailcatcher
 overcommit
 rake
 rerun
