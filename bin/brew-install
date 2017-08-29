@@ -21,6 +21,7 @@ formulae = %w[
   redis
   ruby-build
   tree
+  watchman
   wget
   yarn
 ].freeze
