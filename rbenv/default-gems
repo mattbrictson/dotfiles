@@ -7,6 +7,7 @@ chandler
 highline
 mailcatcher
 overcommit
+pivotal_git_scripts
 rake
 rerun
 rubocop
