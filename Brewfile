@@ -42,6 +42,8 @@ cask "qlmarkdown"
 cask "rocket"
 cask "screenhero"
 cask "spotify"
+cask "vagrant"
+cask "virtualbox"
 cask "zeplin"
 
 mas "1Password", id: 443987910
