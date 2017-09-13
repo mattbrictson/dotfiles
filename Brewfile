@@ -28,6 +28,8 @@ brew "wget"
 brew "yarn"
 
 cask "alfred"
+cask "atom"
+cask "balsamiq-mockups"
 cask "bartender"
 cask "cloak"
 cask "dash"
