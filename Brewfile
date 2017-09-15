@@ -63,3 +63,5 @@ mas "Tapes", id: 779457527
 mas "The Clock", id: 488764545
 mas "The Unarchiver", id: 425424353
 mas "Things3", id: 904280696
+mas "Trello", id: 1278508951
+mas "Xcode", id: 497799835
