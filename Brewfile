@@ -56,6 +56,7 @@ mas "Deliveries", id: 924726344
 mas "Fantastical 2", id: 975937182
 mas "Mail Call", id: 571770046
 mas "Moom", id: 419330170
+mas "MPlayerX", id: 421131143
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Slack", id: 803453959
