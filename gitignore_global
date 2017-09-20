@@ -43,3 +43,4 @@ __MACOSX
 *.sublime-project
 *.sublime-workspace
 .idea/
+.byebug_history

@@ -99,7 +99,8 @@
 		"*.class",
 		"*.psd",
 		"*.db",
-		"*.sublime-workspace"
+		"*.sublime-workspace",
+		".byebug_history"
 	],
 	"find_selected_text": true,
 	"fold_buttons": true,
