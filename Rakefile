@@ -148,7 +148,7 @@ class Dotfile
     end
   end
 
-  def link!
+  def link!(delete_first: false)
     ensure_target_directory
 
     if erb?
@@ -161,13 +161,13 @@ class Dotfile
       end
     else
       log(:blue, "linking #{self}")
+      FileUtils.rm_rf(target) if delete_first
       FileUtils.ln_s(File.absolute_path(file), target)
     end
   end
 
   def replace!
-    FileUtils.rm_rf(target)
-    link!
+    link!(:delete_first => true)
   end
 
   def ensure_target_directory
