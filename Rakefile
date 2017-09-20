@@ -2,6 +2,7 @@
 
 require "erb"
 require "fileutils"
+require "pstore"
 require "rake"
 require "shellwords"
 
@@ -175,5 +176,24 @@ class Dotfile
 
     log(:magenta, "mkdir #{File.dirname(name)}")
     FileUtils.mkdir_p(directory)
+  end
+
+  def prompt(label)
+    default = pstore.transaction { pstore[label] }
+    print default ? "#{label} (#{default}): " : "#{label}: "
+    $stdout.flush
+
+    entry = $stdin.gets.chomp
+    pstore.transaction { pstore[label] = entry }
+    return default if entry.empty? && default
+    entry
+  end
+
+  def pstore
+    @_pstore ||= PStore.new(pstore_path)
+  end
+
+  def pstore_path
+    File.join(__dir__, ".db")
   end
 end

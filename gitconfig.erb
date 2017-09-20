@@ -1,7 +1,7 @@
 [user]
-  name = <%= print("Your Full Name: "); STDOUT.flush; STDIN.gets.chomp %>
-  email = <%= print("Your Email: "); STDOUT.flush; STDIN.gets.chomp %>
-  signingkey = <%= print("GPG Key: "); STDOUT.flush; STDIN.gets.chomp %>
+  name = <%= prompt("Your Full Name") %>
+  email = <%= prompt("Your Email") %>
+  signingkey = <%= prompt("GPG Key") %>
 
 [core]
   excludesfile = ~/.gitignore_global
