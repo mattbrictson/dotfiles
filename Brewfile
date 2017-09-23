@@ -8,6 +8,7 @@ brew "colordiff"
 brew "diff-so-fancy"
 brew "exa"
 brew "git"
+brew "git-duet"
 brew "git-extras"
 brew "grep", args: ["with-default-names"]
 brew "heroku"

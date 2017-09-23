@@ -16,7 +16,11 @@
   ci = commit
   co = checkout
   cp = cherry-pick
+  dci = duet-commit
   di = diff
+  dmg = duet-merge
+  drb = rebase -i --exec 'git duet-commit --amend'
+  drv = duet-revert
   fixup = commit --amend -c HEAD
   hist = log --pretty=format:\"%C(yellow bold)%h%Creset %C(red)%ad%Creset | %s%C(green bold)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
   ignored-files = ls-files --others -i --exclude-standard
