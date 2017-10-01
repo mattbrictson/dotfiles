@@ -4,10 +4,12 @@
 require "highline"
 HighLine.colorize_strings
 
-def run(host, cmd)
+def run(host, cmd, exit_on_failure: true)
   ssh_cmd = ["ssh", config, with_user(host), cmd].compact.join(" ")
   puts ssh_cmd.yellow
-  system(ssh_cmd) || exit
+  system(ssh_cmd).tap do |success|
+    exit(1) if exit_on_failure && !success
+  end
 end
 
 def with_user(host)
@@ -19,6 +21,10 @@ def config
   "-F .ssh/config" if File.file?(".ssh/config")
 end
 
+def ubuntu16?(host)
+  !run(host, "type aptitude 2>/dev/null", :exit_on_failure => false)
+end
+
 completed = []
 
 ARGV.each_with_index do |host, i|
@@ -27,8 +33,17 @@ ARGV.each_with_index do |host, i|
     exit unless HighLine.new.agree("Proceed (y/n)? ".blue)
   end
 
-  run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q -y update"
-  run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q safe-upgrade"
+  if ubuntu16?(host)
+    run host, "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q -y update"
+    run host,
+        "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q "\
+        '-o DPkg::options::="--force-confdef" '\
+        '-o DPkg::options::="--force-confold" upgrade'
+  else
+    run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q -y update"
+    run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q safe-upgrade"
+  end
+
   run host, "sudo checkrestart -v"
 
   completed << host
