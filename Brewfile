@@ -17,6 +17,7 @@ brew "hub"
 brew "liquidprompt"
 brew "mas"
 brew "nvm"
+brew "phantomjs"
 brew "pgcli"
 brew "postgresql", restart_service: true
 brew "rbenv"
