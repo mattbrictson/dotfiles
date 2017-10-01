@@ -184,9 +184,10 @@ class Dotfile
     $stdout.flush
 
     entry = $stdin.gets.chomp
-    pstore.transaction { pstore[label] = entry }
-    return default if entry.empty? && default
-    entry
+    result = entry.empty? && default ? default : entry
+
+    pstore.transaction { pstore[label] = result }
+    result
   end
 
   def pstore
