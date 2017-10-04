@@ -25,5 +25,16 @@
     "keys": ["ctrl+enter"],
     "command": "shell_command",
     "args": { "panel": true, "root_dir": true }
+  },
+
+  // DashDoc package
+  {
+    "keys": ["ctrl+h"],
+    "command": "dash_doc"
+  },
+  {
+    "keys": ["ctrl+alt+h"],
+    "command": "dash_doc",
+    "args": { "flip_syntax_sensitive": true }
   }
 ]
