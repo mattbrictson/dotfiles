@@ -14,6 +14,7 @@ brew "grep", args: ["with-default-names"]
 brew "heroku"
 brew "httpie"
 brew "hub"
+brew "libsodium"
 brew "liquidprompt"
 brew "mas"
 brew "nvm"
