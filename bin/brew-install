@@ -3,7 +3,7 @@
 set -e
 
 brew update
-brew bundle --global
+brew bundle --global --no-upgrade
 brew cleanup --prune=30
 brew cask cleanup --outdated
 brew upgrade
