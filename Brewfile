@@ -14,10 +14,13 @@ brew "grep", args: ["with-default-names"]
 brew "heroku"
 brew "httpie"
 brew "hub"
+brew "libffi"
 brew "libsodium"
+brew "libyaml"
 brew "liquidprompt"
 brew "mas"
 brew "nvm"
+brew "openssl"
 brew "phantomjs"
 brew "pgcli"
 brew "postgresql", restart_service: true
