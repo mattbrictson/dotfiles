@@ -13,7 +13,8 @@
 		"usernames",
 		"admin",
 		"admins",
-		"online"
+		"online",
+		"serializer"
 	],
 	"always_prompt_for_file_reload": false,
 	"always_show_minimap_viewport": false,
