@@ -1,3 +1,4 @@
+tap "homebrew/dupes"
 tap "buo/cask-upgrade"
 tap "git-duet/tap"
 
@@ -10,7 +11,9 @@ brew "exa"
 brew "git"
 brew "git-duet"
 brew "git-extras"
+brew "graphviz"
 brew "grep", args: ["with-default-names"]
+brew "groff"
 brew "heroku"
 brew "httpie"
 brew "hub"
