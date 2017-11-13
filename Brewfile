@@ -27,6 +27,7 @@ brew "openssl"
 brew "phantomjs"
 brew "pgcli"
 brew "postgresql", restart_service: true
+brew "qt@5.5"
 brew "rbenv"
 brew "rbenv-default-gems"
 brew "redis", restart_service: true
