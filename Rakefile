@@ -14,7 +14,7 @@ IGNORE = %w(
 task :default => "install"
 
 desc "Install packages and dotfiles"
-task :install => ["install:packages", "install:dotfiles"]
+task :install => %w[install:dotfiles install:packages]
 
 namespace :install do
   desc "Install homebrew, etc. packages"
