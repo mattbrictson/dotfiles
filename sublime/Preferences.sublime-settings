@@ -14,7 +14,8 @@
 		"admin",
 		"admins",
 		"online",
-		"serializer"
+		"serializer",
+		"enqueueing"
 	],
 	"always_prompt_for_file_reload": false,
 	"always_show_minimap_viewport": false,
