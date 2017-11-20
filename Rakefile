@@ -16,9 +16,16 @@ task :default => "install"
 desc "Install packages and dotfiles"
 task :install => %w[install:dotfiles install:packages]
 
+desc "Warn if git origin is newer"
+task :check do
+  next unless system("git fetch origin")
+  next if `git diff HEAD origin/master`.strip.empty?
+  log(:yellow, "warning Working copy is out of date; consider `git pull`")
+end
+
 namespace :install do
   desc "Install homebrew, etc. packages"
-  task :packages do
+  task :packages => :check do
     %w(brew defaults).each do |type|
       log(:blue, "executing bin/#{type}-install …")
       system("bin/#{type}-install")
@@ -26,7 +33,7 @@ namespace :install do
   end
 
   desc "Install dotfiles into user’s home directory"
-  task :dotfiles => :link_sublime do
+  task :dotfiles => %i[link_sublime check] do
     always_replace = false
 
     Dotfile.each do |dotfile|
