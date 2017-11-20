@@ -14,6 +14,7 @@ alias l='exa'
 alias la='exa -la'
 alias ll='exa -l'
 alias ls='exa'
+alias n='npx --no-install'
 alias ras='bin/rails server -b 0.0.0.0 -p 3000'
 alias top='top -s 5 -o cpu -stats pid,user,command,cpu,rsize,vsize,threads,state'
 
