@@ -33,6 +33,7 @@ brew "rbenv"
 brew "rbenv-default-gems"
 brew "redis", restart_service: true
 brew "ruby-build"
+brew "tldr"
 brew "tree"
 brew "watchman"
 brew "wget"
