@@ -58,6 +58,7 @@ cask "sublime-text"
 cask "vagrant"
 cask "virtualbox"
 cask "zeplin"
+cask "zoomus"
 
 mas "1Password", id: 443987910
 mas "Amphetamine", id: 937984704
