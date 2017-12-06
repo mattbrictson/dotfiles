@@ -45,6 +45,7 @@
 		"SublimeLinter-contrib-eslint",
 		"SublimeLinter-contrib-sass-lint",
 		"SublimeLinter-contrib-scss-lint",
+		"SublimeLinter-contrib-stylelint",
 		"SublimeLinter-jscs",
 		"SublimeLinter-json",
 		"SublimeLinter-rubocop",
