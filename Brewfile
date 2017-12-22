@@ -41,6 +41,7 @@ brew "watchman"
 brew "wget"
 brew "yarn"
 
+cask "aerial"
 cask "alfred"
 cask "atom"
 cask "balsamiq-mockups"
