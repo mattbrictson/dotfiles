@@ -1,24 +1,24 @@
 #!/usr/bin/env ruby
 
 if ARGV.length > 1 || ARGV.grep(/(-h|--help)/).any?
-  puts <<-USAGE
-Sublime Text open as project
+  puts <<~USAGE
+    Sublime Text open as project
 
-Usage: sp [DIRECTORY]
+    Usage: sp [DIRECTORY]
 
-Opens DIRECTORY in Sublime Text as a project, creating a new .sublime-project
-descriptor if one does not already exist.
+    Opens DIRECTORY in Sublime Text as a project, creating a new .sublime-project
+    descriptor if one does not already exist.
 
-If a .sublime-project file already exists in DIRECTORY, uses that as the
-project configuration by passing it to `subl --project`.
+    If a .sublime-project file already exists in DIRECTORY, uses that as the
+    project configuration by passing it to `subl --project`.
 
-Otherwise creates a new, empty .sublime-project file in DIRECTORY and names it
-the same as DIRECTORY. For example, `sp my-project` will create the file
-my-project/my-project.sublime-project and open it in Sublime Text.
+    Otherwise creates a new, empty .sublime-project file in DIRECTORY and names it
+    the same as DIRECTORY. For example, `sp my-project` will create the file
+    my-project/my-project.sublime-project and open it in Sublime Text.
 
-If DIRECTORY is omitted, the working directory (i.e. ".") is used.
+    If DIRECTORY is omitted, the working directory (i.e. ".") is used.
 
-The `subl` command must be installed and available in the PATH.
+    The `subl` command must be installed and available in the PATH.
   USAGE
   exit
 end
