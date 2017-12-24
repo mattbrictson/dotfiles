@@ -32,15 +32,24 @@ unless File.exist?(project)
   if (glob = Dir[File.join(directory, "*.sublime-project")]).any?
     project = glob.first
   else
-    IO.write(project, <<-JSON)
-{
-  "folders":
-  [
-    {
-      "path": "."
-    }
-  ]
-}
+    IO.write(project, <<~JSON)
+      {
+        "folders": [
+          {
+            "path": ".",
+            "folder_exclude_patterns": []
+          }
+        ],
+        "settings": {
+        },
+        "SublimeLinter": {
+          "linters": {
+            "scss": {
+              "@disable": true
+            }
+          }
+        }
+      }
     JSON
   end
 end
