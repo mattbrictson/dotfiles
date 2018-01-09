@@ -11,3 +11,6 @@ if [ -d ~/.bin ]; then
   export PATH=~/.bin:$PATH
 fi
 
+if [ -x /usr/local/bin/direnv ]; then
+  eval "$(/usr/local/bin/direnv hook bash)"
+fi
