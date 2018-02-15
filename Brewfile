@@ -60,6 +60,7 @@ cask "qlmarkdown"
 cask "rocket"
 cask "safari-technology-preview"
 cask "sketch"
+cask "slack"
 cask "spotify"
 cask "sublime-text"
 cask "vagrant"
@@ -78,7 +79,6 @@ mas "Mail Call", id: 571770046
 mas "MPlayerX", id: 421131143
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Slack", id: 803453959
 mas "Tapes", id: 779457527
 mas "The Clock", id: 488764545
 mas "The Unarchiver", id: 425424353
