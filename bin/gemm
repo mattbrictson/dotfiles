@@ -63,12 +63,13 @@ ARGV.each do |gem|
   print "Does this look okay? [Yn]? "
   exit unless $stdin.gets =~ /^($|y)/i
 
-  in_group = "<root>"
+  in_group = nil
   lines = (IO.readlines("Gemfile") + [""]).each_cons(2).each_with_object([]) do |(curr, succ), out|
     out << curr
+    in_group = "<root>" if !in_group && succ =~ /^\s*(gem\s|group)/
     in_group = $1 if curr =~ /^group\s*\(?(.*)\)?\s+do\s*$/
-    match = succ =~ /^\s*gem/ && insert && insert < succ
-    bottom = out.length > 1 && succ.strip.empty? || succ =~ /^end/
+    match = succ =~ /^\s*gem\s/ && insert && insert < succ
+    bottom = out.length > 1 && succ.strip.empty? || (in_group != "<root>" && succ =~ /^end/)
 
     next unless in_group == group && insert && (match || bottom)
 
