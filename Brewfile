@@ -37,6 +37,7 @@ brew "rbenv-default-gems"
 brew "redis", restart_service: true
 brew "ruby-build"
 brew "tldr"
+brew "trash"
 brew "tree"
 brew "watchman"
 brew "wget"
