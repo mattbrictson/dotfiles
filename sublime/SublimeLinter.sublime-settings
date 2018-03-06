@@ -1,0 +1,29 @@
+{
+  "linters": {
+      "annotations": {
+          "disable": false,
+          "args": [],
+          "errors": [
+              "FIXME"
+          ],
+          "excludes": [],
+          "warnings": [
+              "NOTE",
+              "README",
+              "TODO",
+              "@todo",
+              "XXX",
+              "WIP"
+          ]
+      },
+      "jscs": {
+          "disable": true,
+      },
+      "sass": {
+          "disable": true,
+      },
+      "scss": {
+          "disable": true,
+      }
+  }
+}
