@@ -6,6 +6,9 @@ AllCops:
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
+Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
 Naming/VariableNumber:
   Enabled: false
 
