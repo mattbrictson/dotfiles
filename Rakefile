@@ -11,10 +11,10 @@ IGNORE = %w(
   dotfiles.sublime-project dotfiles.sublime-workspace
 )
 
-task :default => "install"
+task default: "install"
 
 desc "Install packages and dotfiles"
-task :install => %w[install:dotfiles install:packages]
+task install: %w[install:dotfiles install:packages]
 
 desc "Warn if git origin is newer"
 task :check do
@@ -25,7 +25,7 @@ end
 
 namespace :install do
   desc "Install homebrew, etc. packages"
-  task :packages => :check do
+  task packages: :check do
     %w(brew defaults).each do |type|
       log(:blue, "executing bin/#{type}-install …")
       system("bin/#{type}-install")
@@ -33,7 +33,7 @@ namespace :install do
   end
 
   desc "Install dotfiles into user’s home directory"
-  task :dotfiles => %i[link_sublime check] do
+  task dotfiles: %i[link_sublime check] do
     always_replace = false
 
     Dotfile.each do |dotfile|
@@ -174,7 +174,7 @@ class Dotfile
   end
 
   def replace!
-    link!(:delete_first => true)
+    link!(delete_first: true)
   end
 
   def ensure_target_directory

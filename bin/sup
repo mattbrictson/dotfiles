@@ -22,7 +22,7 @@ def config
 end
 
 def ubuntu16?(host)
-  !run(host, "type aptitude 2>/dev/null", :exit_on_failure => false)
+  !run(host, "type aptitude 2>/dev/null", exit_on_failure: false)
 end
 
 completed = []
