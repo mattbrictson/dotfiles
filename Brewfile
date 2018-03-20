@@ -81,6 +81,7 @@ mas "Mail Call", id: 571770046
 mas "MPlayerX", id: 421131143
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Pixelmator", id: 407963104
 mas "Tapes", id: 779457527
 mas "The Clock", id: 488764545
 mas "The Unarchiver", id: 425424353
