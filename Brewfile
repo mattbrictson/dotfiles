@@ -67,6 +67,7 @@ cask "spotify"
 cask "sublime-text"
 cask "vagrant"
 cask "virtualbox"
+cask "visual-studio-code"
 cask "zeplin"
 cask "zoomus"
 
