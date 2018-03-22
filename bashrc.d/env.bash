@@ -2,6 +2,7 @@ export CLICOLOR=1
 export LSCOLORS=Dxxxxxxxxxxxxxxxxxxxxx
 export PAGER=/usr/bin/less
 export LESS=-RFX
+export GIT_DUET_CO_AUTHORED_BY=1
 
 if [ $Apple_PubSub_Socket_Render ]; then
   export EDITOR="subl -w"
