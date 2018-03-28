@@ -1,5 +1,5 @@
 # You will need to:
-#   brew install python
+#   brew install python2
 #   syspip install --upgrade virtualenv
 #   syspip install --upgrade virtualenvwrapper
 #   mkdir ~/.virtualenvs

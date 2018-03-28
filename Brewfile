@@ -32,6 +32,7 @@ brew "openssl"
 brew "phantomjs"
 brew "pgcli"
 brew "postgresql", restart_service: true
+brew "python2"
 brew "qt@5.5"
 brew "rbenv"
 brew "rbenv-default-gems"
