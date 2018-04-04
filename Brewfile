@@ -4,6 +4,7 @@ tap "git-duet/tap"
 
 brew "amazon-ecs-cli"
 brew "awscli"
+brew "awslogs"
 brew "bash"
 brew "bash-completion"
 brew "chromedriver"
