@@ -3,6 +3,7 @@ tap "buo/cask-upgrade"
 tap "git-duet/tap"
 
 brew "amazon-ecs-cli"
+brew "autojump"
 brew "awscli"
 brew "awslogs"
 brew "bash"
