@@ -44,3 +44,4 @@ __MACOSX
 *.sublime-workspace
 .idea/
 .byebug_history
+.vscode/
