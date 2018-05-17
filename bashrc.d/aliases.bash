@@ -1,4 +1,5 @@
 alias b='bundle exec'
+alias bbc='bucket compare'
 alias bup='bundleup'
 # Change to the root level directory the current git repository
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
