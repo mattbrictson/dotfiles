@@ -40,11 +40,7 @@ end
 
 def pull_url
   source = [repository, current_sha, current_branch].join(":")
-  dest = [repository, "development"].join("::")
-
-  "#{show_url}/pull-request/new?" \
-  "source=#{CGI.escape(source)}&" \
-  "dest=#{CGI.escape(dest)}"
+  "#{show_url}/pull-request/new?source=#{CGI.escape(source)}"
 end
 
 def compare_url
