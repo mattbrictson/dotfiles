@@ -33,6 +33,7 @@ brew "mas"
 brew "nvm"
 brew "openssl"
 brew "phantomjs"
+brew "plantuml"
 brew "pgcli"
 brew "postgresql", restart_service: true
 brew "python2"
