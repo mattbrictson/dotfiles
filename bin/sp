@@ -43,14 +43,8 @@ unless File.exist?(project)
         "settings": {
           "js_prettier": {
             "auto_format_on_save": true
-          }
-        },
-        "SublimeLinter": {
-          "linters": {
-            "scss": {
-              "@disable": true
-            }
-          }
+          },
+          "SublimeLinter.linters.scss.@disable": true
         }
       }
     JSON
