@@ -7,7 +7,7 @@ Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 
 Naming/MemoizedInstanceVariableName:
-  Enabled: false
+  EnforcedStyleForLeadingUnderscores: optional
 
 Naming/VariableNumber:
   Enabled: false
