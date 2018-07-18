@@ -11,6 +11,8 @@ export default function ${1:${TM_FILENAME/([A-Za-z0-9]+)(?:\.jsx?)?/$1/g}}({ cla
 $1.propTypes = {
   className: PropTypes.string
 };
+
+$1.defaultProps = {};
 ]]></content>
   <tabTrigger>react</tabTrigger>
   <scope>source.js</scope>
