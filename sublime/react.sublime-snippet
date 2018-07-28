@@ -5,7 +5,11 @@ import PropTypes from "prop-types";
 import cx from "classnames";
 
 export default function ${1:${TM_FILENAME/([A-Za-z0-9]+)(?:\.jsx?)?/$1/g}}({ className }) {
-  return <div className={cx("$1", className)}>${0:TODO}</div>;
+  return (
+    <div className={cx("$1", className)}>
+      ${0:TODO}
+    </div>
+  );
 }
 
 $1.propTypes = {
