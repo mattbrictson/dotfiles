@@ -1,0 +1,20 @@
+<snippet>
+  <content><![CDATA[
+import { bindActionCreators } from "redux";
+import { connect } from "react-redux";
+
+const mapStateToProps = state => ({
+  $1
+});
+
+const mapDispatchToProps = dispatch =>
+  bindActionCreators({ $2 }, dispatch);
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(${3:${TM_FILENAME/([A-Za-z0-9]+)(?:\.jsx?)?/$1/g}});
+]]></content>
+  <tabTrigger>connect</tabTrigger>
+  <scope>source.js</scope>
+</snippet>
