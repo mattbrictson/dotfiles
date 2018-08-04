@@ -40,7 +40,7 @@ These scripts will be installed to `~/.bin` and added to your `$PATH`:
 * Allows bash command history to be navigated with up and down arrow keys.
 * Makes bash auto-completion case-insensitive.
 * Sets up necessary homebrew, rbenv, and python virtualenv shell variables.
-* Specifies `less` as the default pager and Sublime Text (`subl`) as the default editor.
+* Specifies `less` as the default pager.
 * Sets better defaults for the `psql` command.
 
 ### Git configuration
