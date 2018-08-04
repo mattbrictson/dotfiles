@@ -29,6 +29,7 @@ brew "openssl"
 brew "packer"
 brew "pgcli"
 brew "postgresql", restart_service: true
+brew "python"
 brew "sonarqube", restart_service: true
 brew "terraform"
 brew "terraform-docs"
