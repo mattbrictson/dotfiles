@@ -1,4 +1,2 @@
-if [ -f /usr/local/opt/nvm/nvm.sh ]; then
-  export NVM_DIR=~/.nvm
-  . /usr/local/opt/nvm/nvm.sh
-fi
+export NVM_DIR=~/.nvm
+. $(brew --prefix nvm)/nvm.sh
