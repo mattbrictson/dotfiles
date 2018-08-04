@@ -10,3 +10,6 @@ if [ $Apple_PubSub_Socket_Render ]; then
 else
   export EDITOR=vi
 fi
+export PATH="/usr/local/opt/curl/bin:$PATH"
+export M2_REPO="~/.m2/repository"
+export GROOVY_HOME=/usr/local/opt/groovy/libexec

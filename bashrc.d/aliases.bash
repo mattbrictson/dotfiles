@@ -1,14 +1,23 @@
 alias b='bundle exec'
+alias br='for k in `git branch | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort'
 alias bup='bundleup'
 # Change to the root level directory the current git repository
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
 alias diff=colordiff
 alias dbundle="$HOME/Code/bundler/bin/bundle"
+alias ekstools='docker run -it -v ~/.aws:/root/.aws -v ~/ekstools:/home/ekstools lirio-docker.jfrog.io/eks-tools-team'
 alias gco='git co'
+alias gd='git diff'
+alias gmas='git fetch -p && git checkout master && git pull'
+alias geclipse='./gradlew cleanEclipse eclipse'
+alias gl='git log --numstat --oneline'
+alias gp='git push'
 alias gs='git st'
 alias get='git'
 alias gh='hub browse'
 alias hl='heroku local'
+alias gh='git rev-parse --verify --short HEAD'
+alias gw="./gradlew --daemon"
 alias httpserve='ruby -run -e httpd -- --port=8888 $1'
 alias ls='ls -hFG'
 alias l='exa'
@@ -18,7 +27,37 @@ alias ls='exa'
 alias n='npx --no-install'
 alias ras='bin/rails server -b 0.0.0.0 -p 3000'
 alias top='top -s 5 -o cpu -stats pid,user,command,cpu,rsize,vsize,threads,state'
+alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias o='open'
+alias c='clear'
+alias trim="tr -s \" \" | sed 's/^[ ]//g'"
+alias total-files='ls -1 | wc -l | trim'
+alias mark='open -a "Marked 2"'
+alias usage='df -h'
+alias space='du -sh ./*'
+alias wt='title ${PWD##*/}'
+
+# Function for naming terminal windows.
+function title {
+    echo -ne "\033]0;"$*"\007"
+}
 
 function mcdir() {
   mkdir -p $1 && cd $1
+}
+
+# Function to show whole file name with path
+function trail {
+  echo "$(pwd)/$1"
+}
+
+# Function to show just folder names
+function dirs {
+  for file in `ls`; do
+    if [  -d $file ]; then
+      echo $file
+    fi
+  done
 }
