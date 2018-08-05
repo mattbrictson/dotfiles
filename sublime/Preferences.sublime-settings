@@ -134,6 +134,12 @@
 	[
 		"Vintage"
 	],
+	"ignored_words":
+	[
+		"classnames",
+		"css",
+		"scss"
+	],
 	"indent_guide_options":
 	[
 		"draw_normal"
