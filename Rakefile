@@ -184,3 +184,4 @@ class Dotfile
     File.join(__dir__, ".db")
   end
 end
+end
