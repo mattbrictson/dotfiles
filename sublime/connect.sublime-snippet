@@ -1,14 +1,12 @@
 <snippet>
   <content><![CDATA[
-import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
 
 const mapStateToProps = state => ({
   $1
 });
 
-const mapDispatchToProps = dispatch =>
-  bindActionCreators({ $2 }, dispatch);
+const mapDispatchToProps = { $2 };
 
 export default connect(
   mapStateToProps,
