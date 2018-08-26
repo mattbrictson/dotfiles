@@ -5,6 +5,5 @@ set -e
 brew update
 brew bundle --global --no-upgrade
 brew cleanup --prune=30
-brew cask cleanup --outdated
 brew upgrade
 brew cu --force --yes --no-brew-update
