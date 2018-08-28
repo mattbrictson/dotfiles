@@ -41,4 +41,10 @@ function r() {
   fi
 }
 
-alias rg="~/.bin/rails_generate_and_open"
+# Search all bundler dependencies for a given pattern
+# Courtesy of https://everydayrails.com/2018/06/11/bundler-shortcuts.html
+function bs() {
+  rg "$1" $(bundle show --paths)
+}
+
+alias rgen="~/.bin/rails_generate_and_open"

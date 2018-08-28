@@ -41,6 +41,7 @@ brew "qt@5.5"
 brew "rbenv"
 brew "rbenv-default-gems"
 brew "redis", restart_service: true
+brew "ripgrep"
 brew "ruby-build"
 brew "tldr"
 brew "trash"
