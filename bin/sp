@@ -37,7 +37,8 @@ unless File.exist?(project)
         "folders": [
           {
             "path": ".",
-            "folder_exclude_patterns": []
+            "folder_exclude_patterns": ["build"],
+            "file_exclude_patterns": ["Gemfile.lock", "yarn.lock"]
           }
         ],
         "settings": {
