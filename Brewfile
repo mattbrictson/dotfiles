@@ -1,5 +1,4 @@
 tap "homebrew/dupes"
-tap "buo/cask-upgrade"
 tap "git-duet/tap"
 
 brew "amazon-ecs-cli"

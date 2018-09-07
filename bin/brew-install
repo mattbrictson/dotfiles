@@ -6,4 +6,4 @@ brew update
 brew bundle --global --no-upgrade
 brew cleanup --prune=30
 brew upgrade
-brew cu --force --yes --no-brew-update
+brew cask upgrade
