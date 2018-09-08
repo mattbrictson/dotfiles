@@ -1,6 +1,3 @@
-# Start with a fresh PATH (in case we are running as a sub-shell)
-PATH=$(getconf PATH)
-
 # Custom bashrc sources are stored in ~/.bashrc.d
 if [[ -d $HOME/.bashrc.d ]] ; then
   for config in "$HOME"/.bashrc.d/*.bash ; do
