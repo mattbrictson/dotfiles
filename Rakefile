@@ -163,6 +163,7 @@ class Dotfile
       contents = ERB.new(File.read(file)).result(binding)
 
       log(:blue, "writing #{self}")
+      FileUtils.rm_rf(target) if delete_first
       File.open(target, "w") do |out|
         out << contents
       end
