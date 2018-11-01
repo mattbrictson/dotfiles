@@ -125,6 +125,9 @@
 	"font_face": "Menlo",
 	"font_options":
 	[
+		"no_liga",
+		"no_clig",
+		"no_calt"
 	],
 	"font_size": 14,
 	"gpu_window_buffer": "auto",
