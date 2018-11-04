@@ -59,6 +59,7 @@ cask "dash"
 cask "dropbox"
 cask "firefox"
 cask "google-chrome"
+cask "iina"
 cask "insomnia"
 cask "java"
 cask "kap"
@@ -88,7 +89,6 @@ mas "Deliveries", id: 924726344
 mas "Divvy - Window Manager", id: 413857545
 mas "Fantastical 2", id: 975937182
 mas "Mail Call", id: 571770046
-mas "MPlayerX", id: 421131143
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
