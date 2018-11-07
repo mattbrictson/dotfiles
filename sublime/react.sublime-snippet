@@ -4,19 +4,19 @@ import React from "react";
 import PropTypes from "prop-types";
 import cx from "classnames";
 
-export default function ${1:${TM_FILENAME/([A-Za-z0-9]+)(?:\.jsx?)?/$1/g}}({ className }) {
-  return (
-    <div className={cx("$1", className)}>
-      ${0:TODO}
-    </div>
-  );
-}
+const ${1:${TM_FILENAME/([A-Za-z0-9]+)(?:\.jsx?)?/$1/g}} = ({ className }) => (
+  <div className={cx("$1", className)}>
+    ${0:TODO}
+  </div>
+);
 
 $1.propTypes = {
   className: PropTypes.string
 };
 
 $1.defaultProps = {};
+
+export default $1;
 ]]></content>
   <tabTrigger>react</tabTrigger>
   <scope>source.js</scope>
