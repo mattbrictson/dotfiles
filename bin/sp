@@ -45,7 +45,8 @@ unless File.exist?(project)
           "js_prettier": {
             "auto_format_on_save": true
           },
-          "SublimeLinter.linters.scss.@disable": true
+          "SublimeLinter.linters.scss.@disable": true,
+          "SublimeLinter.linters.rubocop.use_bundle_exec": true
         }
       }
     JSON
