@@ -1,7 +1,3 @@
-if [ -x /usr/local/bin/rbenv ]; then
-  eval "$(rbenv init -)"
-fi
-
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 export PATH=".git/safe/../../bin:$PATH"
 

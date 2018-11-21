@@ -12,7 +12,6 @@ Before using these dotfiles there are a few things you'll need to install manual
 
 1. Your Mac needs git and Apple’s command-line developer tools.
 2. Homebrew.
-3. Rbenv.
 
 My blog post here has a walkthrough: https://mattbrictson.com/rails-osx-setup-guide
 
@@ -64,7 +63,6 @@ These scripts will be installed to `~/.bin` and added to your `$PATH`:
 * `defaults-install` uses `defaults write` on OS X to change system default behavior to my liking: e.g. don't include drop-shadows on screenshots.
 * `git-pluck` adds the `pluck` command to git, which is a trick for cherry-picking a commit from another repository into the current one: `git pluck ../other-repo SHA`.
 * `git-reap` adds the `reap` command to git, which deletes local and remote branches that have already been merged with the master branch and thus are no longer needed.
-* `ruby-install` is a convenient wrapper around `rbenv install` that does some easy-to-forget housekeeping before and after installation. Usage: `ruby-install 2.1.2`.
 * `sup` uses SSH to update packages on one or more Ubuntu servers (assuming you have root access to them). In other words, `sup SERVER1 SERVER2` will SSH as root into both servers and run the appropriate `aptitude` commands to safely update all packages. It will also report whether any daemons need to be restarted for the updates to take effect.
 
 ### Shell enhancements (bash)
@@ -75,7 +73,7 @@ These scripts will be installed to `~/.bin` and added to your `$PATH`:
 * Improves default `top` settings.
 * Allows bash command history to be navigated with up and down arrow keys.
 * Makes bash auto-completion case-insensitive.
-* Sets up necessary homebrew, rbenv, and python virtualenv shell variables.
+* Sets up necessary homebrew, asdf, and python virtualenv shell variables.
 * Specifies `less` as the default pager and Sublime Text (`subl`) as the default editor.
 * Sets better defaults for the `psql` command.
 
@@ -99,7 +97,7 @@ In addition, during installation (see below), you will be prompted for your full
 * Uses my [rails-template](https://github.com/mattbrictson/rails-template) when running `rails new`.
 * Configures the `xray` gem to use Sublime Text.
 * Enables command history (use up and down arrows) in `irb`.
-* Defines a list of useful gems that are installed by default whenever a new version of ruby is installed via `rbenv install`.
+* Defines a list of useful gems that are installed by default whenever a new version of ruby is installed via `asdf install`.
 
 
 ## Installation
