@@ -1,4 +1,10 @@
 {
+	"Bash":
+	[
+		"bash",
+		"sh",
+		"zsh"
+	],
 	"HTML (Rails)":
 	[
 		"html.erb"
