@@ -45,3 +45,4 @@ __MACOSX
 .idea/
 .byebug_history
 .vscode/
+.envrc
