@@ -1,5 +1,5 @@
-export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 export PATH=".git/safe/../../bin:$PATH"
+export PATH="$HOME/Library/Qt5.5.0/5.5/clang_64/bin:$PATH"
 
 # OS X has its own way of setting LANG, but only at the console.
 # By declaring here in .bashrc, daemons like Pow will also pick it up.
