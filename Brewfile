@@ -1,5 +1,6 @@
 tap "homebrew/dupes"
 tap "git-duet/tap"
+tap "phrase/brewed"
 
 brew "amazon-ecs-cli"
 brew "asdf"
@@ -36,6 +37,7 @@ brew "liquidprompt"
 brew "mas"
 brew "mysql@5.7"
 brew "openssl"
+brew "phraseapp"
 brew "plantuml"
 brew "pgcli"
 brew "postgresql", restart_service: true
