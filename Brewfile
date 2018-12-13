@@ -20,6 +20,7 @@ brew "fd"
 brew "git"
 brew "git-duet"
 brew "git-extras"
+brew "git-lfs"
 brew "graphviz"
 brew "grep", args: ["with-default-names"]
 brew "groff"
