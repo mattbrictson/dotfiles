@@ -178,7 +178,7 @@
 	[
 		80
 	],
-	"save_on_focus_lost": false,
+	"save_on_focus_lost": true,
 	"scroll_past_end": false,
 	"scroll_speed": 1.0,
 	"shift_tab_unindent": false,
