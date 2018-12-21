@@ -31,6 +31,7 @@
   oops = reset --hard 'HEAD@{1}'
   patch = !git --no-pager diff --no-color
   pr = !"pr() { git fetch origin pull/$1/head:pr-$1; git checkout pr-$1; }; pr"
+  prune-branches = !git remote prune origin && git branch -vv | grep ': gone]' | awk '{print $1}' | xargs git branch -d
   pushf = push --force-with-lease
   ru = reset --hard '@{u}'
   st = status -s -b
