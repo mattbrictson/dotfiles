@@ -7,5 +7,5 @@ if [ -f /usr/local/opt/asdf/asdf.sh ]; then
   [ -d $HOME/.asdf/plugins/nodejs ] || asdf plugin-add nodejs
   [ -d $HOME/.asdf/plugins/ruby ] || asdf plugin-add ruby
 
-  source ~/.asdf/plugins/java/bin/asdf-java-wrapper
+  source ~/.asdf/plugins/java/asdf-java-wrapper.bash
 fi
