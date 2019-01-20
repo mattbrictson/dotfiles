@@ -43,6 +43,7 @@ brew "plantuml"
 brew "pgcli"
 brew "postgresql", restart_service: true
 brew "python2"
+brew "readline"
 brew "redis", restart_service: true
 brew "ripgrep"
 brew "ruby-build"
