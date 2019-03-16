@@ -58,7 +58,7 @@ brew "wget"
 
 cask "aerial"
 cask "alfred"
-cask "android-studio"
+cask "android-studio-preview"
 cask "balsamiq-mockups"
 cask "bartender"
 cask "dash"
