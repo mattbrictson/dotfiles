@@ -1,4 +1,3 @@
-tap "homebrew/dupes"
 tap "git-duet/tap"
 tap "phrase/brewed"
 
