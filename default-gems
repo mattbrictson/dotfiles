@@ -8,3 +8,4 @@ overcommit
 rake
 rerun
 rubocop
+rubocop-performance
