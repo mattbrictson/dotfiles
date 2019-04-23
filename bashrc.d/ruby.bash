@@ -1,3 +1,7 @@
+if [ -x /usr/local/bin/rbenv ]; then
+  eval "$(rbenv init -)"
+fi
+
 export PATH=".git/safe/../../bin:$PATH"
 export PATH="$HOME/Library/Qt5.5.0/5.5/clang_64/bin:$PATH"
 
