@@ -3,7 +3,6 @@ tap "nodenv/nodenv"
 tap "phrase/brewed"
 
 brew "amazon-ecs-cli"
-brew "asdf"
 brew "autojump"
 brew "awscli"
 brew "awslogs"
