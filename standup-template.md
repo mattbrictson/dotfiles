@@ -1,12 +1,15 @@
 *Since Last:*
-* Hackathon on eligibility and compatibility with others (Thank you!)
-* Continued working on API Gateway. Trying to make Netty access log work.
-* Created WIP PR for API Gateway.
-* Work on user stories
+* Much needed vacation. Now ready to finish strong w/o burning out.
+* Trying to catch up on things I missed last week
+* Reviewing PRs for Caroline and Andrew 
 
 *Before Next:*
-* More API Gateway work (Decode JWT at service)
-* Talk through some development planning with Andrew
-* Wrap up eligibility POC from Hackathon and check into Git repo at ADO.
+
+* Get back to Content Synch with Excel.
+ - Make up some additional valid content
+ - Follow up on TODOs.
+ - Merge, deploy, test in DEV
+* Keep up with reviewing pull requests.
+* Meet with Caroline & Andrew for weekly planning
 
 *No blockers*

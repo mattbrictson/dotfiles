@@ -11,3 +11,5 @@ if [ -d ~/.bin ]; then
   export PATH=~/.bin:$PATH
 fi
 
+
+complete -C /usr/local/bin/vault vault
