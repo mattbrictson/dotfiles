@@ -106,6 +106,7 @@ mas "Mail Call", id: 571770046
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
+mas "Reeder", id: 1449412482
 mas "Tapes", id: 779457527
 mas "The Clock", id: 488764545
 mas "The Unarchiver", id: 425424353
