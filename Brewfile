@@ -99,7 +99,7 @@ mas "1Password", id: 443987910
 mas "Amphetamine", id: 937984704
 mas "Aware", id: 1082170746
 mas "BreakTime", id: 427475982
-mas "Bumper", id: 1166066070
+mas "Bumpr", id: 1166066070
 mas "Deliveries", id: 924726344
 mas "Divvy - Window Manager", id: 413857545
 mas "Fantastical 2", id: 975937182
