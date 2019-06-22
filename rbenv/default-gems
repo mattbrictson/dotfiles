@@ -10,4 +10,5 @@ rake
 rerun
 rubocop
 rubocop-performance
+tomo
 whatthegem

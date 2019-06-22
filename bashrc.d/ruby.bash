@@ -49,3 +49,5 @@ function bs() {
 }
 
 alias rgen="~/.bin/rails_generate_and_open"
+
+eval "$(tomo completion-script)"
