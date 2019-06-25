@@ -106,6 +106,7 @@ mas "Deliveries", id: 924726344
 mas "Divvy - Window Manager", id: 413857545
 mas "Fantastical 2", id: 975937182
 mas "Mail Call", id: 571770046
+mas "Marked 2", id: 890031187
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
