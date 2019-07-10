@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+set -xe
 
 brew update
 brew bundle --global --no-upgrade
