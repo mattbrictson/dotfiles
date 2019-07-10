@@ -1,4 +1,3 @@
-tap "adoptopenjdk/openjdk"
 tap "git-duet/tap"
 tap "homebrew/cask-versions"
 tap "nodenv/nodenv"
