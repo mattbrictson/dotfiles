@@ -14,7 +14,7 @@ IGNORE = %w(
 task default: "install"
 
 desc "Install packages and dotfiles"
-task install: %w[install:dotfiles install:packages]
+task install: %w[install:dotfiles install:completions install:packages]
 
 desc "Warn if git origin is newer"
 task :check do
@@ -52,6 +52,17 @@ namespace :install do
           log(:gray, "skipping #{dotfile}")
         end
       end
+    end
+  end
+
+  desc "Install bash completion scripts into /usr/local"
+  task :completions do
+    Dir[File.expand_path("completions/*", __dir__)].each do |script|
+      basename = File.basename(script)
+      target = "/usr/local/etc/bash_completion.d/#{basename}"
+      log(:blue, "linking completions/#{basename}")
+      FileUtils.rm_rf(target)
+      FileUtils.ln_s(script, target)
     end
   end
 
