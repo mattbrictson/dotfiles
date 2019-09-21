@@ -57,6 +57,7 @@ namespace :install do
 
   desc "Install bash completion scripts into /usr/local"
   task :completions do
+    FileUtils.mkdir_p "/usr/local/etc/bash_completion.d"
     Dir[File.expand_path("completions/*", __dir__)].each do |script|
       basename = File.basename(script)
       target = "/usr/local/etc/bash_completion.d/#{basename}"
