@@ -3,6 +3,7 @@ bundler
 bundler-audit
 bundleup
 chandler
+circleci-cli
 highline
 mailcatcher
 overcommit
