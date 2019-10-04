@@ -6,10 +6,14 @@ require "pstore"
 require "rake"
 require "shellwords"
 
-IGNORE = %w(
-  Rakefile README.md LICENSE
-  dotfiles.sublime-project dotfiles.sublime-workspace
-)
+IGNORE = %w[
+  dotfiles.sublime-project
+  dotfiles.sublime-workspace
+  extras
+  LICENSE
+  Rakefile
+  README.md
+].freeze
 
 task default: "install"
 
