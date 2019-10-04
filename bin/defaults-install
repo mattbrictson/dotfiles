@@ -1,5 +1,11 @@
 #!/bin/bash
 
+defaults write com.apple.dock autohide -bool true
+defaults write com.apple.dock launchanim -bool false
+defaults write com.apple.dock orientation right
+defaults write com.apple.dock show-recents -bool false
+defaults write com.apple.dock tilesize -int 64
 defaults write com.apple.screencapture location ~/Downloads/
 defaults write com.apple.screencapture disable-shadow -bool true
+killall Dock
 killall SystemUIServer
