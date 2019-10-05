@@ -1,4 +1,5 @@
 tap "git-duet/tap"
+tap "heroku/brew"
 tap "homebrew/cask-versions"
 tap "nodenv/nodenv"
 tap "phrase/brewed"
