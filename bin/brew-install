@@ -4,6 +4,7 @@ set -xe
 
 brew update
 brew bundle --global --no-upgrade
+brew untap AdoptOpenJDK/openjdk
 brew cleanup --prune=30
 brew upgrade
 brew cask upgrade

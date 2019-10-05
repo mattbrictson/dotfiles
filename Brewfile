@@ -1,8 +1,12 @@
+tap "AdoptOpenJDK/openjdk"
 tap "git-duet/tap"
 tap "heroku/brew"
 tap "homebrew/cask-versions"
 tap "nodenv/nodenv"
 tap "phrase/brewed"
+
+# Java is required for some formulae so install it first.
+cask "adoptopenjdk11"
 
 brew "amazon-ecs-cli"
 brew "autojump"
@@ -63,8 +67,6 @@ brew "vault"
 brew "watchman"
 brew "wget"
 
-cask "adoptopenjdk8"
-cask "adoptopenjdk11"
 cask "aerial"
 cask "alfred"
 cask "android-studio-preview"
