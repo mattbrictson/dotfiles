@@ -10,6 +10,7 @@ overcommit
 rake
 rerun
 rubocop
+rubocop-minitest
 rubocop-performance
 tomo
 whatthegem
