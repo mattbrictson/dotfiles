@@ -9,6 +9,7 @@ require "shellwords"
 IGNORE = %w[
   dotfiles.sublime-project
   dotfiles.sublime-workspace
+  completions
   extras
   LICENSE
   Rakefile
@@ -130,15 +131,12 @@ def ask(color, question)
 end
 
 class Dotfile
-  def self.each(directory=nil, &block)
-    Dir[File.join([directory, "*"].compact)].each do |file|
-      next if IGNORE.include?(file)
+  def self.each
+    `git ls-files -z`.split("\x0").each do |file|
+      next if file =~ %r{^\.|/\.}
+      next if IGNORE.include?(file.split("/").first)
 
-      if File.directory?(file)
-        each(file, &block)
-      else
-        yield(new(file))
-      end
+      yield(new(file))
     end
   end
 
