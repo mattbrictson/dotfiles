@@ -3,7 +3,6 @@ tap "git-duet/tap"
 tap "heroku/brew"
 tap "homebrew/cask-versions"
 tap "nodenv/nodenv"
-tap "phrase/brewed"
 
 # Java is required for some formulae so install it first.
 cask "adoptopenjdk11"
@@ -50,7 +49,6 @@ brew "mysql@5.6"
 brew "nodenv"
 brew "nodenv-default-packages"
 brew "openssl"
-brew "phraseapp"
 brew "plantuml"
 brew "pgcli"
 brew "postgresql", restart_service: true
