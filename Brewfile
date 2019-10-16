@@ -103,6 +103,7 @@ mas "Bumpr", id: 1166066070
 mas "Deliveries", id: 924726344
 mas "Divvy - Window Manager", id: 413857545
 mas "Fantastical 2", id: 975937182
+mas "Keynote", id: 409183694
 mas "Mail Call", id: 571770046
 mas "Marked 2", id: 890031187
 mas "Numbers", id: 409203825
