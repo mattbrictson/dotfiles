@@ -92,7 +92,6 @@ cask "sloth"
 cask "spotify"
 cask "sublime-text"
 cask "vagrant"
-cask "virtualbox"
 cask "zeplin"
 cask "zoomus"
 
