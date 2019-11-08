@@ -39,7 +39,7 @@ alias cdsam='cd ~/source/lirio-ml-sam'
 alias trim="tr -s \" \" | sed 's/^[ ]//g'"
 alias total-files='ls -1 | wc -l | trim'
 alias usage='df -h'
-alias space='du -sh ./*'
+alias space='du -Lsh ./*'
 alias wt='title ${PWD##*/}'
 
 # Function for naming terminal windows.
