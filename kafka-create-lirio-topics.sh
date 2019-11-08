@@ -38,6 +38,6 @@ kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partit
 kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic lirio-ci-ctas
 kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic lirio-ci-benefits
 kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic lirio-ci-organization-data
-
+kafka-topics --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic lirio-content-libraries
 kafka-topics --list --zookeeper localhost:2181
  
