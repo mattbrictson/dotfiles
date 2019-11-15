@@ -1,15 +1,17 @@
-*Since Last:*
-* Much needed vacation. Now ready to finish strong w/o burning out.
-* Trying to catch up on things I missed last week
-* Reviewing PRs for Caroline and Andrew 
+*Since Last:* 
+* Clarified compatibility implementation by explaining stuff and improving wiki documentation.
+* Wrapped up content bugs around compatibility and spaces in content ids.
+* Split an ML 2.0 content story as described in live standup yesterday.
+* Finished scaffold of GET compatibility map. PR ready for review.
+* PR for lirio-commons additions supporting returning paged sorted map of UUID keys.
+* Helped Cole with his development story.
+* Attended product factory 2020 meeting
+* Reviewed PRs
 
 *Before Next:*
-
-* Get back to Content Synch with Excel.
- - Make up some additional valid content
- - Follow up on TODOs.
- - Merge, deploy, test in DEV
-* Keep up with reviewing pull requests.
-* Meet with Caroline & Andrew for weekly planning
+* Start on the new content compatibility worker
+* Support testing of new content API endpoints
+* 1:1 with @dennisreedy
+* Write up exposure API bug for "not found" situations. (keep forgetting)
 
 *No blockers*
