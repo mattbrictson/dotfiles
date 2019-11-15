@@ -1,0 +1,1 @@
+export CONFLUENT_HOME=/usr/local/Cellar/confluent-platform/5.3.0
