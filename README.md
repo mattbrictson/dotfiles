@@ -15,6 +15,38 @@ Before using these dotfiles there are a few things you'll need to install manual
 
 My blog post here has a walkthrough: https://mattbrictson.com/rails-osx-setup-guide
 
+## Installation
+
+Choose a place to store the dotfiles, like `~/Code/dotfiles`.
+
+```
+git clone git://github.com/mattbrictson/dotfiles ~/Code/dotfiles
+cd ~/Code/dotfiles
+```
+
+Run one of the three installation options:
+
+```
+rake install:dotfiles # Install the dotfiles and scripts
+rake install:packages # Install homebrew packages and Mac defaults
+rake install          # Install all of the above (recommended)
+```
+
+### Changing your bash version
+
+Some features of the dotfiles only work with bash version 4.2. After installing bash via homebrew (which `rake install:packages` does for you), enable it as your shell as follows:
+
+1. Add `/usr/local/bin/bash` to `/etc/shells`
+2. Change your shell to `/usr/local/bin/bash` by running `chsh`
+
+### Package Control
+
+The Sublime Text packages included in these dotfiles will automatically install themselves the next time you launch Sublime Text, but you need to manually install [Package Control](https://packagecontrol.io) first:
+
+1. Press <kbd>SHIFT</kbd> <kbd>CMD</kbd> <kbd>P</kbd> to bring up the command palette
+2. Type `install`
+3. Select the option to install Package Control
+
 ## What’s included?
 
 ### Sublime Text 3 settings and packages
@@ -99,36 +131,3 @@ In addition, during installation (see below), you will be prompted for your full
 * Configures the `xray` gem to use Sublime Text.
 * Enables command history (use up and down arrows) in `irb`.
 * Defines a list of useful gems that are installed by default whenever a new version of ruby is installed via `rbenv install`.
-
-
-## Installation
-
-Choose a place to store the dotfiles, like `~/Code/dotfiles`.
-
-```
-git clone git://github.com/mattbrictson/dotfiles ~/Code/dotfiles
-cd ~/Code/dotfiles
-```
-
-Run one of the three installation options:
-
-```
-rake install:dotfiles # Install the dotfiles and scripts
-rake install:packages # Install homebrew packages and Mac defaults
-rake install          # Install all of the above (recommended)
-```
-
-### Changing your bash version
-
-Some features of the dotfiles only work with bash version 4.2. After installing bash via homebrew (which `rake install:packages` does for you), enable it as your shell as follows:
-
-1. Add `/usr/local/bin/bash` to `/etc/shells`
-2. Change your shell to `/usr/local/bin/bash` by running `chsh`
-
-### Package Control
-
-The Sublime Text packages included in these dotfiles will automatically install themselves the next time you launch Sublime Text, but you need to manually install [Package Control](https://packagecontrol.io) first:
-
-1. Press <kbd>SHIFT</kbd> <kbd>CMD</kbd> <kbd>P</kbd> to bring up the command palette
-2. Type `install`
-3. Select the option to install Package Control
