@@ -124,3 +124,11 @@ Some features of the dotfiles only work with bash version 4.2. After installing 
 
 1. Add `/usr/local/bin/bash` to `/etc/shells`
 2. Change your shell to `/usr/local/bin/bash` by running `chsh`
+
+### Package Control
+
+The Sublime Text packages included in these dotfiles will automatically install themselves the next time you launch Sublime Text, but you need to manually install [Package Control](https://packagecontrol.io) first:
+
+1. Press <kbd>SHIFT</kbd> <kbd>CMD</kbd> <kbd>P</kbd> to bring up the command palette
+2. Type `install`
+3. Select the option to install Package Control
