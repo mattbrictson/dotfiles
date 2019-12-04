@@ -1,0 +1,118 @@
+#!/usr/bin/env ruby
+
+require "bundler/inline"
+require "date"
+require "json"
+require "open-uri"
+require "pstore"
+require "time"
+
+gemfile do
+  source "https://rubygems.org"
+  gem "chronic"
+  gem "nokogiri"
+end
+
+PSTORE = PStore.new(File.expand_path("~/.cache/outdated-projects"))
+
+class Project
+  def self.all
+    gems = JSON.parse(
+      open("https://rubygems.org/api/v1/owners/mattbrictson/gems.json").read
+    )
+    gems.map { |g| new(g) }
+  end
+
+  attr_reader :name
+
+  def initialize(gem_data)
+    @name = gem_data["name"]
+    @gem_data = gem_data
+  end
+
+  def days_since_release
+    [Date.today - release_date, 0].max.to_i
+  end
+
+  def needs_release?
+    stale = version.start_with?("0") ? 7 : 28
+    days_since_release >= stale && new_commits?
+  end
+
+  def release_date
+    date = latest_release_html.text[/released\s+this\s+(.*)$/, 1]
+    Chronic.parse(date).to_date
+  end
+
+  def releases_url
+    "https://github.com/#{github_repo}/releases"
+  end
+
+  def snooze!
+    PSTORE.transaction { PSTORE[name] = latest_unreleased_commit_at&.to_s }
+  end
+
+  private
+
+  attr_reader :gem_data
+
+  def version
+    gem_data["version"]
+  end
+
+  def new_commits?
+    return false if latest_unreleased_commit_at.nil?
+
+    snooze_date.nil? || latest_unreleased_commit_at > snooze_date
+  end
+
+  def snooze_date
+    date = PSTORE.transaction { PSTORE[name] }
+    date && Date.parse(date)
+  end
+
+  def latest_release_html
+    @_latest_release_html ||= begin
+      Nokogiri::HTML(open(releases_url)).css(".release.label-latest").first
+    end
+  end
+
+  def latest_unreleased_commit_at
+    return nil unless latest_release_html.text.match?(/since\s+this\s+release/i)
+    return nil if unreleased_commits_html.nil?
+
+    date = unreleased_commits_html.text[/commits on (.*)/i, 1]
+    Chronic.parse(date).to_date
+  end
+
+  def unreleased_commits_html
+    @_unreleased_commits_html ||= begin
+      url = "https://github.com/#{github_repo}/compare/v#{version}...master"
+      doc = Nokogiri::HTML(open(url))
+      doc.css("#commits_bucket .TimelineItem.pb-1").last
+    end
+  end
+
+  def github_repo
+    keys = %w[source_code_uri homepage_uri changelog_uri]
+    urls = gem_data.values_at(*keys).compact
+    repos = urls.map { |u| u[%r{github.com/((?:[^/]+)/(?:[^/]+))}, 1] }
+    repos.compact.first
+  end
+end
+
+if $PROGRAM_NAME == __FILE__
+  print "Just a second…"
+  needing_release = Project.all.select(&:needs_release?)
+  if needing_release.empty?
+    puts "\rAll projects are up to date!"
+  else
+    puts "\rThe following projects need releasing:"
+    needing_release.each do |proj|
+      puts [proj.name.ljust(28), proj.days_since_release, "days old"].join(" ")
+      system("open", proj.releases_url)
+      print "Snooze? (y/N) "
+      proj.snooze! if $stdin.gets.match?(/\Ay/i)
+    end
+  end
+end
