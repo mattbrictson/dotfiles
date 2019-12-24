@@ -16,7 +16,6 @@
 		"Case Conversion",
 		"CloseOtherWindows",
 		"Color Highlighter",
-		"CSScomb",
 		"Cucumber",
 		"DashDoc",
 		"DocBlockr",
@@ -39,12 +38,9 @@
 		"PackageResourceViewer",
 		"Pretty JSON",
 		"Protobuf Syntax Hightlighting",
-		"Rails OpenView",
 		"Ruby Slim",
 		"Sass",
 		"ScopeAlways",
-		"ShellCommand",
-		"SideBarTools",
 		"SSH Config",
 		"SublimeLinter",
 		"SublimeLinter-annotations",
@@ -55,9 +51,6 @@
 		"SublimeLinter-stylelint",
 		"Swift",
 		"Terminal",
-		"Theme - Primer",
-		"Theme - Soda",
-		"Tomorrow Color Schemes",
 		"TypeScript"
 	]
 }
