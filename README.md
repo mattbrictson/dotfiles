@@ -57,34 +57,60 @@ For consistency with dotfiles for other apps, I put my Sublime Text 3 configurat
 * Better auto-complete behavior
 * Custom key bindings
 
+#### Color scheme
+
+* ayu (dark, customized)
+
 #### Packages
 
+* A File Icon
 * AdvancedNewFile
 * All Autocomplete
 * ApplySyntax
-* Clipboard Manager
+* AutoFileName
+* Case Conversion
 * CloseOtherWindows
 * Color Highlighter
 * DashDoc
 * DocBlockr
+* EditorConfig
 * Emmet
 * Gem Browser
-* Git
 * GitGutter
+* Hasher
 * Indent XML
+* JSPrettier
 * Markdown Preview
 * Marked App Menu
-* nginx
+* PackageResourceViewer
 * Pretty JSON
-* Sass
-* Shell Command
-* SSH Config
+* ScopeAlways
 * SublimeLinter
 * SublimeLinter-annotations
+* SublimeLinter-eslint
 * SublimeLinter-json
 * SublimeLinter-rubocop
 * SublimeLinter-ruby
+* SublimeLinter-stylelint
 * Terminal
+
+#### Syntax highlighting
+
+* Babel
+* Better CoffeeScript
+* Cucumber
+* Dockerfile Syntax Highlighting
+* eco (Embedded CoffeeScript)
+* Git
+* Gradle_Language
+* Handlebars
+* Kotlin
+* nginx
+* Protobuf Syntax Hightlighting
+* Ruby Slim
+* Sass
+* SSH Config
+* Swift
 
 ### Handy scripts
 
@@ -95,6 +121,7 @@ These scripts will be installed to `~/.bin` and added to your `$PATH`:
 * `defaults-install` uses `defaults write` on OS X to change system default behavior to my liking: e.g. don't include drop-shadows on screenshots.
 * `git-pluck` adds the `pluck` command to git, which is a trick for cherry-picking a commit from another repository into the current one: `git pluck ../other-repo SHA`.
 * `git-reap` adds the `reap` command to git, which deletes local and remote branches that have already been merged with the master branch and thus are no longer needed.
+* `node-install` is a convenient wrapper around `nodenv install` that does some easy-to-forget housekeeping before and after installation. Usage: `node-install 12.14.0`.
 * `ruby-install` is a convenient wrapper around `rbenv install` that does some easy-to-forget housekeeping before and after installation. Usage: `ruby-install 2.1.2`.
 * `sup` uses SSH to update packages on one or more Ubuntu servers (assuming you have root access to them). In other words, `sup SERVER1 SERVER2` will SSH as root into both servers and run the appropriate `aptitude` commands to safely update all packages. It will also report whether any daemons need to be restarted for the updates to take effect.
 
@@ -114,7 +141,7 @@ These scripts will be installed to `~/.bin` and added to your `$PATH`:
 
 * Sets up a reasonable global gitignore file to ignore things like `.DS_Store`, `Icon?`, and `*sublime-project`.
 * Enables color output and line-ending checks.
-* Shortens common commands: `di`, `co`, `ci`, `br`, `l`.
+* Shortens common commands: `di`, `co`, `ci`, `br`, `l`, `sw`.
 * Defines somes useful aliases:
     * `git hist`
     * `git ignored-files`
@@ -125,7 +152,7 @@ In addition, during installation (see below), you will be prompted for your full
 
 ### Ruby/rails stuff
 
-* Adds an `r` command that serves as a shortcut for running `bin/rake` or `bin/rails`. It's pretty smart, so `r s` will expand to `bin/rails server`, and `r db` will expand to `bin/rake db:console`. No more fat-finger mistakes of `rails` vs `rake`!
+* Adds an `r` command that serves as a shortcut for running `bin/rake` or `bin/rails`. It's pretty smart, so `r s` will expand to `bin/rails server`, and `r db` will expand to `bin/rake db:console`. No more mistakes of typing `rails` vs `rake`!
 * Disables gem documentation generation so that `gem install` runs much faster.
 * Uses my [rails-template](https://github.com/mattbrictson/rails-template) when running `rails new`.
 * Configures the `xray` gem to use Sublime Text.
