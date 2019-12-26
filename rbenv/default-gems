@@ -1,16 +1,12 @@
 awesome_print
 bundler
-bundler-audit
 bundleup
-chandler
-circleci-cli
 highline
-mailcatcher
 overcommit
 rake
-rerun
 rubocop
 rubocop-minitest
 rubocop-performance
+rubocop-rails
 tomo
 whatthegem
