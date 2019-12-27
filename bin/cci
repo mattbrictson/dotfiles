@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+require "cgi"
+require "open3"
+
+def open_circle_ci
+  origin = capture("git remote get-url origin").chomp
+  brand = origin.include?("bitbucket.org") ? "bb" : "gh"
+  repo = origin[%r{(:|/)(.*?/.*?)\.git$}, 2]
+  branch = capture("git rev-parse --abbrev-ref HEAD").chomp
+
+  url = "https://circleci.com/#{brand}/#{repo}/tree/#{CGI.escape(branch)}"
+  system "open", url
+end
+
+def capture(command)
+  out_err, status = Open3.capture2e(command)
+  return out_err if status.success?
+
+  $stderr.puts
+  $stderr.puts(out_err || "Could not execute #{command}")
+  exit(1)
+end
+
+open_circle_ci

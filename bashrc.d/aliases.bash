@@ -3,7 +3,6 @@ alias bbc='bucket compare'
 alias bup='bundleup'
 alias cat='bat'
 # Change to the root level directory the current git repository
-alias cci=circleci-cli
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
 alias diff=colordiff
 alias dbundle="$HOME/Code/bundler/bin/bundle"
