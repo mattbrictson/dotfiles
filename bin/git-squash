@@ -138,13 +138,9 @@ def current_branch
   @_current_branch ||= capture!("git rev-parse --abbrev-ref HEAD").chomp
 end
 
-def sh(command)
-  puts ">>>> #{command}"
-  system(command)
-end
-
 def sh!(command)
-  exit 1 unless sh(command)
+  puts ">>>> #{command}"
+  exit 1 unless system(command)
 end
 
 def capture!(command)
