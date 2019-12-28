@@ -97,7 +97,7 @@ def require_feature_branch!
 end
 
 def clean_merge!(base_branch)
-  sh "git merge --no-edit #{base_branch.shellescape}"
+  sh! "git merge --no-edit #{base_branch.shellescape}"
   return if capture!("git diff --name-only --diff-filter=U").strip.empty?
 
   sh! "git merge --abort"
