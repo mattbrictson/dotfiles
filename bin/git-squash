@@ -1,0 +1,165 @@
+#!/usr/bin/env ruby
+
+require "shellwords"
+require "tempfile"
+
+def usage_and_exit(status=0)
+  out = status == 0 ? $stdout : $stderr
+
+  out.puts <<~USAGE.gsub(/^/, "  ")
+
+    Usage: git squash BASE_BRANCH
+
+    Rewrites the history of the current feature branch by squashing it down to a
+    single commit. Before squashing, BASE_BRANCH will be merged into this branch
+    in order to bring it up to date. If there are merge conflicts, the squash
+    will be aborted.
+
+    The resulting squashed commit will have a nice commit message based on the
+    feature branch name and the messages of the commits being squashed. You will
+    be given a chance to revise the message before it is committed.
+
+    Example:
+
+    Let's say we are working in a branch `features/improve-webpacker-support`
+    that was branched off of `master` and has the following commits:
+
+      * 1393233 Document the new yarn:install task
+      * f165c7a Allow `yarn install` flags to be customized
+      * ea35e0f Explicitly run `yarn install` per webpacker docs
+      * 6c46003 Include public/packs in linked_dirs by default
+
+    If we run:
+
+      $ git squash master
+
+    This rewrites the history of our `features/improve-webpacker-support` branch
+    to now be a single commit:
+
+      * 932084e Feature: improve webpacker support
+
+    And the commit message is:
+
+      Feature: improve webpacker support
+
+      - Include public/packs in linked_dirs by default
+      - Explicitly run `yarn install` per webpacker docs
+      - Allow `yarn install` flags to be customized
+      - Document the new yarn:install task
+
+    If we don't like the results of the squash, we can always "undo":
+
+      $ git reset --hard 1393233
+
+  USAGE
+
+  exit(status)
+end
+
+def squash(base_branch, force: false)
+  require_feature_branch! unless force
+  head_sha = capture!("git rev-parse --verify --short HEAD").chomp
+
+  clean_merge!(base_branch)
+  msg_path = write_commit_message_to_temp_file(base_branch)
+
+  sh! "git reset --soft master"
+  sh! "git commit -F - -e < #{msg_path.shellescape}"
+
+  puts
+  puts "Done! Now up to date with #{base_branch} and squashed down to 1 commit."
+  puts "To undo the squash, you can run:"
+  puts
+  puts "  git reset --hard #{head_sha}"
+  puts
+end
+
+def require_feature_branch!
+  return unless %w[master develop development].include?(current_branch)
+
+  $stderr.puts <<~ERROR.gsub(/^/, "  ")
+
+    ERROR: git squash is meant to be used within feature branches only!
+
+    If you really want to rewrite the history of #{current_branch} by squashing
+    it 1 commit (this is not recommended!), then run:
+
+      $ git squash --force #{current_branch.shellescape}
+
+    More likely you meant to run this command within your feature branch.
+    The intended usage is:
+
+      $ git switch FEATURE_BRANCH
+      $ git squash #{current_branch.shellescape}
+
+  ERROR
+  exit 1
+end
+
+def clean_merge!(base_branch)
+  sh "git merge --no-edit #{base_branch.shellescape}"
+  return if capture!("git diff --name-only --diff-filter=U").strip.empty?
+
+  sh! "git merge --abort"
+  $stderr.puts <<~ERROR.gsub(/^/, "  ")
+
+    ERROR: There are conflicts with #{base_branch}.
+    Resolve them with a rebase or merge before running `git squash`.
+
+  ERROR
+  exit 1
+end
+
+def write_commit_message_to_temp_file(base_branch)
+  file = Tempfile.new
+  file.puts squash_summary
+  file.puts
+  file.puts commit_messages(base_branch)
+  file.close
+  file.path
+end
+
+def squash_summary
+  current_branch.sub(%r{^bugs?/}i, "Bug fix: ")
+                .sub(%r{^docs?/}i, "Doc: ")
+                .sub(%r{^features?/}i, "Feature: ")
+                .sub(%r{^chores?/}i, "Chore: ")
+                .gsub(/[-_]/, " ")
+end
+
+def commit_messages(base_branch)
+  divider = "~~~~~~~~~~~~~~~"
+  log_options = %Q(--no-merges --reverse  --format="- %B#{divider}")
+  messages = capture! "git log #{base_branch.shellescape}..HEAD #{log_options}"
+  messages.gsub(/\n#{divider}/, "")
+end
+
+def current_branch
+  @_current_branch ||= capture!("git rev-parse --abbrev-ref HEAD").chomp
+end
+
+def sh(command)
+  puts ">>>> #{command}"
+  system(command)
+end
+
+def sh!(command)
+  exit 1 unless sh(command)
+end
+
+def capture!(command)
+  result = `#{command}`
+  return result if $?.success?
+
+  $stderr.puts "Failed: #{command}"
+  exit 1
+end
+
+if $PROGRAM_NAME == __FILE__
+  force = ARGV.delete("--force")
+  usage_and_exit if (ARGV & %w(-h --help help)).any?
+  usage_and_exit(2) unless ARGV.length == 1
+
+  squash(ARGV.first, force: force)
+end
+
