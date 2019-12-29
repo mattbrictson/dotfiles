@@ -42,10 +42,10 @@ def usage_and_exit(status=0)
 
       Feature: improve webpacker support
 
-      - Include public/packs in linked_dirs by default
-      - Explicitly run `yarn install` per webpacker docs
-      - Allow `yarn install` flags to be customized
-      - Document the new yarn:install task
+      * Include public/packs in linked_dirs by default
+      * Explicitly run `yarn install` per webpacker docs
+      * Allow `yarn install` flags to be customized
+      * Document the new yarn:install task
 
     If we don't like the results of the squash, we can always "undo":
 
@@ -128,10 +128,9 @@ def squash_summary
 end
 
 def commit_messages(base_branch)
-  divider = "~~~~~~~~~~~~~~~"
-  log_options = %Q(--no-merges --reverse  --format="- %B#{divider}")
-  messages = capture! "git log #{base_branch.shellescape}..HEAD #{log_options}"
-  messages.gsub(/\n#{divider}/, "")
+  log_options = "--no-merges --reverse  --format='* %B%n'"
+  message = capture! "git log #{base_branch.shellescape}..HEAD #{log_options}"
+  message.gsub(/\n\n+/, "\n\n")
 end
 
 def current_branch
