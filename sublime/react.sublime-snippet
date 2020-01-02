@@ -14,8 +14,6 @@ $1.propTypes = {
   className: PropTypes.string
 };
 
-$1.defaultProps = {};
-
 export default $1;
 ]]></content>
   <tabTrigger>react</tabTrigger>
