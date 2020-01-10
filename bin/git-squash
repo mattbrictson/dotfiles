@@ -63,7 +63,7 @@ def squash(base_branch, force: false)
   clean_merge!(base_branch)
   msg_path = write_commit_message_to_temp_file(base_branch)
 
-  sh! "git reset --soft master"
+  sh! "git reset --soft #{base_branch.shellescape}"
   sh! "git commit -F - -e < #{msg_path.shellescape}"
 
   puts
