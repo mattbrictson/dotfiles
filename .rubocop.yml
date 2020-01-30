@@ -1,7 +1,7 @@
 AllCops:
   DisplayCopNames: true
   DisplayStyleGuide: true
-  TargetRubyVersion: 2.3
+  TargetRubyVersion: 2.6
 
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
@@ -10,9 +10,6 @@ Naming/MemoizedInstanceVariableName:
   EnforcedStyleForLeadingUnderscores: optional
 
 Naming/VariableNumber:
-  Enabled: false
-
-Performance/Casecmp:
   Enabled: false
 
 Style/BarePercentLiterals:
