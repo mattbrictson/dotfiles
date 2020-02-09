@@ -4,19 +4,19 @@ alias bup='bundleup'
 alias cat='bat'
 # Change to the root level directory the current git repository
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
-alias diff=colordiff
 alias dbundle="$HOME/Code/bundler/bin/bundle"
+alias diff=colordiff
+alias gb='hub browse'
 alias gco='git co'
-alias gs='git st'
 alias get='git'
-alias gh='hub browse'
+alias gs='git st'
 alias hl='heroku local $(test -f Procfile.dev && echo "-f Procfile.dev")'
 alias httpserve='ruby -run -e httpd -- --port=8888 $1'
-alias ls='ls -hFG'
 alias l='exa'
 alias la='exa -la'
 alias ll='exa -l'
 alias ls='exa'
+alias ls='ls -hFG'
 alias n='npx --no-install'
 alias ras='bin/rails server -b 0.0.0.0 -p 3000'
 alias record="npx terminalizer --config $(readlink $HOME/.terminalizer/config.yml) record"
