@@ -55,7 +55,6 @@ brew "openssl"
 brew "pgcli"
 brew "plantuml"
 brew "postgresql", restart_service: true
-brew "python2"
 brew "rbenv"
 brew "rbenv-default-gems"
 brew "readline"
