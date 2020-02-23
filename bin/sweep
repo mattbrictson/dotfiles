@@ -1,0 +1,36 @@
+#!/usr/bin/env ruby
+
+require "date"
+THIRTY_DAYS_AGO = Date.today - 30
+
+def list_files
+  Dir.entries(".").reject { |file| file.start_with?(".") }
+end
+
+def last_access_date(file)
+  return File.atime(file).to_date if File.file?(file) || File.symlink?(file)
+  return nil unless File.directory?(file)
+
+  Dir.chdir(file) do
+    access_dates = list_files.each_with_object([]) do |child, dates|
+      dates << last_access_date(child) unless child.start_with?(".")
+    end
+    access_dates.max
+  end
+end
+
+ARGV << "." if ARGV.empty?
+
+ARGV.each do |dir|
+  Dir.chdir(dir) do
+    list_files.each do |file|
+      next if file.start_with?(".")
+
+      date = last_access_date(file)
+      next if date.nil? || date > THIRTY_DAYS_AGO
+
+      puts "Trashing #{file}"
+      system "trash", file
+    end
+  end
+end
