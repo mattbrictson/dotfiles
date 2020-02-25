@@ -15,7 +15,7 @@ def last_access_date(file)
     access_dates = list_files.each_with_object([]) do |child, dates|
       dates << last_access_date(child) unless child.start_with?(".")
     end
-    access_dates.max
+    access_dates.compact.max
   end
 end
 
