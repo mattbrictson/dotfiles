@@ -5,6 +5,7 @@ fi
 export PATH=".git/safe/../../bin:$PATH"
 export PATH="$HOME/Library/Qt5.5.0/5.5/clang_64/bin:$PATH"
 export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=/usr/local/opt/openssl@1.1"
 
 # OS X has its own way of setting LANG, but only at the console.
 # By declaring here in .bashrc, daemons like Pow will also pick it up.
