@@ -18,7 +18,7 @@ git remote prune origin
 echo "Remove fully merged local branches..."
 
 # Remove local fully merged branches (ignoring those named "release-#")
-git branch --merged master | grep -E -v 'master$|development$|release-.+$' | xargs git branch -d
+git branch --merged master | grep -E -v 'master$|acceptance$|development$|release-.+$' | xargs git branch -d
 git branch --merged master | grep -E 'release-.+$' | xargs echo "! Ignoring release branch:"
 
 # Remove local branches for which the remote tracking branch has disappeared
@@ -26,13 +26,13 @@ git branch -vv | grep ": gone]" | awk '{print $1}' | xargs git branch -D
 
 # Show remote fully merged branches
 echo "The following remote branches are fully merged and will be removed:"
-git branch -r --merged master | sed 's/ *origin\///' | grep -E -v 'master$|development$|release-.+|maintenance-.+$'
+git branch -r --merged master | sed 's/ *origin\///' | grep -E -v 'master$|acceptance$development$|release-.+|maintenance-.+$'
 
 read -p "Continue (y/n)? "
 if [ "$REPLY" == "y" ]
 then
    # Remove remote fully merged branches
    git branch -r --merged master | sed 's/ *origin\///' \
-             | grep -E -v 'master$|development$|release-.+|maintenance-.+$' | xargs -I% git push origin :%
+             | grep -E -v 'master$|acceptance$|development$|release-.+|maintenance-.+$' | xargs -I% git push origin :%
    echo "Done!"
 fi
