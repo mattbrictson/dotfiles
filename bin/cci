@@ -5,11 +5,12 @@ require "open3"
 
 def open_circle_ci
   origin = capture("git remote get-url origin").chomp
-  brand = origin.include?("bitbucket.org") ? "bb" : "gh"
+  brand = origin.include?("bitbucket.org") ? "bitbucket" : "github"
   repo = origin[%r{(:|/)(.*?/.*?)\.git$}, 2]
   branch = capture("git rev-parse --abbrev-ref HEAD").chomp
 
-  url = "https://circleci.com/#{brand}/#{repo}/tree/#{CGI.escape(branch)}"
+  url = "https://app.circleci.com/pipelines/#{brand}/#{repo}"\
+        "?branch=#{CGI.escape(branch)}"
   system "open", url
 end
 
