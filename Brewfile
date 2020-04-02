@@ -61,7 +61,6 @@ brew "readline"
 brew "redis", restart_service: true
 brew "ripgrep"
 brew "ruby-build"
-brew "sbt"
 brew "tldr"
 brew "trash"
 brew "tree"
@@ -73,10 +72,8 @@ cask "aerial"
 cask "alfred"
 cask "balsamiq-mockups"
 cask "bartender"
-cask "chromedriver"
 cask "dash"
 cask "docker"
-cask "dropbox"
 cask "firefox-developer-edition"
 cask "google-chrome"
 cask "gpg-suite-no-mail"
@@ -90,7 +87,6 @@ cask "qlstephen"
 cask "sketch"
 cask "skyfonts"
 cask "slack"
-cask "sloth"
 cask "sublime-text"
 cask "vagrant"
 cask "zeplin"
@@ -111,7 +107,6 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator", id: 407963104
 mas "Reeder", id: 1449412482
-mas "Tapes", id: 779457527
 mas "The Clock", id: 488764545
 mas "The Unarchiver", id: 425424353
 mas "Things3", id: 904280696
