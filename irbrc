@@ -6,9 +6,20 @@ IRB.conf[:PROMPT_MODE] = :SIMPLE
 IRB.conf[:SAVE_HISTORY] = 1_000
 IRB.conf[:HISTORY_FILE] = "#{ENV['HOME']}/.irb_history"
 
-# https://github.com/michaeldv/awesome_print#irb-integration
-begin
-  require "awesome_print"
-  AwesomePrint.irb!
-rescue LoadError
+# Prefer AmazingPrint, but don't load it if AwesomePrint is already in use
+unless defined?(AwesomePrint)
+  begin
+    require "amazing_print"
+    AmazingPrint.irb!
+  rescue LoadError
+  end
+end
+
+# If AmazingPrint isn't available, fall back to AwesomePrint
+unless defined?(AmazingPrint)
+  begin
+    require "awesome_print"
+    AwesomePrint.irb!
+  rescue LoadError
+  end
 end
