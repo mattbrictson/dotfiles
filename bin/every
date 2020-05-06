@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+
+puts(<<~USAGE) & exit if (%w[-h --help] & ARGV).any?
+
+  Usage: every INTERVAL COMMAND...
+
+  Run the given COMMAND forever (or until it fails), waiting INTERVAL between
+  each execution. INTERVAL must be a number with unit, e.g.: 30s, 5m, 1h.
+
+  Examples:
+
+  # Print "hello" every five seconds
+  every 5s echo hello
+
+  # Fetch a web page every minute
+  every 1m curl https://www.githubstatus.com/
+
+USAGE
+
+interval, *command = ARGV
+
+seconds = case interval
+          when /\A\d+s\z/ then interval[/\d+/].to_i
+          when /\A\d+m\z/ then interval[/\d+/].to_i * 60
+          when /\A\d+h\z/ then interval[/\d+/].to_i * 60 * 60
+          else raise ArgumentError, "First arg must be an interval (e.g. 30s)"
+          end
+
+sleep seconds while system(*command)
