@@ -35,10 +35,9 @@ ARGV.each_with_index do |host, i|
 
   if ubuntu16?(host)
     run host, "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q -y update"
-    run host,
-        "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q "\
-        '-o DPkg::options::="--force-confdef" '\
-        '-o DPkg::options::="--force-confold" dist-upgrade'
+    run host, "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q "\
+              '-o DPkg::options::="--force-confdef" '\
+              '-o DPkg::options::="--force-confold" dist-upgrade'
   else
     run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q -y update"
     run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q safe-upgrade"

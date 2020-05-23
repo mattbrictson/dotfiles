@@ -9,8 +9,7 @@ def open_circle_ci
   repo = origin[%r{(:|/)(.*?/.*?)\.git$}, 2]
   branch = capture("git rev-parse --abbrev-ref HEAD").chomp
 
-  url = "https://app.circleci.com/pipelines/#{brand}/#{repo}"\
-        "?branch=#{CGI.escape(branch)}"
+  url = "https://app.circleci.com/pipelines/#{brand}/#{repo}?branch=#{CGI.escape(branch)}"
   system "open", url
 end
 

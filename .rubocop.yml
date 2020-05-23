@@ -3,6 +3,9 @@ AllCops:
   DisplayStyleGuide: true
   TargetRubyVersion: 2.6
 
+Layout/LineLength:
+  Max: 120
+
 Layout/SpaceAroundEqualsInParameterDefault:
   EnforcedStyle: no_space
 

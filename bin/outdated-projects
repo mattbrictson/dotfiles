@@ -17,9 +17,7 @@ PSTORE = PStore.new(File.expand_path("~/.cache/outdated-projects"))
 
 class Project
   def self.all
-    gems = JSON.parse(
-      URI.open("https://rubygems.org/api/v1/owners/mattbrictson/gems.json").read
-    )
+    gems = JSON.parse(URI.open("https://rubygems.org/api/v1/owners/mattbrictson/gems.json").read)
     gems.map { |g| new(g) }
   end
 
@@ -72,9 +70,7 @@ class Project
   end
 
   def latest_release_html
-    @_latest_release_html ||= begin
-      Nokogiri::HTML(URI.open(releases_url)).css(".release.label-latest").first
-    end
+    @_latest_release_html ||= Nokogiri::HTML(URI.open(releases_url)).css(".release.label-latest").first
   end
 
   def latest_unreleased_commit_at
