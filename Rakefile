@@ -24,7 +24,7 @@ task install: %w[install:dotfiles install:completions install:packages]
 desc "Warn if git origin is newer"
 task :check do
   next unless system("git fetch origin")
-  next if `git diff HEAD origin/master`.strip.empty?
+  next if `git diff HEAD origin/main`.strip.empty?
   log(:yellow, "warning Working copy is out of date; consider `git pull`")
 end
 
