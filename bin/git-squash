@@ -22,7 +22,7 @@ def usage_and_exit(status=0)
     Example:
 
     Let's say we are working in a branch `features/improve-webpacker-support`
-    that was branched off of `master` and has the following commits:
+    that was branched off of `main` and has the following commits:
 
       * 1393233 Document the new yarn:install task
       * f165c7a Allow `yarn install` flags to be customized
@@ -31,7 +31,7 @@ def usage_and_exit(status=0)
 
     If we run:
 
-      $ git squash master
+      $ git squash main
 
     This rewrites the history of our `features/improve-webpacker-support` branch
     to now be a single commit:
@@ -75,7 +75,7 @@ def squash(base_branch, force: false)
 end
 
 def require_feature_branch!
-  return unless %w[master develop development].include?(current_branch)
+  return unless %w[main master trunk develop development acceptance].include?(current_branch)
 
   $stderr.puts <<~ERROR.gsub(/^/, "  ")
 

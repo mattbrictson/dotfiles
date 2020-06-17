@@ -74,7 +74,6 @@ class Project
   end
 
   def latest_unreleased_commit_at
-    return nil unless latest_release_html.text.match?(/since\s+this\s+release/i)
     return nil if unreleased_commits_html.nil?
 
     date = unreleased_commits_html.text[/commits on (.*)/i, 1]
@@ -83,9 +82,16 @@ class Project
 
   def unreleased_commits_html
     @_unreleased_commits_html ||= begin
-      url = "https://github.com/#{github_repo}/compare/v#{version}...master"
+      url = "https://github.com/#{github_repo}/compare/v#{version}...#{default_branch}"
       doc = Nokogiri::HTML(URI.open(url))
       doc.css("#commits_bucket .TimelineItem.pb-1").last
+    end
+  end
+
+  def default_branch
+    @_default_branch ||= begin
+      doc = Nokogiri::HTML(URI.open("https://github.com/#{github_repo}/branches"))
+      doc.css(".branch-name").first.text.strip
     end
   end
 
