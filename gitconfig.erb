@@ -1,14 +1,3 @@
-[user]
-  name = <%= prompt("Your Full Name") %>
-  email = <%= prompt("Your Email") %>
-  signingkey = <%= prompt("GPG Key") %>
-
-[core]
-  excludesfile = ~/.gitignore_global
-  safecrlf = warn
-  autocrlf = input
-  pager = diff-so-fancy | less --tabs=4 -RFX
-
 [alias]
   amend = commit --amend --reuse-message=HEAD
   bl = blame -C
@@ -40,6 +29,11 @@
   unstage = reset HEAD
   untracked-files = ls-files -o --exclude-standard
 
+[color]
+  status = auto
+  diff = auto
+  ui = true
+
 [color "branch"]
   current = red reverse
   local = blue
@@ -65,13 +59,24 @@
   changed = green
   untracked = cyan
 
-[color]
-  status = auto
-  diff = auto
-  ui = true
+[commit]
+  gpgsign = true
+  verbose = true
+
+[core]
+  excludesfile = ~/.gitignore_global
+  safecrlf = warn
+  autocrlf = input
+  pager = diff-so-fancy | less --tabs=4 -RFX
 
 [diff]
   noprefix = true
+
+[harrow]
+  disabled = true
+
+[merge]
+  tool = opendiff
 
 [pull]
   ff = only
@@ -79,18 +84,8 @@
 [push]
   default = simple
 
-[merge]
-  tool = opendiff
-
 [rebase]
   autostash = true
-
-[harrow]
-  disabled = true
-
-[commit]
-  gpgsign = true
-  verbose = true
 
 [rerere]
   enabled = true
@@ -98,3 +93,8 @@
 
 [url "git@github.com:"]
   insteadOf = https://github.com/
+
+[user]
+  name = <%= prompt("Your Full Name") %>
+  email = <%= prompt("Your Email") %>
+  signingkey = <%= prompt("GPG Key") %>
