@@ -24,7 +24,7 @@ git branch -vv | grep ": gone]" | awk '{print $1}' | xargs git branch -D
 
 # Show remote fully merged branches
 echo "The following remote branches are fully merged and will be removed:"
-git branch -r --merged HEAD | sed 's/ *origin\///' | grep -E -v 'main$|trunk$|master$|acceptance$development$|release-.+|maintenance-.+$'
+git branch -r --merged HEAD | sed 's/ *origin\///' | grep -E -v 'main$|trunk$|master$|acceptance$|development$|release-.+|maintenance-.+$'
 
 read -p "Continue (y/N)? "
 if [ "$REPLY" == "y" ]
