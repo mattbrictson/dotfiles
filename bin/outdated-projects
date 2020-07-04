@@ -38,7 +38,7 @@ class Project
   end
 
   def release_date
-    date = latest_release_html.text[/released\s+this\s+(.*)$/, 1]
+    date = latest_release_html.text
     Chronic.parse(date).to_date
   end
 
@@ -70,7 +70,7 @@ class Project
   end
 
   def latest_release_html
-    @_latest_release_html ||= Nokogiri::HTML(URI.open(releases_url)).css(".release.label-latest").first
+    @_latest_release_html ||= Nokogiri::HTML(URI.open(releases_url)).css(".release-entry relative-time").first
   end
 
   def latest_unreleased_commit_at
