@@ -1,6 +1,5 @@
 ---
-BUNDLE_JOBS: "4"
-BUNDLE_IGNORE_MESSAGES__CAPISTRANO-HARROW: "true"
+BUNDLE_JOBS: "16"
 BUNDLE_IGNORE_MESSAGES__HTTPARTY: "true"
 BUNDLE_GEM__COC: "true"
 BUNDLE_GEM__MIT: "true"
@@ -10,3 +9,5 @@ BUNDLE_GITHUB__HTTPS: "true"
 BUNDLE_BUILD__MYSQL2: "--with-opt-dir=/usr/local/opt/openssl"
 BUNDLE_BUILD__LIBXML-RUBY: "--with-xml2-include=/usr/local/opt/libxml2/include/libxml2/"
 BUNDLE_BUILD__NOKOGIRI: "--use-system-libraries --with-xslt-include=/usr/local/opt/libxslt/include/libxslt --with-xslt-lib=/usr/local/opt/libxslt/lib --with-xml2-include=/usr/local/opt/libxml2/include/libxml2 --with-xml2-lib=/usr/local/opt/libxml2/lib"
+BUNDLE_GEM__CI: "travis"
+BUNDLE_GEM__RUBOCOP: "true"
