@@ -11,6 +11,7 @@ gemfile do
   source "https://rubygems.org"
   gem "chronic"
   gem "nokogiri"
+  gem "tty-progressbar"
 end
 
 PSTORE = PStore.new(File.expand_path("~/.cache/outdated-projects"))
@@ -70,7 +71,7 @@ class Project
   end
 
   def latest_release_html
-    @_latest_release_html ||= Nokogiri::HTML(URI.open(releases_url)).css(".release-entry relative-time").first
+    @_latest_release_html ||= Nokogiri::HTML(open_uri(releases_url)).css(".release-entry relative-time").first
   end
 
   def latest_unreleased_commit_at
@@ -83,14 +84,14 @@ class Project
   def unreleased_commits_html
     @_unreleased_commits_html ||= begin
       url = "https://github.com/#{github_repo}/compare/v#{version}...#{default_branch}"
-      doc = Nokogiri::HTML(URI.open(url))
+      doc = Nokogiri::HTML(open_uri(url))
       doc.css("#commits_bucket .TimelineItem.pb-1").last
     end
   end
 
   def default_branch
     @_default_branch ||= begin
-      doc = Nokogiri::HTML(URI.open("https://github.com/#{github_repo}/branches"))
+      doc = Nokogiri::HTML(open_uri("https://github.com/#{github_repo}/branches"))
       doc.css(".branch-name").first.text.strip
     end
   end
@@ -101,15 +102,27 @@ class Project
     repos = urls.map { |u| u[%r{github.com/((?:[^/]+)/(?:[^/]+))}, 1] }
     repos.compact.first
   end
+
+  def open_uri(uri)
+    sleep 0.1 # to prevent 429 TOO MANY REQUESTS
+    URI.open(uri)
+  end
 end
 
 if $PROGRAM_NAME == __FILE__
-  print "Just a second…"
-  needing_release = Project.all.select(&:needs_release?)
+  all_projects = Project.all
+  needing_release = []
+
+  bar = TTY::ProgressBar.new("Checking projects… [:bar]", total: all_projects.size)
+  all_projects.each do |proj|
+    needing_release << proj if proj.needs_release?
+    bar.advance(1)
+  end
+
   if needing_release.empty?
-    puts "\rAll projects are up to date!"
+    puts "All projects are up to date!"
   else
-    puts "\rThe following projects need releasing:"
+    puts "The following projects need releasing:"
     needing_release.each do |proj|
       puts [proj.name.ljust(28), proj.days_since_release, "days old"].join(" ")
       system("open", proj.releases_url)
