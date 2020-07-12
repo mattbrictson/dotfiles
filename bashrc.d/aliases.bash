@@ -6,7 +6,7 @@ alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
 alias diff=colordiff
 alias gb='hub browse'
 alias get='git'
-alias hl='heroku local $(test -f Procfile.dev && echo "-f Procfile.dev")'
+alias hl='heroku local -p 3000 $(test -f Procfile.dev && echo "-f Procfile.dev")'
 alias httpserve='ruby -run -e httpd -- --port=8888 $1'
 alias l='exa'
 alias la='exa -la'
