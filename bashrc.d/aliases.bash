@@ -19,6 +19,7 @@ alias s="git sw"
 alias secret="ruby -rsecurerandom -e 'puts SecureRandom.hex(64)'"
 alias top='top -s 5 -o cpu -stats pid,user,command,cpu,rsize,vsize,threads,state'
 alias uuid="ruby -rsecurerandom -e 'puts SecureRandom.uuid'"
+alias ys="yarn start"
 
 function mcdir() {
   mkdir -p $1 && cd $1
