@@ -4,7 +4,7 @@ alias cat='bat'
 # Change to the root level directory the current git repository
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
 alias diff=colordiff
-alias gb='hub browse'
+alias gb='gh pr view --web > /dev/null 2>&1 || hub browse'
 alias get='git'
 alias hl='heroku local -p 3000 $(test -f Procfile.dev && echo "-f Procfile.dev")'
 alias httpserve='ruby -run -e httpd -- --port=8888 $1'
