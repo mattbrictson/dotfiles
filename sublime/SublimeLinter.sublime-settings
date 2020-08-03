@@ -25,5 +25,12 @@
       "scss": {
           "disable": true,
       }
+  },
+  "paths": {
+    "linux": [],
+    "osx": [
+      "~/.rbenv/shims"
+    ],
+    "windows": []
   }
 }
