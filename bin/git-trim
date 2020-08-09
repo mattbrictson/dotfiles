@@ -1,0 +1,109 @@
+#!/usr/bin/env ruby
+
+RESERVED_BRANCHES = [
+  /^acceptance$/,
+  /^develop$/,
+  /^development$/,
+  /^gh-pages$/,
+  /^HEAD$/,
+  /^hotfix.*$/,
+  /^main$/,
+  /^master$/,
+  /^production$/,
+  /^release.*$/,
+  /^stable.*$/,
+  /^trunk$/
+].freeze
+
+require "shellwords"
+
+def trim # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  git "fetch --prune --quiet"
+
+  merged_local_branches.each { |b| git "branch -d #{b.shellescape}" }
+  orphaned_branches.each { |b| git "branch -D #{b.shellescape}" }
+
+  branches = merged_remote_branches
+  if branches.any? && confirm_delete("Is it okay to delete the following merged #{'remote'.yellow} branches?", branches)
+    branches.each { |b| git "push origin :#{b.shellescape}" }
+  end
+  puts
+  puts "All done! ✨".green
+  puts "The unmerged and reserved branches listed below have been left as is."
+  puts
+  system "git branch -vv"
+  puts
+end
+
+def merged_local_branches
+  branches = git("branch --format '%(refname:short)' --merged HEAD", echo: false).lines(chomp: true)
+  excluding_reserved(branches)
+end
+
+def orphaned_branches
+  git("for-each-ref --format '%(refname:short) %(upstream:track)' refs/heads", echo: false)
+    .scan(/^(.+) \[gone\]$/)
+    .flatten
+end
+
+def merged_remote_branches
+  branches = git("branch -r --format '%(refname:short)' --merged HEAD", echo: false)
+             .scan(%r{^origin/(.+)})
+             .flatten
+  excluding_reserved(branches)
+end
+
+def excluding_reserved(branches)
+  @current_branch ||= git("rev-parse --abbrev-ref HEAD", echo: false).chomp
+  branches.reject do |branch|
+    branch == @current_branch || RESERVED_BRANCHES.any? { |pattern| branch.match?(pattern) }
+  end
+end
+
+def confirm_delete(message, branches)
+  puts
+  puts message
+  puts
+  branches.each { |branch| puts "  origin/#{branch.blue}" }
+  puts
+  print "Really delete [yN]? ".yellow
+  gets.match?(/^y/i)
+end
+
+def git(command, echo: true)
+  command = "git #{command}"
+  puts ">>>> #{command}".grey if echo
+  result = `#{command}`
+  return result if Process.last_status.success?
+
+  warn "Failed: #{command}".red
+  exit 1
+end
+
+class String
+  def colorize(color_code)
+    "\e[#{color_code}m#{self}\e[0m"
+  end
+
+  def blue
+    colorize(34)
+  end
+
+  def red
+    colorize(31)
+  end
+
+  def green
+    colorize(32)
+  end
+
+  def grey
+    colorize(90)
+  end
+
+  def yellow
+    colorize(33)
+  end
+end
+
+trim if $PROGRAM_NAME == __FILE__
