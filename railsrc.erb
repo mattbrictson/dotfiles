@@ -1,4 +1,5 @@
 -d postgresql
 --skip-action-cable
+--skip-action-mailbox
 --skip-sprockets
 <%= (tmpl = prompt("Path or URL of Rails app template [none]")).empty? ? "" : "-m #{tmpl.shellescape}" %>
