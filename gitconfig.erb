@@ -3,9 +3,9 @@
   bl = blame -C
   br = branch
   branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+  chp = cherry-pick
   ci = commit
   co = checkout
-  cp = cherry-pick
   di = diff
   fixup = commit --amend -c HEAD
   hist = log --pretty=format:\"%C(yellow bold)%h%Creset %C(red)%ad%Creset | %s%C(green bold)%d%Creset %C(blue)[%an]%Creset\" --graph --date=short
