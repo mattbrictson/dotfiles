@@ -51,6 +51,7 @@
 		"SublimeLinter-stylelint",
 		"Swift",
 		"Terminal",
+		"TOML",
 		"TypeScript"
 	]
 }
