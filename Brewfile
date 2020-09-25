@@ -63,7 +63,6 @@ brew "ruby-build"
 brew "tldr"
 brew "trash"
 brew "tree"
-brew "vault"
 brew "watchman"
 brew "wget"
 
