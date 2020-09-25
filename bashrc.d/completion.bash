@@ -10,3 +10,6 @@ then
     . $CLI_ENGINE_AC_BASH_SETUP_PATH
   fi
 fi
+
+# Enable "s" alias to auto-complete just like "git switch"
+__git_complete s _git_switch
