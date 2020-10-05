@@ -68,7 +68,7 @@ brew "wget"
 
 cask "aerial"
 cask "alfred"
-cask "balsamiq-mockups"
+cask "balsamiq-wireframes"
 cask "bartender"
 cask "dash"
 cask "docker"
