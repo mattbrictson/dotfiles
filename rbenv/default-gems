@@ -4,6 +4,7 @@ bundleup
 highline
 overcommit
 rake
+retest
 rubocop
 rubocop-minitest
 rubocop-performance

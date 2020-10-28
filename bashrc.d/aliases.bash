@@ -15,6 +15,7 @@ alias ls='exa'
 alias ls='ls -hFG'
 alias n='npx --no-install'
 alias ras='bin/rails server -b 0.0.0.0 -p 3000'
+alias rtt="retest 'bundle exec rake test TEST=<test>'"
 alias s="git sw"
 alias secret="ruby -rsecurerandom -e 'puts SecureRandom.hex(64)'"
 alias top='top -s 5 -o cpu -stats pid,user,command,cpu,rsize,vsize,threads,state'
