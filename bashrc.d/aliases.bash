@@ -15,7 +15,7 @@ alias ls='exa'
 alias ls='ls -hFG'
 alias n='npx --no-install'
 alias ras='bin/rails server -b 0.0.0.0 -p 3000'
-alias rtt="if [ -x bin/rails ]; then retest 'bin/rails test TEST=<test>'; else retest 'bundle e rake test TEST=<test>'; fi"
+alias rtt="if [ -x bin/rails ]; then retest 'bin/rails test <test>'; else retest 'bundle e rake test TEST=<test>'; fi"
 alias s="git sw"
 alias secret="ruby -rsecurerandom -e 'puts SecureRandom.hex(64)'"
 alias top='top -s 5 -o cpu -stats pid,user,command,cpu,rsize,vsize,threads,state'
