@@ -64,7 +64,7 @@ def squash(base_branch, force: false)
   msg_path = write_commit_message_to_temp_file(base_branch)
 
   sh! "git reset --soft #{base_branch.shellescape}"
-  sh! "git commit -F - -e < #{msg_path.shellescape}"
+  sh! "git commit -F - -e < #{msg_path.shellescape}", "OVERCOMMIT_DISABLE" => "1"
 
   puts
   puts "Done! Now up to date with #{base_branch} and squashed down to 1 commit."
@@ -137,9 +137,9 @@ def current_branch
   @_current_branch ||= capture!("git rev-parse --abbrev-ref HEAD").chomp
 end
 
-def sh!(command)
+def sh!(command, env={})
   puts ">>>> #{command}"
-  exit 1 unless system(command)
+  exit 1 unless system(env, command)
 end
 
 def capture!(command)
