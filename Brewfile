@@ -2,6 +2,7 @@ tap "AdoptOpenJDK/openjdk"
 tap "git-duet/tap"
 tap "heroku/brew"
 tap "homebrew/cask-versions"
+tap "melonamin/formulae"
 tap "nodenv/nodenv"
 
 # Java is required for some formulae so install it first.
@@ -85,6 +86,7 @@ cask "qlstephen"
 cask "screen"
 cask "slack"
 cask "sublime-text"
+cask "swiftbar"
 cask "zoom"
 
 mas "1Password", id: 443987910
