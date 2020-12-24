@@ -20,7 +20,7 @@ fi
 # If bin/rails and bin/rake are available, use them instead as they are much
 # faster to execute than `bundle exec`.
 function r() {
-  if [[ "g|generate|d|destroy|c|console|s|server|db|dbconsole|r|runner|new" =~ $1 ]]; then
+  if [[ "g|generate|d|destroy|c|console|s|server|db|dbconsole|r|runner|routes|new" =~ $1 ]]; then
     if [ -x bin/rails ]; then
       bin/rails "$@"
     elif [ -x script/rails ]; then
