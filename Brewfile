@@ -102,7 +102,7 @@ mas "Mail Call", id: 571770046
 mas "Marked 2", id: 890031187
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
-mas "Pixelmator", id: 407963104
+mas "Pixelmator Pro", id: 1289583905
 mas "Reeder", id: 1449412482
 mas "The Clock", id: 488764545
 mas "The Unarchiver", id: 425424353
