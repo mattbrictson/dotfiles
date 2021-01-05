@@ -128,14 +128,12 @@
 		"coverage",
 		"node_modules"
 	],
-	"font_face": "Menlo",
+	"font_face": "Cartograph CF Light",
 	"font_options":
 	[
-		"no_liga",
-		"no_clig",
-		"no_calt"
+		"no_liga"
 	],
-	"font_size": 14,
+	"font_size": 15,
 	"gpu_window_buffer": "auto",
 	"gutter": true,
 	"highlight_line": true,
@@ -164,7 +162,7 @@
 	"index_files": true,
 	"line_numbers": true,
 	"line_padding_bottom": 0,
-	"line_padding_top": 2,
+	"line_padding_top": 0,
 	"margin": 4,
 	"match_brackets": true,
 	"match_brackets_angle": false,
