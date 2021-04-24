@@ -88,7 +88,7 @@ cask "qlstephen"
 cask "screen"
 cask "slack"
 cask "sublime-text"
-cask "swiftbar"
+cask "xbar"
 cask "zoom"
 
 mas "1Password", id: 443987910
