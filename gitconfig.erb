@@ -18,6 +18,7 @@
   oops = reset --hard 'HEAD@{1}'
   patch = !git --no-pager diff --no-color
   ppr = !"git push -u origin head && gh pr create --web"
+  pt = !"git pull && git trim"
   pushf = push --force-with-lease
   pushu = push -u origin head
   ru = reset --hard '@{u}'
