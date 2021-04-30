@@ -16,30 +16,19 @@ if [ -x /usr/local/bin/terminal-notifier ]; then
   export TERMINAL_NOTIFIER_BIN=/usr/local/bin/terminal-notifier
 fi
 
-# Shortcut for `bundle exec rails` and `bundle exec rake`.
-# If bin/rails and bin/rake are available, use them instead as they are much
-# faster to execute than `bundle exec`.
+# Shortcut for running `rails` or `rake`, based on a simple heuristic
+# to determine which command is appropriate.
 function r() {
-  if [[ "g|generate|d|destroy|c|console|s|server|db|dbconsole|r|runner|routes|new" =~ $1 ]]; then
-    if [ -x bin/rails ]; then
-      bin/rails "$@"
-    elif [ -x script/rails ]; then
-      script/rails "$@"
-    elif [ -f Gemfile.lock ]; then
-      bundle exec rails "$@"
-    else
-      rails "$@"
-    fi
-  else
+  if [ $# -eq 0 ] || [ ! -x bin/rails ]; then
     if [ -x bin/rake ]; then
       bin/rake "$@"
-    elif [ -x script/rake ]; then
-      script/rake "$@"
     elif [ -f Gemfile.lock ]; then
       bundle exec rake "$@"
     else
       rake "$@"
     fi
+  else
+    bin/rails "$@"
   fi
 }
 
