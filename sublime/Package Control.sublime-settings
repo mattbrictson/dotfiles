@@ -7,12 +7,9 @@
 	[
 		"A File Icon",
 		"AdvancedNewFile",
-		"All Autocomplete",
 		"ApplySyntax",
 		"AutoFileName",
 		"ayu",
-		"Babel",
-		"Better CoffeeScript",
 		"Case Conversion",
 		"CloseOtherWindows",
 		"Color Highlighter",
@@ -21,9 +18,7 @@
 		"DocBlockr",
 		"Dockerfile Syntax Highlighting",
 		"Dracula Color Scheme",
-		"eco",
 		"EditorConfig",
-		"Gem Browser",
 		"GitGutter",
 		"Gradle_Language",
 		"Handlebars",
@@ -32,7 +27,6 @@
 		"JsPrettier",
 		"Kotlin",
 		"MarkdownPreview",
-		"Marked App Menu",
 		"nginx",
 		"Package Control",
 		"PackageResourceViewer",
@@ -50,8 +44,7 @@
 		"SublimeLinter-ruby",
 		"SublimeLinter-stylelint",
 		"Swift",
-		"Terminal",
 		"TOML",
-		"TypeScript"
-	]
+		"TypeScript",
+	],
 }
