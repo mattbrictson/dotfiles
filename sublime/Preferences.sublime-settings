@@ -41,7 +41,7 @@
 	[
 		{
 			"characters": "<",
-			"selector": "text.html"
+			"selector": "text.html",
 		}
 	],
 	"auto_complete_with_fields": true,
@@ -142,7 +142,7 @@
 	"hot_exit": true,
 	"ignored_packages":
 	[
-		"Vintage"
+		"Vintage",
 	],
 	"ignored_words":
 	[
@@ -207,5 +207,5 @@
 	"use_tab_stops": true,
 	"word_separators": "./\\()\"'-:,.;<>~!@#$%^&*|+=[]{}`~?",
 	"word_wrap": "auto",
-	"wrap_width": 0
+	"wrap_width": 0,
 }
