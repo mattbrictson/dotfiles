@@ -82,13 +82,10 @@ cask "iina"
 cask "insomnia"
 cask "kap"
 cask "ngrok"
-cask "phantomjs"
 cask "qlmarkdown"
 cask "qlstephen"
-cask "screen"
 cask "slack"
 cask "sublime-text"
-cask "xbar"
 cask "zoom"
 
 mas "1Password", id: 443987910
