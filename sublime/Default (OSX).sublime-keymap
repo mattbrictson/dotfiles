@@ -36,5 +36,17 @@
     "keys": ["ctrl+alt+h"],
     "command": "dash_doc",
     "args": { "flip_syntax_sensitive": true }
+  },
+
+  // Doc-Block package
+  { "keys": ["super+shift+j"], "command": "jsdocs_join", "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "comment.block" }
+    ]
+  },
+  { "keys": ["super+shift+j"], "command": "jsdocs_join", "context":
+    [
+      { "key": "selector", "operator": "equal", "operand": "comment.line" }
+    ]
   }
 ]
