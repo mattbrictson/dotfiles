@@ -2,7 +2,7 @@
 
 set -e
 
-CFLAGS=-O3 RUBY_CONFIGURE_OPTS=--with-jemalloc rbenv install $1
+CFLAGS=-O3 rbenv install $1
 
 # ~/.ruby-version conflicts with rbenv global, so remove it
 rm -f ~/.ruby-version
