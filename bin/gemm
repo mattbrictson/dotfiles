@@ -47,7 +47,7 @@ ARGV.each do |gem|
 
   puts "\rLooking for #{gem}... Found it! (#{version})"
   group = choose("Where do you want it", ["<root>"] + gemfile_groups)
-  spec = choose("Version specification", version_specs(version) + ["<none>"])
+  spec = choose("Version specification", ["<none>"] + version_specs(version))
 
   insert = %(gem "#{gem}")
   insert << %(, "#{spec}") unless spec == "<none>"
