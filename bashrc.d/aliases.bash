@@ -4,7 +4,6 @@ alias cat='bat'
 # Change to the root level directory the current git repository
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
 alias diff=colordiff
-alias gb='gh pr view --web > /dev/null 2>&1 || hub browse'
 alias get='git'
 alias hl='heroku local -p 3000 $(test -f Procfile.dev && echo "-f Procfile.dev")'
 alias httpserve='ruby -run -e httpd -- --port=8888 $1'
@@ -24,4 +23,8 @@ alias yup="yarn upgrade-interactive"
 
 function mcdir() {
   mkdir -p $1 && cd $1
+}
+
+function gb() {
+  gh pr view --web $1 > /dev/null 2>&1 || hub browse
 }
