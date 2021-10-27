@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+
+subl --wait --new-window $@
+open -a Terminal
