@@ -39,7 +39,9 @@ class Project
   end
 
   def release_date
-    date = latest_release_html.text
+    local_date = latest_release_html.css("local-time").first&.public_send(:[], "datetime")
+    relative_date = latest_release_html.css("relative-time").first&.public_send(:[], "datetime")
+    date = relative_date || local_date
     Chronic.parse(date).to_date
   end
 
@@ -71,7 +73,7 @@ class Project
   end
 
   def latest_release_html
-    @_latest_release_html ||= Nokogiri::HTML(open_uri(releases_url)).css(".release-entry relative-time").first
+    @_latest_release_html ||= Nokogiri::HTML(open_uri(releases_url))
   end
 
   def latest_unreleased_commit_at
