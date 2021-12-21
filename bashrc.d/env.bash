@@ -10,7 +10,6 @@ export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 
 if [ $TERM_PROGRAM == 'Apple_Terminal' ]; then
   export EDITOR="subl -w"
-  export GIT_EDITOR="subl-commit-editor"
   export BUNDLER_EDITOR=subl
   export GEM_EDITOR=subl
 else
