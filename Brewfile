@@ -38,6 +38,7 @@ brew "nodenv"
 brew "nodenv-default-packages"
 brew "openssl"
 brew "pgcli"
+brew "php"
 brew "postgresql", restart_service: true
 brew "rbenv"
 brew "rbenv-default-gems"
