@@ -87,7 +87,7 @@ class Project
     @_unreleased_commits_html ||= begin
       url = "https://github.com/#{github_repo}/compare/v#{version}...#{default_branch}"
       doc = Nokogiri::HTML(open_uri(url))
-      doc.css("#commits_bucket .TimelineItem.pb-1").last
+      doc.css("#commits_bucket .TimelineItem.pb-2").last
     end
   end
 
