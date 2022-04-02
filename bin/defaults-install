@@ -7,5 +7,7 @@ defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock tilesize -int 64
 defaults write com.apple.screencapture location ~/Downloads/
 defaults write com.apple.screencapture disable-shadow -bool true
+defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
+defaults write -g WebKitDeveloperExtras -bool YES
 killall Dock
 killall SystemUIServer
