@@ -1,6 +1,5 @@
 alias b='bundle exec'
 alias br='for k in `git branch | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort'
-alias bup='bundleup'
 alias cl='clear'
 alias c='ccat'
 # Change to the root level directory the current git repository
