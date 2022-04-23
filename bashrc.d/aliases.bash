@@ -1,16 +1,15 @@
 alias b='bundle exec'
 alias br='for k in `git branch | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort'
 alias bup='bundleup'
-alias c='clear'
+alias cl='clear'
+alias c='ccat'
 # Change to the root level directory the current git repository
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
 alias diff=colordiff
 alias dbundle="$HOME/Code/bundler/bin/bundle"
-alias eks='docker run -it -v ~/.aws:/root/.aws -v ~/ekstools:/home/ekstools lirio-docker.jfrog.io/eks-tools-team:0.4.5'
 alias find='find -L'
 alias gd='git diff'
 alias gmas='git fetch -p && git checkout master && git pull'
-alias geclipse='./gradlew cleanEclipse eclipse'
 alias git-behind='git rev-list --left-right --count origin/master...@'
 alias gl='git log --numstat --oneline'
 alias gp='git push'

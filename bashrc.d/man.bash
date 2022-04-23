@@ -1,6 +1,8 @@
-# Use Apple's man page viewer if we are on a local console
-if [ "$TERM_PROGRAM" == "Apple_Terminal" ]; then
-  function man {
-    open x-man-page://$1
-  }
-fi
+# Use Apple's man page viewer
+function man {
+    if [ $# -eq 1 ] ;
+        then open x-man-page://$1 ;
+    elif [ $# -eq 2 ] ;
+        then open x-man-page://$1/$2 ;
+    fi
+}
