@@ -109,10 +109,14 @@ echo ""
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-source $HOME/.bashrc.d/aliases.bash
-source $HOME/.bashrc.d/java.bash
-source $HOME/.bashrc.d/history.bash
-source $HOME/.bashrc.d/man.bash
+
+# Custom zshrc sources are stored in ~/.zshrc.d
+if [[ -d $HOME/.zshrc.d ]] ; then
+  for config in "$HOME"/.zshrc.d/*.zsh ; do
+    source "$config"
+  done
+fi
+unset -v config
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
