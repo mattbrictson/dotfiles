@@ -61,7 +61,6 @@ cask "zoomus"
 mas "1Password", id: 443987910
 mas "Amphetamine", id: 937984704
 mas "Aware", id: 1082170746
-mas "Divvy - Window Manager", id: 413857545
 mas "Kindle", id: 405399194
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
