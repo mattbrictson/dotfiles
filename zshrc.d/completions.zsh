@@ -1,0 +1,1 @@
+fpath=(~/.zshrc.d $fpath)
