@@ -1,27 +1,23 @@
-alias b='bundle exec'
 alias br='for k in `git branch | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort'
 alias c='clear'
 alias cat='ccat'
 # Change to the root level directory the current git repository
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
+alias cdw='cd `find . -type d -name webapp`'
 alias diff=colordiff
-alias dbundle="$HOME/Code/bundler/bin/bundle"
 alias find='find -L'
 alias gd='git diff'
+alias git-behind='git rev-list --left-right --count origin/main...@'
 alias gm='git fetch -p && git checkout main && git pull'
-alias git-behind='git rev-list --left-right --count origin/master...@'
+alias gpb='git prune-branches'
 alias gl='git log --numstat --oneline'
 alias gp='git push'
+alias gpb='git prune-branches'
 alias gs='git st'
 alias gso='git remote show origin'
 alias get='git'
 alias gh='git rev-parse --verify --short HEAD'
 alias gw="./gradlew --daemon"
-alias httpserve='ruby -run -e httpd -- --port=8888 $1'
-alias kstat='confluent local status'
-alias kstart='confluent local start kafka'
-alias kstop='confluent local stop kafka'
-alias ktopic='kafka-topics --zookeeper localhost:2181'
 alias ls='ls -hFG'
 alias l='exa'
 alias la='exa -la'
@@ -34,16 +30,15 @@ alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias o='open'
-alias cdsam='cd ~/source/lirio-ml-sam'
 alias trim="tr -s \" \" | sed 's/^[ ]//g'"
 alias total-files='ls -1 | wc -l | trim'
 alias usage='df -h'
 alias space='du -Lsh ./*'
 alias wt='title ${PWD##*/}'
 
-# Function for naming terminal windows.
+# Function for naming terminal tabs
 function title {
-    echo -ne "\033]0;"$*"\007"
+    echo -ne "\e]1;"$*"\a"
 }
 
 function mcdir() {
