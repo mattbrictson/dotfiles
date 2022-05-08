@@ -1,0 +1,9 @@
+export CONFLUENT_HOME=/Users/bomartin/swtools/confluent-5.5.4
+export CONFLUENT_CURRENT=/Users/bomartin/swtools/confluent-5.5.4/var
+export PATH="${CONFLUENT_HOME}/bin:$PATH"
+alias kstat='docker-compose -f ~/swtools/kafka-stack-docker-compose/zk-single-kafka-single.yml ps'
+# alias kstart='confluent local services kafka start'
+alias kstart='cd ~/swtools/kafka-stack-docker-compose/ && docker-compose -f zk-single-kafka-single.yml up --detach'
+# alias kstop='confluent local services kafka stop'
+alias kstop='cd ~/swtools/kafka-stack-docker-compose/ && docker-compose -f zk-single-kafka-single.yml down'
+alias ktopic='kafka-topics --zookeeper localhost:2181'
