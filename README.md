@@ -14,9 +14,6 @@ Before using these dotfiles there are a few things you'll need to install manual
 
 1. Your Mac needs git and Apple’s command-line developer tools.
 2. Homebrew.
-3. Rbenv.
-
-Matt's blog post here has a walkthrough: https://mattbrictson.com/rails-osx-setup-guide
 
 ## What’s included?
 
@@ -33,7 +30,7 @@ These scripts will be installed to `~/.bin` and added to your `$PATH`:
 
 ### Shell enhancements (bash)
 
-* Customizes the shell prompt with current directory and git status: e.g. `~/Work/dotfiles (master *%)$`.
+* Customizes the shell prompt with current directory and git status.
 * Replaces `diff` with `colordiff`.
 * Prettifies `ls` output and adds `l`, `la`, and `ll` shortcuts.
 * Improves default `top` settings.
@@ -61,7 +58,7 @@ In addition, during installation (see below), you will be prompted for your full
 Choose a place to store the dotfiles, like `~/Code/dotfiles`.
 
 ```
-git clone git://github.com/mattbrictson/dotfiles ~/Code/dotfiles
+git clone git://github.com/martinbo66/dotfiles ~/Code/dotfiles
 cd ~/Code/dotfiles
 ```
 
