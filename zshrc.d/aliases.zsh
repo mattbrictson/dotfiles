@@ -1,7 +1,7 @@
 alias b='bundle exec'
 alias br='for k in `git branch | sed s/^..//`; do echo -e `git log -1 --pretty=format:"%Cgreen%ci %Cblue%cr%Creset" $k --`\\t"$k";done | sort'
-alias cl='clear'
-alias c='ccat'
+alias c='clear'
+alias cat='ccat'
 # Change to the root level directory the current git repository
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
 alias diff=colordiff
