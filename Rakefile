@@ -38,7 +38,7 @@ namespace :install do
   end
 
   desc "Install dotfiles into user’s home directory"
-  task dotfiles: %i[link_sublime check] do
+  task dotfiles: %i[link_sublime link_xbar check] do
     always_replace = false
 
     Dotfile.each do |dotfile|
@@ -89,6 +89,26 @@ namespace :install do
       FileUtils.rm_rf(user_packages)
       log(:blue, "linking Library/Application Support/Sublime Text 3/Packages/User")
       FileUtils.ln_s(dot_sublime, user_packages)
+    end
+  end
+
+  desc "Symlink the xbar plugins directory"
+  task :link_xbar do
+    dot_xbar = File.expand_path("~/.xbar-plugins")
+    xbar_support = File.expand_path("~/Library/Application Support/xbar/plugins")
+    unless File.symlink?(xbar_support)
+      log(:magenta, "mkdir ~/Library/Application Support/xbar/plugins")
+      FileUtils.mkdir_p(xbar_support)
+    end
+    if File.directory?(xbar_support) && !File.symlink?(xbar_support)
+      log(:magenta, "mkdir ~/.xbar-plugins")
+      FileUtils.mkdir_p(dot_xbar)
+      log(:blue, "copy ~/Library/Application Support/xbar/plugins/*")
+      FileUtils.cp_r(Dir.glob(xbar_support.shellescape + "/*"), dot_xbar)
+      log(:magenta, "rm ~/Library/Application Support/xbar/plugins")
+      FileUtils.rm_rf(xbar_support)
+      log(:blue, "linking ~/Library/Application Support/xbar/plugins")
+      FileUtils.ln_s(dot_xbar, xbar_support)
     end
   end
 end

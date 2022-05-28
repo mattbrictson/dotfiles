@@ -66,6 +66,7 @@ cask "ngrok"
 cask "pop"
 cask "slack"
 cask "sublime-text"
+cask "xbar"
 cask "zoom"
 
 mas "1Password", id: 443987910
