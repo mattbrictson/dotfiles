@@ -67,8 +67,8 @@ def confirm_delete(message, branches)
   puts
   branches.each { |branch| puts "  origin/#{branch.blue}" }
   puts
-  print "Really delete [yN]? ".yellow
-  gets.match?(/^y/i)
+  print 'Really delete (type "yes" to confirm)? '.yellow
+  gets.chomp == "yes"
 end
 
 def git(command, echo: true)
