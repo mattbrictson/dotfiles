@@ -1,0 +1,25 @@
+#!/bin/bash
+
+agree() {
+    local question="$1"
+    
+    while true; do
+        read -p "$question " answer
+        case $answer in
+            [Yy]|[Yy][Ee][Ss]) return 0 ;;
+            [Nn]|[Nn][Oo]|'') return 1 ;; # empty string is default
+            *) echo "Please answer yes or no." ;;
+        esac
+    done
+}
+
+# Read image fields from file descriptor 3 using process substitution
+# This lets us get feedback from the user via stdin within the while read loop
+# (skip the header line with sed)
+exec 3< <(docker images | sed '1d')
+
+while read -u 3 repo tag image info; do
+    agree "Remove image tagged $tag from repo $repo ($(echo $info))?" \
+    && docker rmi $image
+done
+
