@@ -64,10 +64,12 @@ end
 
 def build_metric(formatter:, label:, value_key:, risk_key:)
   timeseries = data.dig("metricsTimeseries").reverse_each.lazy.select { |entry| !entry.fetch(value_key).nil? }
+  empty = timeseries.first.nil?
+
   metric = Metric.new(
-    value: timeseries.first[value_key],
-    date: Date.parse(timeseries.first["date"]),
-    risk: data.dig("riskLevels", risk_key),
+    value: empty ? nil : timeseries.first[value_key],
+    date: empty ? Date.today : Date.parse(timeseries.first["date"]),
+    risk: empty ? nil : data.dig("riskLevels", risk_key),
     previous_values: [],
     label:,
     formatter:,
@@ -84,7 +86,7 @@ end
 
 def format_decimal(value)
   case value&.abs
-  when nil then nil
+  when nil then "N/A"
   when 0...5 then format("%0.2f", value)
   when 5...100 then format("%0.1f", value)
   else ActiveSupport::NumberHelper.number_to_delimited(value.to_i)
@@ -138,7 +140,7 @@ end
 
 def test_positivity_ratio
   build_metric(
-    formatter: -> { "#{format_decimal(_1 * 100)}%" },
+    formatter: -> { "#{format_decimal(_1 && _1 * 100)}%" },
     label: "Test Positivity Ratio",
     value_key: "testPositivityRatio",
     risk_key: "testPositivityRatio"
@@ -155,10 +157,12 @@ def infection_rate
 end
 
 def worst_metric
-  [test_positivity_ratio, case_density].sort_by(&:risk).last
+  [test_positivity_ratio, case_density].select(&:risk).sort_by(&:risk).last
 end
 
 def risk_color(metric)
+  return "❔" if metric.risk.nil?
+
   ["🟢", "🟡", "🟠"][metric.risk] || "🔴"
 end
 
