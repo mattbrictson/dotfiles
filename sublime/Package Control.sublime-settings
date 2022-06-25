@@ -38,6 +38,7 @@
 		"SSH Config",
 		"SublimeLinter",
 		"SublimeLinter-annotations",
+		"SublimeLinter-contrib-erblint",
 		"SublimeLinter-eslint",
 		"SublimeLinter-json",
 		"SublimeLinter-rubocop",
