@@ -104,23 +104,27 @@ def case_density
   metric
 end
 
-def case_density_recent_peak
+def find_peak(formatter:, value_key:)
   nine_months_ago = (Date.today << 9).to_s
   peak = data
     .dig("metricsTimeseries")
     .reverse_each
     .lazy
-    .reject { |entry| entry["weeklyNewCasesPer100k"].nil? }
+    .reject { |entry| entry[value_key].nil? }
     .drop_while { |entry| entry["infectionRate"].to_f > 1 }
     .take_while { |entry| entry["date"] >= nine_months_ago }
-    .sort_by { |entry| entry["weeklyNewCasesPer100k"] }
+    .sort_by { |entry| entry[value_key] }
     .last
 
   HistoricalValue.new(
-    value: peak["weeklyNewCasesPer100k"],
+    value: peak[value_key],
     date: Date.parse(peak["date"]),
-    formatter: -> { format_decimal(_1) }
+    formatter:
   )
+end
+
+def case_density_recent_peak
+  find_peak(formatter: -> { format_decimal(_1) }, value_key: "weeklyNewCasesPer100k")
 end
 
 def case_density_doubling_days
@@ -145,6 +149,10 @@ def test_positivity_ratio
     value_key: "testPositivityRatio",
     risk_key: "testPositivityRatio"
   )
+end
+
+def test_positivity_ratio_recent_peak
+  find_peak(formatter: -> { "#{format_decimal(_1 && _1 * 100)}%" }, value_key: "testPositivityRatio")
 end
 
 def infection_rate
@@ -238,9 +246,8 @@ def render_case_density_change
   "#{infection_rate_arrow} New cases doubling every #{duration}|size=11 href=#{data["url"]}"
 end
 
-def render_case_density_peak
-  date = case_density_recent_peak.date
-  "Previous high was #{case_density_recent_peak} #{format_approximate_date(date)}|size=11 href=#{data["url"]}"
+def render_peak(peak)
+  "Previous high was #{peak} #{format_approximate_date(peak.date)}|size=11 href=#{data["url"]}"
 end
 
 def xbar
@@ -249,9 +256,10 @@ def xbar
     "---",
     render_metric(case_density),
     render_case_density_change,
-    render_case_density_peak,
+    render_peak(case_density_recent_peak),
     "---",
     render_metric(test_positivity_ratio),
+    render_peak(test_positivity_ratio_recent_peak),
     "---",
     render_metric(infection_rate),
   ].compact.join("\n")
