@@ -25,5 +25,5 @@ function mcdir() {
 }
 
 function gb() {
-  gh pr view --web $1 > /dev/null 2>&1 || hub browse
+  gh pr view --web $1 > /dev/null 2>&1 || gh repo view --web
 }
