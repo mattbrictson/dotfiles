@@ -32,7 +32,7 @@ HistoricalValue = Struct.new(:value, :date, :formatter, keyword_init: true) do
 end
 
 def build_metric(formatter:, label:, value_key:, risk_key:)
-  timeseries = data.dig("metricsTimeseries").reverse_each.lazy.select { |entry| !entry.fetch(value_key).nil? }
+  timeseries = data["metricsTimeseries"].reverse_each.lazy.reject { |entry| entry.fetch(value_key).nil? }
   empty = timeseries.first.nil?
 
   metric = Metric.new(
@@ -41,7 +41,7 @@ def build_metric(formatter:, label:, value_key:, risk_key:)
     risk: empty ? nil : data.dig("riskLevels", risk_key),
     previous_values: [],
     label:,
-    formatter:,
+    formatter:
   )
   timeseries.drop(1).take(3).each do |entry|
     metric.previous_values << HistoricalValue.new(
@@ -75,15 +75,13 @@ end
 
 def find_peak(formatter:, value_key:)
   nine_months_ago = (Date.today << 9).to_s
-  peak = data
-    .dig("metricsTimeseries")
+  peak = data["metricsTimeseries"]
     .reverse_each
     .lazy
     .reject { |entry| entry[value_key].nil? }
     .drop_while { |entry| entry["infectionRate"].to_f > 1 }
     .take_while { |entry| entry["date"] >= nine_months_ago }
-    .sort_by { |entry| entry[value_key] }
-    .last
+    .max_by { |entry| entry[value_key] }
 
   HistoricalValue.new(
     value: peak[value_key],
@@ -100,8 +98,7 @@ def case_density_doubling_days
   return if infection_rate.value < 1.1
 
   half_current_density = case_density.value / 2
-  half_date = data
-    .dig("metricsTimeseries")
+  half_date = data["metricsTimeseries"]
     .reverse_each
     .lazy
     .reject { |entry| entry["weeklyNewCasesPer100k"].nil? }
@@ -113,7 +110,7 @@ end
 
 def test_positivity_ratio
   build_metric(
-    formatter: -> { "#{format_decimal(_1 && _1 * 100)}%" },
+    formatter: -> { "#{format_decimal(_1 && (_1 * 100))}%" },
     label: "Test Positivity Ratio",
     value_key: "testPositivityRatio",
     risk_key: "testPositivityRatio"
@@ -121,7 +118,7 @@ def test_positivity_ratio
 end
 
 def test_positivity_ratio_recent_peak
-  find_peak(formatter: -> { "#{format_decimal(_1 && _1 * 100)}%" }, value_key: "testPositivityRatio")
+  find_peak(formatter: -> { "#{format_decimal(_1 && (_1 * 100))}%" }, value_key: "testPositivityRatio")
 end
 
 def infection_rate
@@ -134,7 +131,7 @@ def infection_rate
 end
 
 def worst_metric
-  [test_positivity_ratio, case_density].select(&:risk).sort_by(&:risk).last
+  [case_density, test_positivity_ratio].select(&:risk).max_by(&:risk)
 end
 
 def risk_color(metric)
@@ -149,7 +146,6 @@ def infection_rate_arrow
   when (0.85...0.97) then "↓"
   when (1.03...1.25) then "↑"
   when (1.25..) then "↑↑"
-  else nil
   end
 end
 
@@ -166,24 +162,24 @@ end
 
 def format_approximate_date(date)
   if Date.today - date < 30
-    "on #{date.strftime("%b %e")}"
+    "on #{date.strftime('%b %e')}"
   elsif Date.today.month < date.month && Date.today - date < 120
-    "last #{date.strftime("%B")}"
+    "last #{date.strftime('%B')}"
   elsif Date.today.year != date.year
-    "in #{date.strftime("%B %Y")}"
+    "in #{date.strftime('%B %Y')}"
   else
-    "in #{date.strftime("%B")}"
+    "in #{date.strftime('%B')}"
   end
 end
 
 def render_metric(metric)
   history = metric.previous_values.map do |data_point|
-    "#{data_point} on #{data_point.date.strftime("%B %d")}| href=#{data["url"]}"
+    "#{data_point} on #{data_point.date.strftime('%B %d')}| href=#{data['url']}"
   end
 
   <<~METRIC.strip
     #{risk_color(metric)} #{metric.label}| size=11
-    #{metric} as of #{date_in_words(metric)}| href=#{data["url"]}
+    #{metric} as of #{date_in_words(metric)}| href=#{data['url']}
     #{history.join("\n")}
   METRIC
 end
@@ -193,7 +189,7 @@ def render_summary
   old = days_ago > 2 || (Date.today - Date.parse(data["lastUpdatedDate"])) > 1
 
   text = "#{risk_color(worst_metric)} "
-  text << "#{[infection_rate_arrow, case_density].compact.join(" ")} (#{test_positivity_ratio})"
+  text << "#{[infection_rate_arrow, case_density].compact.join(' ')} (#{test_positivity_ratio})"
   text << " -#{days_ago}d" if old
   text << "| size=11"
   text << " color=#666666" if old
@@ -205,18 +201,18 @@ def render_case_density_change
   return nil if days.nil? || days > 31
 
   duration = case days
-  when 6..8 then "1 week"
-  when 13..17 then "2 weeks"
-  when 18..25 then "3 weeks"
-  when 26..31 then "4 weeks"
-  else "#{days} days"
-  end
+             when 6..8 then "1 week"
+             when 13..17 then "2 weeks"
+             when 18..25 then "3 weeks"
+             when 26..31 then "4 weeks"
+             else "#{days} days"
+             end
 
-  "#{infection_rate_arrow} New cases doubling every #{duration}|size=11 href=#{data["url"]}"
+  "#{infection_rate_arrow} New cases doubling every #{duration}|size=11 href=#{data['url']}"
 end
 
 def render_peak(peak)
-  "Previous high was #{peak} #{format_approximate_date(peak.date)}|size=11 href=#{data["url"]}"
+  "Previous high was #{peak} #{format_approximate_date(peak.date)}|size=11 href=#{data['url']}"
 end
 
 def xbar
@@ -230,7 +226,7 @@ def xbar
     render_metric(test_positivity_ratio),
     render_peak(test_positivity_ratio_recent_peak),
     "---",
-    render_metric(infection_rate),
+    render_metric(infection_rate)
   ].compact.join("\n")
 end
 
