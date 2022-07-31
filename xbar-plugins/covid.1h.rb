@@ -188,7 +188,9 @@ def render_summary
   days_ago = (Date.today - worst_metric.date).to_i
   old = days_ago > 2 || (Date.today - Date.parse(data["lastUpdatedDate"])) > 1
 
-  text = "#{risk_color(worst_metric)} "
+  cdc_says_mask_up = data.dig("communityLevels", "cdcCommunityLevel") > 1
+
+  text = cdc_says_mask_up ? "😷 " : "#{risk_color(worst_metric)} "
   text << "#{[infection_rate_arrow, case_density].compact.join(' ')} (#{test_positivity_ratio})"
   text << " -#{days_ago}d" if old
   text << "| size=11"
