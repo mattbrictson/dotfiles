@@ -1,16 +1,7 @@
 #!/usr/bin/env -S-P${HOME}/.rbenv/shims:${PATH} ruby
 
-require "bundler/inline"
-
-gemfile do
-  source "https://rubygems.org"
-  gem "activesupport"
-  gem "faraday"
-end
-
+require "./lib/xbar_http"
 require "date"
-require "fileutils"
-require "json"
 require "active_support"
 require "active_support/number_helper"
 
@@ -21,32 +12,10 @@ def settings
   end
 end
 
-def http
-  @http = Faraday.new(url: "https://api.covidactnow.org") do |builder|
-    builder.response :raise_error
-    builder.adapter :net_http
-  end
-end
-
-def http_get_with_fallback(path, **params)
-  cache_path = File.expand_path(".cache/xbar/#{path}.cache", Dir.home)
-  FileUtils.mkdir_p(File.dirname(cache_path))
-
-  http.get(path, **params).body.tap do |body|
-    File.write(cache_path, body)
-  end
-rescue StandardError
-  raise unless File.exist?(cache_path)
-
-  File.read(cache_path)
-end
-
 def data
-  @data ||= JSON.parse(
-    http_get_with_fallback(
-      "/v2/county/#{settings.dig("covid", "county_fips")}.timeseries.json",
-      apiKey: settings.dig("covid", "api_key")
-    )
+  @data ||= XbarHttp.get(
+    "https://api.covidactnow.org/v2/county/#{settings.dig('covid', 'county_fips')}.timeseries.json",
+    apiKey: settings.dig("covid", "api_key")
   )
 end
 
