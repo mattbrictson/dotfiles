@@ -58,7 +58,8 @@ alias kei='kubectl exec -it'
 
 # Function for naming terminal tabs
 function title {
-    echo -ne "\e]1;"$*"\a"
+    # echo -ne "\e]1;"$*"\a"
+    echo -e "\033];"$*"\007"
 }
 
 function mcdir() {
