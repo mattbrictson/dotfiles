@@ -46,7 +46,7 @@ ARGV.each do |gem|
   raise "Could not find #{gem}" if version.empty?
 
   puts "\rLooking for #{gem}... Found it! (#{version})"
-  group = choose("Where do you want it", ["<root>"] + gemfile_groups)
+  group = gemfile_groups.any? ? choose("Where do you want it", ["<root>"] + gemfile_groups) : "<root>"
   spec = choose("Version specification", ["<none>"] + version_specs(version))
 
   insert = %(gem "#{gem}")
@@ -66,7 +66,7 @@ ARGV.each do |gem|
   in_group = nil
   lines = (IO.readlines("Gemfile") + [""]).each_cons(2).each_with_object([]) do |(curr, succ), out|
     out << curr
-    in_group = "<root>" if !in_group && succ =~ /^\s*(gem\s|group)/
+    in_group = "<root>" if !in_group && succ =~ /^#?\s*(gem\s|group)/
     in_group = $1 if curr =~ /^group\s*\(?(.*)\)?\s+do\s*$/
     match = succ =~ /^\s*gem\s/ && insert && insert < succ
     bottom = out.length > 1 && succ.strip.empty? || (in_group != "<root>" && succ =~ /^end/)
