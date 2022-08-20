@@ -1,3 +1,3 @@
-if [ -f /usr/local/etc/profile.d/autojump.sh ]; then
-  . /usr/local/etc/profile.d/autojump.sh
+if [ -f $BREW_PREFIX/etc/profile.d/autojump.sh ]; then
+  . $BREW_PREFIX/etc/profile.d/autojump.sh
 fi

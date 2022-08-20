@@ -16,6 +16,10 @@ IGNORE = %w[
   README.md
 ].freeze
 
+def brew_prefix
+  @brew_prefix ||= File.executable?("/opt/homebrew/bin/brew") ? "/opt/homebrew" : "/usr/local"
+end
+
 task default: "install"
 
 desc "Install packages and dotfiles"
@@ -60,12 +64,12 @@ namespace :install do
     end
   end
 
-  desc "Install bash completion scripts into /usr/local"
+  desc "Install bash completion scripts"
   task :completions do
-    FileUtils.mkdir_p "/usr/local/etc/bash_completion.d"
+    FileUtils.mkdir_p "#{brew_prefix}/etc/bash_completion.d"
     Dir[File.expand_path("completions/*", __dir__)].each do |script|
       basename = File.basename(script)
-      target = "/usr/local/etc/bash_completion.d/#{basename}"
+      target = "#{brew_prefix}/etc/bash_completion.d/#{basename}"
       log(:blue, "linking completions/#{basename}")
       FileUtils.rm_rf(target)
       FileUtils.ln_s(script, target)

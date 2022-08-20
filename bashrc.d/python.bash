@@ -12,9 +12,9 @@ then
     export VIRTUALENV_DISTRIBUTE=true
     export PIP_DOWNLOAD_CACHE=$HOME/.pip/cache
     export PIP_REQUIRE_VIRTUALENV=true
-    export VIRTUALENVWRAPPER_PYTHON=/usr/local/bin/python
+    export VIRTUALENVWRAPPER_PYTHON=$BREW_PREFIX/bin/python
 
-    wrapper_sh=/usr/local/bin/virtualenvwrapper.sh
+    wrapper_sh=$BREW_PREFIX/bin/virtualenvwrapper.sh
     [[ -f $wrapper_sh ]] && . $wrapper_sh
 
     syspip(){

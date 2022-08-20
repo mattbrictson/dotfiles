@@ -1,19 +1,19 @@
-if [ -x /usr/local/bin/rbenv ]; then
+if [ -x $BREW_PREFIX/bin/rbenv ]; then
   eval "$(rbenv init -)"
 fi
 
 export PATH=".git/safe/../../bin:$PATH"
 export PATH="$HOME/Library/Qt5.5.0/5.5/clang_64/bin:$PATH"
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
-export RUBY_CONFIGURE_OPTS="--with-jemalloc --with-openssl-dir=/usr/local/opt/openssl@1.1"
+export PATH="$BREW_PREFIX/opt/mysql@5.7/bin:$PATH"
+export RUBY_CONFIGURE_OPTS="--with-jemalloc--prefix=$BREW_PREFIX --with-openssl-dir=$BREW_PREFIX/opt/openssl@1.1"
 
 # OS X has its own way of setting LANG, but only at the console.
 # By declaring here in .bashrc, daemons like Pow will also pick it up.
 export LANG=en_US.UTF-8
 
 # Use Homebrew's terminal-notifier, which is much faster than Ruby's.
-if [ -x /usr/local/bin/terminal-notifier ]; then
-  export TERMINAL_NOTIFIER_BIN=/usr/local/bin/terminal-notifier
+if [ -x $BREW_PREFIX/bin/terminal-notifier ]; then
+  export TERMINAL_NOTIFIER_BIN=$BREW_PREFIX/bin/terminal-notifier
 fi
 
 # Shortcut for running `rails` or `rake`, based on a simple heuristic

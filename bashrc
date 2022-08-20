@@ -1,3 +1,11 @@
+if [ -x /opt/homebrew/bin/brew ]; then
+  BREW_PREFIX=/opt/homebrew
+else
+  BREW_PREFIX=/usr/local
+fi
+
+export PATH=$BREW_PREFIX/bin:$PATH
+
 # Custom bashrc sources are stored in ~/.bashrc.d
 if [[ -d $HOME/.bashrc.d ]] ; then
   for config in "$HOME"/.bashrc.d/*.bash ; do
@@ -11,6 +19,8 @@ if [ -d ~/.bin ]; then
   export PATH=~/.bin:$PATH
 fi
 
-if [ -x /usr/local/bin/direnv ]; then
-  eval "$(/usr/local/bin/direnv hook bash)"
+if [ -x $BREW_PREFIX/bin/direnv ]; then
+  eval "$($BREW_PREFIX/bin/direnv hook bash)"
 fi
+
+unset -v BREW_PREFIX
