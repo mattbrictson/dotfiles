@@ -16,6 +16,11 @@
               "WIP"
           ]
       },
+      "eslint": {
+        "env": {
+          "PATH": "~/.nodenv/shims:/opt/homebrew/bin:/usr/local/bin:/usr/bin"
+        }
+      },
       "jscs": {
           "disable": true,
       },
@@ -24,12 +29,19 @@
       },
       "scss": {
           "disable": true,
+      },
+      "stylelint": {
+        "env": {
+          "PATH": "~/.nodenv/shims:/opt/homebrew/bin:/usr/local/bin:/usr/bin"
+        }
       }
   },
   "paths": {
     "linux": [],
     "osx": [
-      "~/.rbenv/shims"
+      "~/.rbenv/shims",
+      "~/.nodenv/shims",
+      "/opt/homebrew/bin"
     ],
     "windows": []
   }
