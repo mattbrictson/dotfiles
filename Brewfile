@@ -47,6 +47,7 @@ brew "readline"
 brew "redis", restart_service: true
 brew "ripgrep"
 brew "ruby-build"
+brew "shellcheck"
 brew "trash"
 brew "tree"
 brew "wget"

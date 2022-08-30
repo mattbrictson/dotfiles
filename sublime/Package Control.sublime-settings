@@ -43,6 +43,7 @@
 		"SublimeLinter-json",
 		"SublimeLinter-rubocop",
 		"SublimeLinter-ruby",
+		"SublimeLinter-shellcheck",
 		"SublimeLinter-stylelint",
 		"Swift",
 		"TOML",
