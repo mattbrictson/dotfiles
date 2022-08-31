@@ -1,0 +1,5 @@
+// Settings in here override those in "/JsPrettier/JsPrettier.sublime-settings",
+
+{
+  "node_path": "~/.nodenv/shims/node"
+}
