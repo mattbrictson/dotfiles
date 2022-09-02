@@ -62,6 +62,22 @@ namespace :install do
         end
       end
     end
+
+    Rake::Task["install:prune_brewfile"].invoke
+  end
+
+  task :prune_brewfile do
+    ignores = File.exist?(".brewignore") ? File.readlines(".brewignore", chomp: true) : []
+    brewfile_path = File.expand_path("~/.Brewfile")
+    brewfile = File.readlines(brewfile_path)
+
+    ignores.each do |ignore|
+      next if ignore.empty?
+
+      brewfile.reject! { |line| line.include?(ignore) }
+    end
+
+    File.write(brewfile_path, brewfile.join)
   end
 
   desc "Install bash completion scripts"

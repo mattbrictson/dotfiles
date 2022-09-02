@@ -1,2 +1,5 @@
 # Database of previously entered template values
 /.db
+
+# Brew packages to ignore on this machine
+/.brewignore
