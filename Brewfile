@@ -88,7 +88,6 @@ mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Pixelmator Pro", id: 1289583905
 mas "Reeder 5.", id: 1529448980
-mas "The Clock", id: 488764545
 mas "The Unarchiver", id: 425424353
 mas "Things3", id: 904280696
 mas "Trello", id: 1278508951
