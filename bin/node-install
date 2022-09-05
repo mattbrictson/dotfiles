@@ -3,7 +3,7 @@
 set -e
 
 nodenv update-version-defs
-nodenv install $1
+nodenv install "$1"
 
-nodenv global $1
+nodenv global "$1"
 node -v
