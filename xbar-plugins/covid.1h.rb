@@ -56,8 +56,8 @@ end
 def format_decimal(value)
   case value&.abs
   when nil then "N/A"
-  when 0...5 then format("%0.2f", value)
-  when 5...100 then format("%0.1f", value)
+  when 0...1.5 then format("%0.2f", value)
+  when 1.5...100 then format("%0.1f", value)
   else ActiveSupport::NumberHelper.number_to_delimited(value.to_i)
   end
 end
