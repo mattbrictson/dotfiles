@@ -131,7 +131,7 @@ def infection_rate
 end
 
 def worst_metric
-  [case_density, test_positivity_ratio].select(&:risk).max_by(&:risk)
+  [case_density, test_positivity_ratio, infection_rate].select(&:risk).max_by(&:risk)
 end
 
 def risk_color(metric)
