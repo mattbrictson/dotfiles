@@ -83,6 +83,8 @@ def find_peak(formatter:, value_key:)
     .take_while { |entry| entry["date"] >= nine_months_ago }
     .max_by { |entry| entry[value_key] }
 
+  return nil if peak.nil?
+
   HistoricalValue.new(
     value: peak[value_key],
     date: Date.parse(peak["date"]),
@@ -214,6 +216,8 @@ def render_case_density_change
 end
 
 def render_peak(peak)
+  return nil if peak.nil?
+
   "Previous high was #{peak} #{format_approximate_date(peak.date)}|size=11 href=#{data['url']}"
 end
 
