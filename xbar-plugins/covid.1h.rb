@@ -35,8 +35,9 @@ HistoricalValue = Struct.new(:value, :date, :formatter, keyword_init: true) do
   end
 end
 
-def build_metric(formatter:, label:, value_key:, risk_key:)
+def build_metric(formatter:, label:, value_key:, risk_key:, drop: nil) # rubocop:disable Metrics/MethodLength
   timeseries = data["metricsTimeseries"].reverse_each.lazy.reject { |entry| entry.fetch(value_key).nil? }
+  timeseries = timeseries.drop(drop) if drop
   empty = timeseries.first.nil?
 
   metric = Metric.new(
@@ -132,7 +133,8 @@ def infection_rate
     formatter: -> { format_decimal(_1) },
     label: "Infection Rate",
     value_key: "infectionRate",
-    risk_key: "infectionRate"
+    risk_key: "infectionRate",
+    drop: 7
   )
 end
 
