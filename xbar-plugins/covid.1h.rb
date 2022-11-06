@@ -203,7 +203,6 @@ def render_summary
   text << " (#{test_positivity_ratio})" if test_positivity_ratio.present?
   text << " -#{days_ago}d" if old
   text << "| size=11"
-  text << " color=#666666" if old
   text
 end
 
@@ -212,14 +211,14 @@ def render_case_density_change
   return nil if days.nil? || days > 31
 
   duration = case days
-             when 6..8 then "1 week"
-             when 13..17 then "2 weeks"
-             when 18..25 then "3 weeks"
-             when 26..31 then "4 weeks"
-             else "#{days} days"
+             when 6..8 then "every week"
+             when 13..17 then "every 2 weeks"
+             when 18..25 then "every 3 weeks"
+             when 26..31 then "every 4 weeks"
+             else "every #{days} days"
              end
 
-  "#{infection_rate_arrow} New cases doubling every #{duration}|size=11 href=#{data['url']}"
+  "#{infection_rate_arrow} New cases doubling #{duration}|size=11 href=#{data['url']}".squish
 end
 
 def render_peak(peak)
