@@ -20,6 +20,10 @@ def data
 end
 
 Metric = Struct.new(:label, :value, :risk, :date, :formatter, :previous_values, keyword_init: true) do
+  def present?
+    !value.nil?
+  end
+
   def to_s
     formatter.call(value)
   end
@@ -193,7 +197,8 @@ def render_summary
   cdc_says_mask_up = data.dig("communityLevels", "cdcCommunityLevel") > 1
 
   text = cdc_says_mask_up ? "😷 " : "#{risk_color(worst_metric)} "
-  text << "#{[infection_rate_arrow, case_density].compact.join(' ')} (#{test_positivity_ratio})"
+  text << [infection_rate_arrow, case_density].compact.join(" ")
+  text << " (#{test_positivity_ratio})" if test_positivity_ratio.present?
   text << " -#{days_ago}d" if old
   text << "| size=11"
   text << " color=#666666" if old
