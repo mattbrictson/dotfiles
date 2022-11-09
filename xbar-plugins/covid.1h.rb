@@ -129,13 +129,16 @@ def test_positivity_ratio_recent_peak
 end
 
 def infection_rate
-  build_metric(
+  metric = build_metric(
     formatter: -> { format_decimal(_1) },
     label: "Infection Rate",
     value_key: "infectionRate",
     risk_key: "infectionRate",
     drop: 7
   )
+  # CAN classifies zero risk as below 0.9; slightly shift this upward to 1.0
+  metric.risk = 0 if metric.value && metric.value < 1
+  metric
 end
 
 def worst_metric
@@ -194,7 +197,7 @@ end
 
 def render_summary
   days_ago = (Date.today - worst_metric.date).to_i
-  old = days_ago > 2 || (Date.today - Date.parse(data["lastUpdatedDate"])) > 1
+  old = days_ago > 6 || (Date.today - Date.parse(data["lastUpdatedDate"])) > 1
 
   cdc_says_mask_up = data.dig("communityLevels", "cdcCommunityLevel") > 1
 
