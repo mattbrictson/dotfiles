@@ -114,21 +114,15 @@ namespace :install do
 
   desc "Symlink the xbar plugins directory"
   task :link_xbar do
-    dot_xbar = File.expand_path("~/.xbar-plugins")
+    custom_plugins = File.expand_path("../xbar/plugins", __dir__)
+    break unless File.directory?(custom_plugins)
+
     xbar_support = File.expand_path("~/Library/Application Support/xbar/plugins")
     unless File.symlink?(xbar_support)
-      log(:magenta, "mkdir ~/Library/Application Support/xbar/plugins")
-      FileUtils.mkdir_p(xbar_support)
-    end
-    if File.directory?(xbar_support) && !File.symlink?(xbar_support)
-      log(:magenta, "mkdir ~/.xbar-plugins")
-      FileUtils.mkdir_p(dot_xbar)
-      log(:blue, "copy ~/Library/Application Support/xbar/plugins/*")
-      FileUtils.cp_r(Dir.glob(xbar_support.shellescape + "/*"), dot_xbar)
       log(:magenta, "rm ~/Library/Application Support/xbar/plugins")
       FileUtils.rm_rf(xbar_support)
       log(:blue, "linking ~/Library/Application Support/xbar/plugins")
-      FileUtils.ln_s(dot_xbar, xbar_support)
+      FileUtils.ln_s(custom_plugins, xbar_support)
     end
   end
 end
