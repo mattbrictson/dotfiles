@@ -4,9 +4,7 @@ if [ -x "$BREW_PREFIX/bin/rbenv" ]; then
 fi
 
 export PATH=".git/safe/../../bin:$PATH"
-export PATH="$HOME/Library/Qt5.5.0/5.5/clang_64/bin:$PATH"
-export PATH="$BREW_PREFIX/opt/mysql@5.7/bin:$PATH"
-export RUBY_CONFIGURE_OPTS="--with-jemalloc--prefix=$BREW_PREFIX --with-openssl-dir=$BREW_PREFIX/opt/openssl@1.1"
+export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$BREW_PREFIX/opt/openssl@3"
 
 # OS X has its own way of setting LANG, but only at the console.
 # By declaring here in .bashrc, daemons like Pow will also pick it up.
