@@ -1,0 +1,53 @@
+#!/usr/bin/env ruby
+
+require "json"
+require "open3"
+
+def open_semaphore_ci
+  url = if (workflow_url = find_workflow_url_based_on_pr_check)
+          workflow_url.sub(%r{/summary}, "").sub(/&report_id=[^&+]/, "")
+        else
+          subdomain, project = find_project_based_on_git_origin
+          project_name = project.dig("metadata", "name")
+          "https://#{subdomain}.semaphoreci.com/projects/#{project_name}"
+        end
+
+  system "open", url
+end
+
+def find_workflow_url_based_on_pr_check
+  `gh pr checks 2> /dev/null`[/(https:\S+semaphoreci\.com\S+)/, 1]
+end
+
+def find_project_based_on_git_origin
+  origin = capture("git remote get-url origin").chomp
+  contexts_with_current_first.each_with_index do |context, index|
+    system("sem context #{context}", exception: true) unless index.zero?
+    projects = capture_json("sem get projects --verbose")
+    project = projects.find { _1.dig("spec", "repository", "url") == origin }
+
+    return [context.sub(/_semaphoreci_com$/, ""), project] unless project.nil?
+  end
+
+  raise "Couldn’t find Semaphore project for #{origin}"
+end
+
+def contexts_with_current_first
+  capture("sem context").lines.sort.reverse.map { _1[/(\S+)$/, 1] }
+end
+
+def capture_json(command)
+  raw_json = capture(command)[%r(^[\d/]+ [\d:]+ (\[\{.*?)$), 1]
+  JSON.parse(raw_json)
+end
+
+def capture(command)
+  out_err, status = Open3.capture2e(command)
+  return out_err if status.success?
+
+  $stderr.puts
+  $stderr.puts(out_err || "Could not execute #{command}")
+  exit(1)
+end
+
+open_semaphore_ci
