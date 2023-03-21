@@ -29,13 +29,14 @@ desc "Warn if git origin is newer"
 task :check do
   next unless system("git fetch origin")
   next if `git diff HEAD origin/main`.strip.empty?
+
   log(:yellow, "warning Working copy is out of date; consider `git pull`")
 end
 
 namespace :install do
   desc "Install homebrew, etc. packages"
   task packages: :check do
-    %w(brew defaults).each do |type|
+    %w[brew defaults].each do |type|
       log(:blue, "executing bin/#{type}-install …")
       system("bin/#{type}-install")
     end
@@ -96,11 +97,11 @@ namespace :install do
   task :link_sublime do
     dot_sublime = File.expand_path("~/.sublime")
     user_packages = File.expand_path("~/Library/Application Support/Sublime Text 3/Packages/User")
-    if !File.exist?(user_packages)
+    unless File.exist?(user_packages)
       log(:magenta, "mkdir Library/Application Support/Sublime Text 3/Packages/User")
       FileUtils.mkdir_p(user_packages)
     end
-    if File.directory?(user_packages) && ! File.symlink?(user_packages)
+    if File.directory?(user_packages) && !File.symlink?(user_packages)
       log(:magenta, "mkdir .sublime")
       FileUtils.mkdir_p(dot_sublime)
       log(:blue, "copy  Library/Application Support/Sublime Text 3/Packages/User/*")
@@ -127,7 +128,7 @@ namespace :install do
   end
 end
 
-def log(color, message, options={})
+def log(color, message)
   begin
     require "highline"
   rescue LoadError

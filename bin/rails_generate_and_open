@@ -17,7 +17,7 @@ def colorless(str)
   str.gsub(/\033\[\d+m/, "")
 end
 
-command = %w(bin/rails generate) + ARGV
+command = %w[bin/rails generate] + ARGV
 lines = []
 
 # Use PTY to force Thor to output colored text
@@ -31,6 +31,6 @@ end
 files = extract_created_files(lines)
 
 if files.any?
-  puts "\nOpening #{files.length} file#{files.length > 0 ? 's' : ''}…"
+  puts "\nOpening #{files.length} file#{files.empty? ? "" : "s"}…"
   exec("subl", *files)
 end

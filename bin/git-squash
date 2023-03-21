@@ -1,9 +1,10 @@
 #!/usr/bin/env ruby
 
+require "English"
 require "shellwords"
 require "tempfile"
 
-def usage_and_exit(status=0)
+def usage_and_exit(status = 0)
   out = status == 0 ? $stdout : $stderr
 
   out.puts <<~USAGE.gsub(/^/, "  ")
@@ -121,10 +122,10 @@ end
 
 def squash_summary
   current_branch.sub(%r{^bugs?/}i, "Bug fix: ")
-                .sub(%r{^docs?/}i, "Doc: ")
-                .sub(%r{^features?/}i, "Feature: ")
-                .sub(%r{^chores?/}i, "Chore: ")
-                .gsub(/[-_]/, " ")
+    .sub(%r{^docs?/}i, "Doc: ")
+    .sub(%r{^features?/}i, "Feature: ")
+    .sub(%r{^chores?/}i, "Chore: ")
+    .gsub(/[-_]/, " ")
 end
 
 def commit_messages(base_branch)
@@ -137,14 +138,14 @@ def current_branch
   @_current_branch ||= capture!("git rev-parse --abbrev-ref HEAD").chomp
 end
 
-def sh!(command, env={})
+def sh!(command, env = {})
   puts ">>>> #{command}"
   exit 1 unless system(env, command)
 end
 
 def capture!(command)
   result = `#{command}`
-  return result if $?.success?
+  return result if $CHILD_STATUS.success?
 
   $stderr.puts "Failed: #{command}"
   exit 1
@@ -152,9 +153,8 @@ end
 
 if $PROGRAM_NAME == __FILE__
   force = ARGV.delete("--force")
-  usage_and_exit if (ARGV & %w(-h --help help)).any?
+  usage_and_exit if (ARGV & %w[-h --help help]).any?
   usage_and_exit(2) unless ARGV.length == 1
 
   squash(ARGV.first, force: force)
 end
-

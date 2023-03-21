@@ -1,6 +1,4 @@
 #!/usr/bin/env ruby
-# encoding: utf-8
-
 require "highline"
 HighLine.colorize_strings
 
@@ -14,6 +12,7 @@ end
 
 def with_user(host)
   return host if host.include?("@")
+
   "root@#{host}"
 end
 
@@ -36,9 +35,10 @@ ARGV.each_with_index do |host, i|
   if ubuntu16?(host)
     run host, "sudo apt-get -y autoremove"
     run host, "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q -y update"
-    run host, "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q "\
-              '-o DPkg::options::="--force-confdef" '\
-              '-o DPkg::options::="--force-confold" dist-upgrade'
+    run host,
+      "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q " \
+      '-o DPkg::options::="--force-confdef" ' \
+      '-o DPkg::options::="--force-confold" dist-upgrade'
   else
     run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q -y update"
     run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q safe-upgrade"

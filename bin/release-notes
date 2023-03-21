@@ -5,7 +5,7 @@ note = `gh release view #{release}`
 
 regexp = /- Update rubocop.* requirement from .* \((#\d+)\) @dependabot\n/
 prs = note.scan(regexp).flatten.sort
-consolidated = "- Update rubocop gems (#{prs.join(', ')}) @dependabot\n"
+consolidated = "- Update rubocop gems (#{prs.join(", ")}) @dependabot\n"
 
 edited = note.gsub(regexp) do |match|
   match.include?(prs.first) ? consolidated : ""

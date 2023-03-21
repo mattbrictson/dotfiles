@@ -14,19 +14,19 @@ class String
 end
 
 def usage_and_exit
-  puts <<-USAGE
-bucket operates on the Bitbucket-hosted git repository that is in your
-working directory. It assumes that you have a remote named "origin" that
-points to Bitbucket.
+  puts <<~USAGE
+    bucket operates on the Bitbucket-hosted git repository that is in your
+    working directory. It assumes that you have a remote named "origin" that
+    points to Bitbucket.
 
-Usage:
+    Usage:
 
-bucket show     # Opens the Bitbucket website for this repository
-bucket          # Shortcut for `bucket show`
-bucket compare  # Opens the "compare" view for the current branch
-bucket pull     # Creates a new pull request for the current branch
-bucket branches # Shows all un-merged feature branches
-USAGE
+    bucket show     # Opens the Bitbucket website for this repository
+    bucket          # Shortcut for `bucket show`
+    bucket compare  # Opens the "compare" view for the current branch
+    bucket pull     # Creates a new pull request for the current branch
+    bucket branches # Shows all un-merged feature branches
+  USAGE
 
   exit(2)
 end
@@ -68,13 +68,13 @@ def current_sha
   @current_sha ||= git("rev-parse", current_branch)[/^\S{12}/]
 end
 
-def fail(reason=nil)
+def fail(reason = nil)
   puts reason.to_s.red unless reason.nil?
   exit(1)
 end
 
 if $PROGRAM_NAME == __FILE__
-  usage_and_exit if (ARGV & %w(-h --help help)).any?
+  usage_and_exit if (ARGV & %w[-h --help help]).any?
 
   command = ARGV.first || "show"
   url = send("#{command}_url")

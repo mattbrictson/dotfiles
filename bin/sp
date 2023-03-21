@@ -32,7 +32,7 @@ unless File.exist?(project)
   if (glob = Dir[File.join(directory, "*.sublime-project")]).any?
     project = glob.first
   else
-    IO.write(project, <<~JSON)
+    File.write(project, <<~JSON)
       {
         "folders": [
           {

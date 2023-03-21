@@ -29,21 +29,21 @@ def pluck(git_dir, sha)
 end
 
 def usage_and_exit
-  puts <<-USAGE
-git pluck <path_to_other_project> <SHA>
+  puts <<~USAGE
+    git pluck <path_to_other_project> <SHA>
 
-Cherry-picks a commit identified by SHA from another Git repository
-into the current repository.
+    Cherry-picks a commit identified by SHA from another Git repository
+    into the current repository.
 
-Example:
+    Example:
 
-git pluck ../rails-starter ab1df43
+    git pluck ../rails-starter ab1df43
   USAGE
 
   exit(2)
 end
 
-def fail(reason=nil)
+def fail(reason = nil)
   puts(reason.red) unless reason.nil?
   exit(1)
 end
@@ -55,7 +55,7 @@ def find_repository(path)
 end
 
 if $PROGRAM_NAME == __FILE__
-  usage_and_exit if ARGV.length != 2 || (%w(-h --help) & ARGV).any?
+  usage_and_exit if ARGV.length != 2 || (%w[-h --help] & ARGV).any?
 
   repo = find_repository(ARGV[0])
   sha = ARGV[1]

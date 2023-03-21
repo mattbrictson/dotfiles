@@ -22,21 +22,20 @@ def choose(question, choices)
 end
 
 def gemfile_groups
-  IO.read("Gemfile").scan(/^group\s*\(?(.*)\)?\s+do\s*$/).map(&:first)
+  File.read("Gemfile").scan(/^group\s*\(?(.*)\)?\s+do\s*$/).map(&:first)
 end
 
 def version_specs(version)
   specs = [version]
   parts = version.split(".")
   parts.length.downto(2).each do |limit|
-    specs << "~> #{parts[0...limit].join('.')}"
+    specs << "~> #{parts[0...limit].join(".")}"
   end
   specs.reverse
 end
 
 ARGV.each do |gem|
-
-  if IO.read("Gemfile") =~ /^gem "#{gem}"/
+  if File.read("Gemfile") =~ /^gem "#{gem}"/
     puts "#{gem} is already in the Gemfile!"
     exit 1
   end
@@ -64,19 +63,19 @@ ARGV.each do |gem|
   exit unless $stdin.gets =~ /^($|y)/i
 
   in_group = nil
-  lines = (IO.readlines("Gemfile") + [""]).each_cons(2).each_with_object([]) do |(curr, succ), out|
+  lines = (File.readlines("Gemfile") + [""]).each_cons(2).with_object([]) do |(curr, succ), out|
     out << curr
     in_group = "<root>" if !in_group && succ =~ /^#?\s*(gem\s|group)/
     in_group = $1 if curr =~ /^group\s*\(?(.*)\)?\s+do\s*$/
     match = succ =~ /^\s*gem\s/ && insert && insert < succ
-    bottom = out.length > 1 && succ.strip.empty? || (in_group != "<root>" && succ =~ /^end/)
+    bottom = (out.length > 1 && succ.strip.empty?) || (in_group != "<root>" && succ =~ /^end/)
 
     next unless in_group == group && insert && (match || bottom)
 
     out << insert
     insert = nil
   end
-  IO.write("Gemfile", lines.join)
+  File.write("Gemfile", lines.join)
 
   puts
   print "Updating Gemfile..."
@@ -84,5 +83,4 @@ ARGV.each do |gem|
   run("bundle install")
 
   puts "\rUpdating Gemfile... DONE"
-
 end
