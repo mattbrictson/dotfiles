@@ -3,23 +3,42 @@
 require "bundler/inline"
 require "date"
 require "json"
-require "open-uri"
 require "pstore"
 require "time"
 
 gemfile do
   source "https://rubygems.org"
   gem "chronic"
+  gem "faraday"
+  gem "faraday-net_http_persistent"
+  gem "faraday-retry"
   gem "nokogiri"
   gem "tty-progressbar"
 end
 
 PSTORE = PStore.new(File.expand_path("~/.cache/outdated-projects"))
 
+Faraday.default_connection = Faraday.new do |config|
+  retry_options = {
+    max: 5,
+    interval: 0.5,
+    interval_randomness: 0.5,
+    backoff_factor: 2,
+    retry_statuses: [429],
+    methods: [:get]
+  }
+  config.response :json
+  config.response :raise_error
+  config.request :retry, retry_options
+  config.adapter :net_http_persistent
+end
+
 class Project
-  def self.all
-    gems = JSON.parse(URI.open("https://rubygems.org/api/v1/owners/mattbrictson/gems.json").read)
-    gems.map { |g| new(g) }
+  class << self
+    def all
+      gems = Faraday.get("https://rubygems.org/api/v1/owners/mattbrictson/gems.json").body
+      gems.map { |g| new(g) }
+    end
   end
 
   attr_reader :name
@@ -73,7 +92,7 @@ class Project
   end
 
   def latest_release_html
-    @_latest_release_html ||= Nokogiri::HTML(open_uri(releases_url))
+    @_latest_release_html ||= Nokogiri::HTML(Faraday.get(releases_url).body)
   end
 
   def latest_unreleased_commit_at
@@ -86,14 +105,14 @@ class Project
   def unreleased_commits_html
     @_unreleased_commits_html ||= begin
       url = "https://github.com/#{github_repo}/compare/v#{version}...#{default_branch}"
-      doc = Nokogiri::HTML(open_uri(url))
+      doc = Nokogiri::HTML(Faraday.get(url).body)
       doc.css("#commits_bucket .TimelineItem.pb-2").last
     end
   end
 
   def default_branch
     @_default_branch ||= begin
-      doc = Nokogiri::HTML(open_uri("https://github.com/#{github_repo}/branches"))
+      doc = Nokogiri::HTML(Faraday.get("https://github.com/#{github_repo}/branches").body)
       doc.css(".branch-name").first.text.strip
     end
   end
@@ -103,11 +122,6 @@ class Project
     urls = gem_data.values_at(*keys).compact
     repos = urls.map { |u| u[%r{github.com/((?:[^/]+)/(?:[^/]+))}, 1] }
     repos.compact.first
-  end
-
-  def open_uri(uri)
-    sleep 0.1 # to prevent 429 TOO MANY REQUESTS
-    URI.open(uri)
   end
 end
 
