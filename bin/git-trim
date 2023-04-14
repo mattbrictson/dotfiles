@@ -21,7 +21,7 @@ require "shellwords"
 def trim
   git "fetch --prune --quiet"
 
-  merged_local_branches.each { |b| git "branch -d #{b.shellescape}" }
+  merged_local_branches.each { |b| git "branch -D #{b.shellescape}" }
   orphaned_branches.each { |b| git "branch -D #{b.shellescape}" }
 
   branches = merged_remote_branches
