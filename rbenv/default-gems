@@ -9,4 +9,5 @@ rubocop
 rubocop-minitest
 rubocop-performance
 rubocop-rails
+standard
 tomo
