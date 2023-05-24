@@ -1,6 +1,7 @@
 bundler
 bundleup
 highline
+irb
 overcommit
 rake
 retest
