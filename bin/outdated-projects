@@ -49,10 +49,12 @@ class Project
   end
 
   def days_since_release
-    [Date.today - release_date, 0].max.to_i
+    release_date && [Date.today - release_date, 0].max.to_i
   end
 
   def needs_release?
+    return true if days_since_release.nil?
+
     stale = version.start_with?("0") ? 7 : 28
     days_since_release >= stale && new_commits?
   end
@@ -61,7 +63,7 @@ class Project
     local_date = latest_release_html.css("local-time").first&.public_send(:[], "datetime")
     relative_date = latest_release_html.css("relative-time").first&.public_send(:[], "datetime")
     date = relative_date || local_date
-    Chronic.parse(date).to_date
+    date && Chronic.parse(date).to_date
   end
 
   def releases_url
@@ -140,7 +142,7 @@ if $PROGRAM_NAME == __FILE__
   else
     puts "The following projects need releasing:"
     needing_release.each do |proj|
-      puts [proj.name.ljust(28), proj.days_since_release, "days old"].join(" ")
+      puts [proj.name.ljust(28), proj.days_since_release || "n/a", "days old"].join(" ")
       system("open", proj.releases_url)
       print "Snooze? (y/N) "
       proj.snooze! if $stdin.gets.match?(/\Ay/i)
