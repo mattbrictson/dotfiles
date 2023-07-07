@@ -1,2 +1,2 @@
 ---
-:editor: ~/.bin/subl
+:editor: "~/.bin/subl -a"
