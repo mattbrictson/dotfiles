@@ -67,7 +67,7 @@ ARGV.each do |gem|
     out << curr
     in_group = "<root>" if !in_group && succ =~ /^#?\s*(gem\s|group)/
     in_group = $1 if curr =~ /^group\s*\(?(.*)\)?\s+do\s*$/
-    match = succ =~ /^\s*gem\s/ && insert && insert < succ
+    match = succ =~ /^\s*gem\s/ && insert && insert.tr("-_", "") < succ.tr("-_", "")
     bottom = (out.length > 1 && succ.strip.empty?) || (in_group != "<root>" && succ =~ /^end/)
 
     next unless in_group == group && insert && (match || bottom)
