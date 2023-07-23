@@ -176,7 +176,7 @@
 	"match_selection": true,
 	"match_tags": true,
 	"move_to_limit_on_up_down": false,
-	"open_files_in_new_window": true,
+	"open_files_in_new_window": false,
 	"overlay_scroll_bars": "system",
 	"preview_on_click": true,
 	"remember_full_screen": false,
