@@ -80,6 +80,9 @@
 [diff]
   noprefix = true
 
+[gpg]
+  format = ssh
+
 [init]
   defaultBranch = main
 
@@ -108,4 +111,4 @@
 [user]
   name = <%= prompt("Your Full Name") %>
   email = <%= prompt("Your Email") %>
-  signingkey = <%= prompt("GPG Key") %>
+  signingkey = <%= prompt("SSH Public Key") %>
