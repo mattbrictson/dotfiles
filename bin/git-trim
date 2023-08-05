@@ -15,7 +15,6 @@ RESERVED_BRANCHES = [
   /^trunk$/
 ].freeze
 
-require "english"
 require "shellwords"
 
 def trim
@@ -75,7 +74,7 @@ def git(command, echo: true)
   command = "git #{command}"
   puts ">>>> #{command}".grey if echo
   result = `#{command}`
-  return result if $CHILD_STATUS.success?
+  return result if Process.last_status.success?
 
   warn "Failed: #{command}".red
   exit 1
