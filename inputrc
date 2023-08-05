@@ -1,3 +1,10 @@
-set show-all-if-ambiguous on
+"\e[A": history-search-backward
+"\e[B": history-search-forward
+$if Bash
+  Space: magic-space
+$endif
 set completion-ignore-case on
+set completion-map-case on
 set match-hidden-files off
+set show-all-if-ambiguous on
+set colored-stats on
