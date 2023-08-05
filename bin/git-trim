@@ -55,7 +55,7 @@ def merged_remote_branches
 end
 
 def excluding_reserved(branches)
-  @current_branch ||= git("rev-parse --abbrev-ref HEAD", echo: false).chomp
+  @current_branch ||= git("branch --show-current", echo: false).chomp
   branches.reject do |branch|
     branch == @current_branch || RESERVED_BRANCHES.any? { |pattern| branch.match?(pattern) }
   end

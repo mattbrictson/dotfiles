@@ -7,7 +7,7 @@ def open_circle_ci
   origin = capture("git remote get-url origin").chomp
   brand = origin.include?("bitbucket.org") ? "bitbucket" : "github"
   repo = origin[%r{(:|/)(.*?/.*?)\.git$}, 2]
-  branch = capture("git rev-parse --abbrev-ref HEAD").chomp
+  branch = capture("git branch --show-current").chomp
 
   url = "https://app.circleci.com/pipelines/#{brand}/#{repo}?branch=#{CGI.escape(branch)}"
   system "open", url

@@ -135,7 +135,7 @@ def commit_messages(base_branch)
 end
 
 def current_branch
-  @_current_branch ||= capture!("git rev-parse --abbrev-ref HEAD").chomp
+  @_current_branch ||= capture!("git branch --show-current").chomp
 end
 
 def sh!(command, env = {})
