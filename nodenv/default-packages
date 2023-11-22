@@ -1,5 +1,5 @@
 @antfu/ni
 eslint
-njt
 prettier
+react-devtools
 yarn
