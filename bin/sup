@@ -34,6 +34,7 @@ ARGV.each_with_index do |host, i|
 
   if ubuntu16?(host)
     run host, "sudo apt-get -y autoremove"
+    run host, "sudo apt-get -y autoclean"
     run host, "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q -y update"
     run host,
       "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q " \
