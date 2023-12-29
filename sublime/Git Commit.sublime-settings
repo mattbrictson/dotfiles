@@ -1,4 +1,4 @@
 // These settings override both User and Default settings for the Git Commit syntax
 {
-  "rulers": [50, 72]
+  "rulers": [50, 72],
 }

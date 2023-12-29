@@ -1,7 +1,0 @@
-<snippet>
-  <content><![CDATA[
-<%# $0 %>
-]]></content>
-  <tabTrigger>/</tabTrigger>
-  <scope>text.html.ruby,source.js.rails</scope>
-</snippet>

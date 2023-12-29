@@ -1,13 +1,4 @@
+// These settings override both User and Default settings for the Ruby syntax
 {
-	"extensions":
-	[
-		"rb",
-		"jbuilder",
-		"rabl",
-		"simplecov",
-		"podspec",
-		"thor",
-		"rake"
-	],
-	"word_separators": "./\\()\"'-:,.;<>~@#$%^&*|+=[]{}`~"
+  "word_separators": "./\\()\"'-:,.;<>~@#$%^&*|+=[]{}`~",
 }

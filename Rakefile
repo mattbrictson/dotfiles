@@ -14,6 +14,7 @@ IGNORE = %w[
   LICENSE
   Rakefile
   README.md
+  sublime
 ].freeze
 
 def brew_prefix
@@ -95,21 +96,19 @@ namespace :install do
 
   desc "Symlink the Sublime Packages/User directory"
   task :link_sublime do
-    dot_sublime = File.expand_path("~/.sublime")
-    user_packages = File.expand_path("~/Library/Application Support/Sublime Text 3/Packages/User")
+    sublime = File.expand_path("sublime", __dir__)
+    user_packages = File.expand_path("~/Library/Application Support/Sublime Text/Packages/User")
     unless File.exist?(user_packages)
-      log(:magenta, "mkdir Library/Application Support/Sublime Text 3/Packages/User")
+      log(:magenta, "mkdir Library/Application Support/Sublime Text/Packages/User")
       FileUtils.mkdir_p(user_packages)
     end
     if File.directory?(user_packages) && !File.symlink?(user_packages)
-      log(:magenta, "mkdir .sublime")
-      FileUtils.mkdir_p(dot_sublime)
-      log(:blue, "copy  Library/Application Support/Sublime Text 3/Packages/User/*")
-      FileUtils.cp_r(Dir.glob(user_packages.shellescape + "/*"), dot_sublime)
-      log(:magenta, "rm    Library/Application Support/Sublime Text 3/Packages/User")
+      log(:blue, "copy  Library/Application Support/Sublime Text/Packages/User/*")
+      FileUtils.cp_r(Dir.glob(user_packages.shellescape + "/*"), sublime)
+      log(:magenta, "rm    Library/Application Support/Sublime Text/Packages/User")
       FileUtils.rm_rf(user_packages)
-      log(:blue, "linking Library/Application Support/Sublime Text 3/Packages/User")
-      FileUtils.ln_s(dot_sublime, user_packages)
+      log(:blue, "linking Library/Application Support/Sublime Text/Packages/User")
+      FileUtils.ln_s(sublime, user_packages)
     end
   end
 
