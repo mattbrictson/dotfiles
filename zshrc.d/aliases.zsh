@@ -6,11 +6,13 @@ alias cat='ccat'
 # Change to the root level directory the current git repository
 alias cdg='cd $(git rev-parse --show-toplevel || pwd)'
 alias cdw='cd `find . -type d -name webapp`'
+alias code='codium'
 alias diff=colordiff
 alias find='find -L'
 alias gd='git diff'
 alias git-behind='git rev-list --left-right --count origin/main...@'
 alias gm='git fetch -p && git checkout main && git pull'
+alias gmas='git fetch -p && git checkout master && git pull'
 alias gpb='git prune-branches'
 alias gl='git log --numstat --oneline'
 alias gp='git push'

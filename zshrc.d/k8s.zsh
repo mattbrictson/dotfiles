@@ -4,7 +4,8 @@ export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 
 # Aliases
 alias pods='kubectl get pods -o wide'
-alias k='kubectl'
+alias k='kubecolor'
+alias kubectl='kubecolor'
 alias kg='kubectl get'
 alias kgpod='kubectl get pod'
 alias kgall='kubectl get --all-namespaces all'
