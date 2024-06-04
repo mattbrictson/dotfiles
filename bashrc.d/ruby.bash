@@ -33,6 +33,15 @@ function r() {
   fi
 }
 
+# Shortcut to start the test watcher appropriate for the project
+function w() {
+  if [ -x bin/mt ]; then
+    bin/mt --watch "$@"
+  else
+    retest --notify "$@"
+  fi
+}
+
 # Search all bundler dependencies for a given pattern
 # Courtesy of https://everydayrails.com/2018/06/11/bundler-shortcuts.html
 function bs() {
