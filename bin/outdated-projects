@@ -114,8 +114,8 @@ class Project
 
   def default_branch
     @_default_branch ||= begin
-      doc = Nokogiri::HTML(Faraday.get("https://github.com/#{github_repo}/branches").body)
-      doc.css(".branch-name").first.text.strip
+      branches = JSON.parse(Faraday.get("https://github.com/#{github_repo}/branches.json").body)
+      branches.dig("payload", "branches", "default", "name")
     end
   end
 
