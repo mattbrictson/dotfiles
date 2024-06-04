@@ -8,7 +8,7 @@ def list_files
 end
 
 def last_access_date(file)
-  return File.ctime(file).to_date if File.file?(file) || File.symlink?(file)
+  return File.ctime(file).to_date if File.exist?(file) && (File.file?(file) || File.symlink?(file))
   return nil unless File.directory?(file)
 
   Dir.chdir(file) do
