@@ -9,7 +9,8 @@ RESERVED_BRANCHES = [
   /^hotfix.*$/,
   /^main$/,
   /^master$/,
-  /^production$/,
+  /^.*production$/,
+  /^staging$/,
   /^release.*$/,
   /^stable.*$/,
   /^trunk$/
