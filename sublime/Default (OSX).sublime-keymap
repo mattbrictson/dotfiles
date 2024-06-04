@@ -13,6 +13,12 @@
     "command": "dash_doc"
   },
 
+  // Disable shortcut that conflicts with Dash macOS app
+  {
+    "keys": ["super+shift+space"],
+    "command": "pass"
+  },
+
     // Make paste_and_indent the default behavior
   { "keys": ["super+shift+v"], "command": "paste" },
   { "keys": ["super+v"], "command": "paste_and_indent" },
