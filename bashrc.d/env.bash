@@ -6,6 +6,7 @@ export HOMEBREW_INSTALL_BADGE=🍵
 export HOMEBREW_NO_ANALYTICS=1
 export PATH=$BREW_PREFIX/opt/grep/libexec/gnubin:$BREW_PREFIX/sbin:$PATH
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
+export NEXT_TELEMETRY_DISABLED=1
 
 if [ $TERM_PROGRAM == 'Apple_Terminal' ]; then
   export EDITOR="subl -w"
