@@ -1,0 +1,7 @@
+<snippet>
+  <content><![CDATA[
+Co-authored-by: ${1:username} <${1:username}@users.noreply.github.com>
+]]></content>
+  <tabTrigger>co-</tabTrigger>
+  <scope>text.git.commit</scope>
+</snippet>
