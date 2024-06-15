@@ -49,5 +49,6 @@ function bs() {
 }
 
 alias rgen="~/.bin/rails_generate_and_open"
+alias routes="bin/rails routes -g '^/(?!rails/active_storage|rails/action_mailbox|rails/conductor|(recede|resume|refresh)_historical_location).*$'"
 
 eval "$(tomo completion-script)"
