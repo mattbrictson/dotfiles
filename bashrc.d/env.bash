@@ -8,6 +8,7 @@ export PATH=$BREW_PREFIX/opt/grep/libexec/gnubin:$BREW_PREFIX/sbin:$PATH
 export RIPGREP_CONFIG_PATH=$HOME/.ripgreprc
 export NEXT_TELEMETRY_DISABLED=1
 export CUCUMBER_PUBLISH_QUIET=true
+export THOR_DIFF="colordiff -u"
 
 if [ $TERM_PROGRAM == 'Apple_Terminal' ]; then
   export EDITOR="subl -w"
