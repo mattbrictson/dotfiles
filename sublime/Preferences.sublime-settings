@@ -97,6 +97,13 @@
         "subclasses",
         "codebases",
         "accessor",
+        "Influencer",
+        "Brictson",
+        "middleware",
+        "monorepo",
+        "inlined",
+        "Uncomment",
+        "unhandled",
     ],
     "ignored_words":
     [
