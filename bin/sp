@@ -16,14 +16,27 @@ if ARGV.length > 1 || ARGV.grep(/(-h|--help)/).any?
     the same as DIRECTORY. For example, `sp my-project` will create the file
     my-project/my-project.sublime-project and open it in Sublime Text.
 
-    If DIRECTORY is omitted, the working directory (i.e. ".") is used.
+    If DIRECTORY is omitted, the current and all parent directories will be
+    searched for an existing .sublime-project. If one can't be found, a new
+    project will be created in the current directory.
 
     The `subl` command must be installed and available in the PATH.
   USAGE
   exit
 end
 
-directory = File.expand_path(ARGV.first || ".", ".")
+def find_project_directory
+  curr = start = Dir.pwd
+  until Dir["*.sublime-project"].any? || curr.nil?
+    Dir.chdir("..")
+    curr = curr == Dir.pwd ? nil : Dir.pwd
+  end
+  curr
+ensure
+  Dir.chdir(start)
+end
+
+directory = File.expand_path(ARGV.first || find_project_directory || ".", ".")
 name = File.basename(directory)
 name = "root" if name =~ %r{/}
 project = File.join(directory, "#{name}.sublime-project")
@@ -54,4 +67,5 @@ unless File.exist?(project)
   end
 end
 
+puts "Opening #{project}"
 exec("subl", "--project", project)
