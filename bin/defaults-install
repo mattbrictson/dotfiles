@@ -9,6 +9,6 @@ defaults write com.apple.screencapture location ~/Downloads/
 defaults write com.apple.screencapture disable-shadow -bool true
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults write -g WebKitDeveloperExtras -bool YES
-defaults -currentHost write -globalDomain NSStatusItemSpacing -int 10
+defaults -currentHost write -globalDomain NSStatusItemSpacing -int 8
 killall Dock
 killall SystemUIServer
