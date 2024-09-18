@@ -8,4 +8,5 @@ CFLAGS=-O3 rbenv install "$1" --verbose
 rm -f ~/.ruby-version
 
 rbenv global "$1"
+bundle plugin install bundler-why
 ruby -v
