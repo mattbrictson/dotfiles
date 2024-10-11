@@ -114,7 +114,7 @@ class Project
 
   def default_branch
     @_default_branch ||= begin
-      branches = JSON.parse(Faraday.get("https://github.com/#{github_repo}/branches.json").body)
+      branches = Faraday.get("https://github.com/#{github_repo}/branches.json").body
       branches.dig("payload", "branches", "default", "name")
     end
   end
