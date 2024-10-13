@@ -1,14 +1,36 @@
 #!/bin/bash
 
+set -e
+
+# Dock
 defaults write com.apple.dock autohide -bool true
 defaults write com.apple.dock launchanim -bool false
 defaults write com.apple.dock orientation right
 defaults write com.apple.dock show-recents -bool false
 defaults write com.apple.dock tilesize -int 64
+
+# Screenshots
 defaults write com.apple.screencapture location ~/Downloads/
 defaults write com.apple.screencapture disable-shadow -bool true
+defaults write com.apple.screencapture show-thumbnail -bool false
+
+# Finder
+defaults write NSGlobalDomain AppleShowAllExtensions -bool false
+defaults write com.apple.finder FXPreferredViewStyle -string clmv
+defaults write com.apple.finder _FXSortFoldersFirst -bool true
+defaults write com.apple.finder FXRemoveOldTrashItems -bool true
+defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+defaults write com.apple.finder ShowExternalHardDrivesOnDesktop -bool false
+defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool false
+
+# Enable ability to inspect WebKit views
+# https://blog.jim-nielsen.com/2022/inspecting-web-views-in-macos/
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 defaults write -g WebKitDeveloperExtras -bool YES
+
+# Menu bar
 defaults -currentHost write -globalDomain NSStatusItemSpacing -int 8
+
 killall Dock
+killall Finder
 killall SystemUIServer
