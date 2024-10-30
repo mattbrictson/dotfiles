@@ -4,6 +4,8 @@ set -e
 
 nodenv update-version-defs
 nodenv install "$1"
+echo -n "Installed: "
+NODENV_VERSION="$1" node -v
 
+read -r -p "Press enter to make $1 the global default Node, or ^C to cancel. "
 nodenv global "$1"
-node -v
