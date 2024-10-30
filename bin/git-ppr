@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+
+require "pathname"
+require "shellwords"
+
+return unless system "git push -u origin head"
+
+project_root = Pathname.new(`git rev-parse --show-toplevel`.chomp)
+pr_template_path = project_root.join(".github/PULL_REQUEST_TEMPLATE.md")
+pr_body = pr_template_path.read if pr_template_path.exist?
+
+git_branch = `git branch --show-current`.chomp
+tracker_id = git_branch[/\d{8,}/]
+
+pr_body.sub!(%r{(pivotaltracker\.com/story/show/)\d+}, '\1' + tracker_id) if pr_body && tracker_id
+
+gh_command = +"gh pr create --web"
+gh_command << " --body #{pr_body.shellescape}" if pr_body
+
+exit Process.last_status.exitstatus unless system gh_command
