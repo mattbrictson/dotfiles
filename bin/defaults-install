@@ -15,7 +15,7 @@ defaults write com.apple.screencapture disable-shadow -bool true
 defaults write com.apple.screencapture show-thumbnail -bool false
 
 # Finder
-defaults write NSGlobalDomain AppleShowAllExtensions -bool false
+defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 defaults write com.apple.finder FXPreferredViewStyle -string clmv
 defaults write com.apple.finder _FXSortFoldersFirst -bool true
 defaults write com.apple.finder FXRemoveOldTrashItems -bool true
