@@ -1,6 +1,7 @@
 export CLICOLOR=1
 export LSCOLORS=Dxxxxxxxxxxxxxxxxxxxxx
 export PAGER=/usr/bin/less
+export PSQL_PAGER="/usr/bin/less -S"
 export LESS=-RFX
 export HOMEBREW_INSTALL_BADGE=🍵
 export HOMEBREW_NO_ANALYTICS=1
