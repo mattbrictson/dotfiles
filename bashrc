@@ -23,4 +23,8 @@ if [ -x $BREW_PREFIX/bin/direnv ]; then
   eval "$($BREW_PREFIX/bin/direnv hook bash)"
 fi
 
+if [ -x "$BREW_PREFIX/bin/zoxide" ]; then
+  eval "$(zoxide init --cmd j bash)"
+fi
+
 unset -v BREW_PREFIX
