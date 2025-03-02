@@ -36,6 +36,9 @@
   unstage = reset HEAD
   untracked-files = ls-files -o --exclude-standard
 
+[branch]
+  sort = -committerdate
+
 [color]
   status = auto
   diff = auto
@@ -79,6 +82,7 @@
 [diff]
   algorithm = histogram
   noprefix = true
+  renames = true
 
 [gpg]
   format = ssh
@@ -109,6 +113,9 @@
 [rerere]
   enabled = true
   autoupdate = true
+
+[tag]
+  sort = version:refname
 
 [url "git@github.com:"]
   insteadOf = https://github.com/
