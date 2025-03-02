@@ -3,7 +3,7 @@
 release = `gh release list`.lines.first[/\s(v[\d.]+)/, 1]
 note = `gh release view #{release}`
 
-regexp = /- Update rubocop.* requirement from .* \((#\d+)\) @dependabot\n/
+regexp = /- Update rubocop.* requirement from .* \((#\d+)\) @\[?dependabot\b.*\n/
 prs = note.scan(regexp).flatten.sort
 consolidated = "- Update rubocop gems (#{prs.join(", ")}) @dependabot\n"
 
