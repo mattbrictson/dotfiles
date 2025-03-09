@@ -3,6 +3,6 @@
 set -xe
 
 brew update
-brew bundle --global --no-upgrade --no-lock
+brew bundle --global --no-upgrade
 brew cleanup --prune=30
 brew upgrade
