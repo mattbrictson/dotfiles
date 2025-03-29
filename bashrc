@@ -6,6 +6,10 @@ fi
 
 export PATH=$BREW_PREFIX/bin:$PATH
 
+if [ -x $BREW_PREFIX/bin/mise ]; then
+  eval "$(mise activate bash)"
+fi
+
 # Custom bashrc sources are stored in ~/.bashrc.d
 if [[ -d $HOME/.bashrc.d ]] ; then
   for config in "$HOME"/.bashrc.d/*.bash ; do
@@ -17,10 +21,6 @@ unset -v config
 # Custom binaries are stored in ~/.bin
 if [ -d ~/.bin ]; then
   export PATH=~/.bin:$PATH
-fi
-
-if [ -x $BREW_PREFIX/bin/direnv ]; then
-  eval "$($BREW_PREFIX/bin/direnv hook bash)"
 fi
 
 if [ -x "$BREW_PREFIX/bin/zoxide" ]; then

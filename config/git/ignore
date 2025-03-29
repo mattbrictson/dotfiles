@@ -45,3 +45,5 @@ __MACOSX
 .byebug_history
 .vscode/
 .envrc
+mise.local.toml
+.venv/

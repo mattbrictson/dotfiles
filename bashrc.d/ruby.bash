@@ -1,8 +1,3 @@
-if [ -x "$BREW_PREFIX/bin/rbenv" ]; then
-  export PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init - --no-rehash)"
-fi
-
 export PATH=".git/safe/../../bin:$PATH"
 export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$BREW_PREFIX/opt/openssl@3"
 

@@ -2,13 +2,11 @@
 
 set -e
 
-CFLAGS=-O3 rbenv install "$1" --verbose
-RBENV_VERSION="$1" bundle plugin install bundler-why
+CFLAGS=-O3 mise install "ruby@$1"
+mise exec "ruby@$1" -- bundle plugin install bundler-why
 echo -n "Installed: "
-RBENV_VERSION="$1" ruby -v
+mise exec "ruby@$1" -- ruby -v
 
 read -r -p "Press enter to make $1 the global default Ruby, or ^C to cancel. "
 
-# ~/.ruby-version conflicts with rbenv global, so remove it
-rm -f ~/.ruby-version
-rbenv global "$1"
+mise use --global "ruby@$1"
