@@ -11,4 +11,9 @@ edited = note.gsub(regexp) do |match|
   match.include?(prs.first) ? consolidated : ""
 end
 
+headings = note.scan(/^## .*?(\w[\w\s]+)/).flatten.map(&:strip)
+if headings == ["Housekeeping"] && !note.match?(/This is a gem housekeeping release/)
+  edited = edited.sub(/^## /, "This is a gem housekeeping release. No user-facing changes.\n\n\\0")
+end
+
 puts edited
