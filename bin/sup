@@ -20,33 +20,26 @@ def config
   "-F .ssh/config" if File.file?(".ssh/config")
 end
 
-def ubuntu16?(host)
-  !run(host, "type aptitude 2>/dev/null", exit_on_failure: false)
-end
-
 completed = []
 
-ARGV.each_with_index do |host, i|
-  if i > 0
-    puts "Next up: #{host}".red
-    exit unless HighLine.new.agree("Proceed (y/n)? ".blue)
-  end
+[*ARGV, nil].each_cons(2) do |host, next_host|
+  break if host.nil?
 
-  if ubuntu16?(host)
-    run host, "sudo apt-get -y autoremove"
-    run host, "sudo apt-get -y autoclean"
-    run host, "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q -y update"
-    run host,
-      "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q " \
-      '-o DPkg::options::="--force-confdef" ' \
-      '-o DPkg::options::="--force-confold" dist-upgrade'
-  else
-    run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q -y update"
-    run host, "DEBIAN_FRONTEND=noninteractive sudo aptitude -q -q safe-upgrade"
-  end
+  run host, "sudo apt-get -y autoremove"
+  run host, "sudo apt-get -y autoclean"
+  run host, "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q -y update"
+  run host,
+    "sudo DEBIAN_FRONTEND=noninteractive apt-get -q -q " \
+    '-o DPkg::options::="--force-confdef" ' \
+    '-o DPkg::options::="--force-confold" dist-upgrade'
 
   run host, "sudo checkrestart -v"
 
   completed << host
   completed.each { |h| puts "✔ #{h}".green }
+
+  puts "Next up: #{next_host}".red if next_host
+  break unless HighLine.new.agree("Reboot #{host}#{' and proceed' if next_host} (y/n)? ".blue)
+
+  run host, "sudo systemctl reboot", exit_on_failure: false
 end
