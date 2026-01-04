@@ -10,5 +10,4 @@ rubocop
 rubocop-minitest
 rubocop-performance
 rubocop-rails
-solargraph
 tomo
